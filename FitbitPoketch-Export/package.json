@@ -1,0 +1,22 @@
+{
+  "devDependencies": {
+    "@fitbit/sdk": "~4.3.0"
+  },
+  "fitbit": {
+    "appUUID": "6bfe843c-0d8f-4985-b92c-db4feb28afa4",
+    "appType": "clockface",
+    "appDisplayName": "Poketch",
+    "iconFile": "resources/icon.png",
+    "wipeColor": "#607d8b",
+    "requestedPermissions": [],
+    "buildTargets": [
+      "meson"
+    ],
+    "i18n": {
+      "en-US": {
+        "name": "Poketch"
+      }
+    },
+    "defaultLanguage": "en-US"
+  }
+}
