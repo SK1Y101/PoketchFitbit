@@ -8,7 +8,7 @@ A Fitbit clockface in the style of the Gen IV Pokétch.
 [![CodeFactor](https://www.codefactor.io/repository/github/SK1Y101/PoketchFitbit/badge)](https://www.codefactor.io/repository/github/SK1Y101/PoketchFitbit)
 ![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/SK1Y101/PoketchFitbit)
 [![codecov](https://codecov.io/gh/SK1Y101/PoketchFitbit/branch/main/graph/badge.svg?token=DRJ67ZQA7M)](https://codecov.io/gh/SK1Y101/PoketchFitbit)
-[![time tracker](https://wakatime.com/badge/github/SK1Y101/PoketchFitbit.svg)](https://wakatime.com/badge/github/SK1Y101/PoketchFitbit)
+[![wakatime](https://wakatime.com/badge/github/SK1Y101/PoketchFitbit.svg)](https://wakatime.com/badge/github/SK1Y101/PoketchFitbit)
 
 ![GitHub language count](https://img.shields.io/github/languages/count/SK1Y101/PoketchFitbit)
 ![GitHub top language](https://img.shields.io/github/languages/top/SK1Y101/PoketchFitbit)
