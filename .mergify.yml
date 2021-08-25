@@ -1,0 +1,79 @@
+pull_request_rules:
+  - name: automatic merge when GitHub branch protection passes
+    conditions:
+      - label!=work-in-progress
+      - -closed
+      - -merged
+    actions:
+      assign:
+        users: [SK1Y101]
+      merge:
+        method: merge
+        strict: smart+fasttrack
+
+  - name: apply patches to developmental and stable branches
+    conditions:
+      - base=main
+      - -closed
+      - -merged
+    actions:
+      backport:
+        regexes: [^stable/, develop]
+
+  - name: automatic merge for Snyk pull requests
+    conditions:
+      - base=main
+      - title~=^\[Snyk\]
+      - head~=^snyk-fix
+      - check-success~=^security/snyk
+      - -closed
+      - -merged
+    actions:
+      review:
+        type: APPROVE
+      merge:
+        method: merge
+        strict: smart+fasttrack
+
+  - name: automatic merge for Dependabot pull requests
+    conditions:
+      - base=main
+      - author~=^dependabot(|-preview)\[bot\]$
+      - check-success~=^security/snyk
+      - -closed
+      - -merged
+    actions:
+      review:
+        type: APPROVE
+      merge:
+        method: merge
+        strict: smart+fasttrack
+
+  - name: automatic merge for Allcontributors bot pull requests
+    conditions:
+      - base=main
+      - author~=^allcontributors\[bot\]$
+      - check-success~=^security/snyk
+      - -closed
+      - -merged
+    actions:
+      review:
+        type: APPROVE
+      merge:
+        method: merge
+        strict: smart+fasttrack
+
+  - name: remove outdated reviews
+    conditions:
+      - base=master
+    actions:
+      dismiss_reviews: {}
+
+  - name: delete head branch after merge
+    conditions:
+      - merged
+      - head!=main
+      - head!=develop
+      #don't delete if we're merging from develop or main
+    actions:
+      delete_head_branch: {}
