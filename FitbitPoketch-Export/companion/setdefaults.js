@@ -4,7 +4,8 @@ import { settingsStorage } from "settings";
 function fetchdefs() {
   var defaults = {
     skin: {name:"Platinum", value:1, subname:"The Pokétch given to the protagonist in Platinum."},
-    edgeColour: {name: "D/P Blue", icon:"https://www.colorhexa.com/3050F8.png", value: 0, subname:"The Male Pokétch colour in in Diamond and Pearl."},
+    edgeColour: {name: "D/P Blue", icon:"https://www.colorhexa.com/3050F8.png", value: "#3050F8", subname:"The Male Pokétch colour in Diamond and Pearl."},
+    faceColour: {name: "D/P", icon:"https://www.colorhexa.com/303030.png", value: "#303030", subname:"The Pokétch face colour in Diamond and Pearl."},
   };
 
   let Defaults = {};

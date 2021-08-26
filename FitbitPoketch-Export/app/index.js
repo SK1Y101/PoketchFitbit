@@ -17,7 +17,8 @@ console.log("Device JS memory: " + memory.js.used + "/" + memory.js.total);
 let DefSet = function() {
   var defaults = {
     skin: 1,
-    edgeColour: 2,
+    edgeColour: "#3050F8",
+    faceColour: "#030303"
   };
   return defaults;
 };
@@ -37,9 +38,13 @@ const minTen = document.getElementById("min_ten");
 const minOne = document.getElementById("min_one");
 
 const bg = document.getElementById("background");
+const fc = document.getElementsByClassName("face_colour");
 
 const dpskin = document.getElementsByClassName("dp_skin");
 const ptskin = document.getElementsByClassName("pt_skin");
+
+const face = document.getElementById("screen");
+console.log(face)
 
 // Update elements once a minute
 clock.addEventListener("tick", (evt) => {
@@ -63,9 +68,14 @@ let updateSkin = function(skinType) {
 }
 
 // Change the colour
-let updateEdge = function(edgeColour) {
-  let colour = ["#3050F8", "#FF41BC", "#E28B55", "#4C8CB9", "#EC5E6A"];
-  bg.style.fill=colour[edgeColour];
+let updateEdge = function(colour, ele) {
+  try {
+    ele.forEach(function(eles) {
+      eles.style.fill = colour;
+    });
+  } catch(err) {
+    ele.style.fill=colour;
+  };
 }
 
 // Define a function to apply our settings
@@ -76,7 +86,8 @@ let applySettings = function() {
   try {
     // Set element colours
     settings.isPresent("skin", updateSkin);
-    settings.isPresent("edgeColour", updateEdge);
+    settings.isPresent("edgeColour", updateEdge, bg);
+    settings.isPresent("faceColour", updateEdge, fc);
     // Show that settings have been loaded
     console.log("Settings applied");
   } catch (err) {
