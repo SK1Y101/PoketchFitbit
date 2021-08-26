@@ -38,9 +38,8 @@ const minOne = document.getElementById("min_one");
 
 const bg = document.getElementById("background");
 
-const skins = document.getElementsByClassName("skin");
 const dpskin = document.getElementsByClassName("dp_skin");
-const ptskin = document.getElementsByClassName("dp_skin");
+const ptskin = document.getElementsByClassName("pt_skin");
 
 // Update elements once a minute
 clock.addEventListener("tick", (evt) => {
@@ -54,21 +53,13 @@ clock.addEventListener("tick", (evt) => {
 // Change the skin
 let updateSkin = function(skinType) {
   // Hide all the skins
-  skins.forEach(function(ele) {
-    ele.style.display = "none"
+  console.log(skinType==1 ? "inline" : "none");
+  ptskin.forEach(function(ele) {
+    ele.style.display=(skinType==1 ? "inline" : "none")
   });
-  // If we want the platinum skin
-  if (skinType == 0) {
-    ptskin.forEach(function(ele) {
-      ele.style.display="inline"
-    });
-  } else if (skinType == 1) {
-    // If we want the diamond skin
-    dpskin.forEach(function(ele) {
-      ele.style.display="inline"
-    });
-  }
-  console.log(["Diamond", "Platinum"][skinType]);
+  dpskin.forEach(function(ele) {
+    ele.style.display=(skinType==0 ? "inline" : "none")
+  });
 }
 
 // Change the colour
