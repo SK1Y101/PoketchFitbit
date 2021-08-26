@@ -133,51 +133,6 @@ export function textSize(ele,text,size,scalar) {
   };
 };
 
-//Set the colour of elements
-export function colourElements(ele,colour) {
-  try {
-    try {
-      ele.forEach(function(eles) {
-        eles.style.fill=colour;
-      });
-    } catch(err) {
-      ele.style.fill=colour;
-    };
-  } catch(err) {
-    logerror(err,"colour");
-  };
-};
-
-//set elements to either visible or not
-export function setVisible(ele,show) {
-  try {
-    try {
-      ele.forEach(function(eles) {
-        eles.style.display=show;
-      });
-    } catch(err) {
-      ele.style.display=show;
-    };
-  } catch(err) {
-    logerror(err,"visibility");
-  };
-};
-
-//animate an element(s)
-export function animate(ele) {
-  try {
-    try {
-      ele.forEach(function(eles) {
-        eles.animate("enable")
-      });
-    } catch(err) {
-      ele.animate("enable");
-    };
-  } catch(err) {
-    logerror(err,"animation");
-  };
-};
-
 //Force a field to be an array
 export function forceArray(arr) {
   if (typeof(arr) !== "object") {
