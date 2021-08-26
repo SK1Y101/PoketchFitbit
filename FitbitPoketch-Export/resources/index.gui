@@ -3,6 +3,9 @@
   <rect id="background" fill="black" width="200%" height="100%"/>
   // Define template symbols for use
   <defs>
+    <mask id="screenmask">
+      <rect x="0%" y="0%" width="100%" height="100%"/>
+    </mask>
   </defs>
 
   // watch face
@@ -57,10 +60,11 @@
 
   // watch screen
   <g id="screen" pointer-events="visible" transform="translate(0%,0%)">
-    <svg x="3%" y="3%" width="82%" height="94%">
-      <rect id="screen_colour" width="100%" height="100%" pointer-events="visible" fill="#70B171"/>
-      <line x1="0%" y1="95%" x2="100%" y2="95%" fill="#303030" opacity=".4" stroke-width="4" stroke-linecap="butt" />
-      <line x1="0%" y1="99%" x2="100%" y2="99%" fill="#303030" opacity=".4" stroke-width="8" stroke-linecap="butt" />
+    <svg mask="#screenmask" x="3%" y="3%" width="82%" height="94%">
+      <rect id="screen_colour" width="100%" height="100%" pointer-events="visible" fill="#70B070"/>
+      <line x1="0% - 1" y1="2%" x2="100%" y2="2%" fill="#303030" opacity=".6" stroke-width="5%" stroke-linecap="butt" class="pt_skin"/>
+      <line x1="0% - 1" y1="94%" x2="100%" y2="94%" fill="#303030" opacity=".6" stroke-width="2%" stroke-linecap="butt" />
+      <line x1="0% - 1" y1="98%" x2="100%" y2="98%" fill="#303030" opacity=".6" stroke-width="5%" stroke-linecap="butt" />
 
       // Digital clock
       <svg class="clock" fill="#303030" opacity=".5">
@@ -70,12 +74,28 @@
         <image id="min_one" href="icons/digit_0.png" x="86% - 9%" y="50% - 20%" width="18%" height="36%"/>
         <image href="icons/digit_colon.png" x="50% - 4%" y="50% - 20%" width="8%" height="36%"/>
       </svg>
-    </svg>
+
+      // View change rectangles
+      <rect width="100%" height="50%" fill="#303030">
+        <animate attributeName="height" begin="enable" from="0%" to="50%" dur=".5"/>
+        <animate attributeName="height" begin="load;enable+.5" from="50%" to="0%" dur=".5"/>
+      </rect>
+      <rect y="50%" width="100%" height="50%" fill="#303030">
+        <animate attributeName="height" begin="enable" from="10%" to="60%" dur=".5"/>
+        <animate attributeName="height" begin="load;enable+.5" from="60%" to="10%" dur=".5"/>
+        <animate attributeName="y" begin="enable" from="100%" to="50%" dur=".5"/>
+        <animate attributeName="y" begin="load;enable+.5" from="50%" to="100%" dur=".5"/>
+      </rect>
+  </svg>
   </g>
+
+  // view changing buttons
+  //rect id="back_button" width="100%" height="50%" fill="fb-blue" opacity=".1"
+  //rect id="fore_button" y="50%" width="100%" height="50%" fill="fb-red" opacity=".1"
 </svg>
 
 
-Green 70B171
+Green 70B070
 Yellow B8B071
 Orange C09068
 Red D8706F
@@ -86,7 +106,6 @@ grey A0A0A0
 
 background of screen 303030
 border of screen 1D181E
-white background E0E0E0
 
 button static F75968
 button dark FA413F
