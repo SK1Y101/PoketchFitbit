@@ -56,11 +56,11 @@
   </svg>
 
   // watch screen
-  <g id="screen_container" pointer-events="visible" transform="translate(0%,0%)">
-    <svg id="screen" x="2%" y="2%" width="84%" height="96%">
-      <rect id="screen_colour" x="1%" y="1%" width="99%-1" height="99%-1" pointer-events="visible" fill="#70B171"/>
-      <line x1="0%" y1="95%" x2="99% + 1" y2="95%" fill="#303030" opacity=".4" stroke-width="4" stroke-linecap="butt" />
-      <line x1="0%" y1="98% + 1" x2="99% + 1" y2="98% + 1" fill="#303030" opacity=".4" stroke-width="8" stroke-linecap="butt" />
+  <g id="screen" pointer-events="visible" transform="translate(0%,0%)">
+    <svg x="3%" y="3%" width="82%" height="94%">
+      <rect id="screen_colour" width="100%" height="100%" pointer-events="visible" fill="#70B171"/>
+      <line x1="0%" y1="95%" x2="100%" y2="95%" fill="#303030" opacity=".4" stroke-width="4" stroke-linecap="butt" />
+      <line x1="0%" y1="99%" x2="100%" y2="99%" fill="#303030" opacity=".4" stroke-width="8" stroke-linecap="butt" />
 
       // Digital clock
       <svg class="clock" fill="#303030" opacity=".5">
