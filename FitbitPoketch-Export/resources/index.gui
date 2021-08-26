@@ -7,7 +7,7 @@
 
   // watch face
   // platinum
-  <svg class="pt_skin skin" y="1%" width="102%" height="98%" display="inline">
+  <svg class="pt_skin" y="1%" width="102%" height="98%" display="inline">
     // face
     <image href="ui/Poketch_Border_pt.png" width="102%" id="face_colour" fill="#E0E0E0"/>
     // screen connection bit
@@ -17,7 +17,7 @@
     <rect x="2%" y="1% + 1" width="83% - 1" height="98%" fill="#1D181E" />
   </svg>
   // diamond and pearl
-  <svg class="dp_skin skin" width="102%" display="none">
+  <svg class="dp_skin" width="102%" display="none">
     // face
     <image href="ui/Poketch_Border_top_dp.png" fill="#FFFFFF" width="104%" opacity=".15"/>
     <image href="ui/Poketch_Border_dp.png" id="face_colour" fill="#303030"/>
@@ -39,7 +39,7 @@
   </svg>
 
   // side buttons
-  <svg class="pt_skin skin" display="inline">
+  <svg class="pt_skin" display="inline">
     // platinum top
     <svg x="90%" y="11%" width="12%" height="40%">
       <g transform="scale(1, 1)">
@@ -73,7 +73,7 @@
     </svg>
   </svg>
   // diamond and pearl button
-  <svg class="dp_skin skin" x="90% - 1%" y="100% - 9%" width="10%" height="40%" display="none">
+  <svg class="dp_skin" x="90% - 1%" y="100% - 9%" width="10%" height="40%" display="none">
     <g transform="scale(1, -1)">
       <image href="buttons/Poketch_Button_dp.png" x="-10%" y="-3%" width="120%" height="105%" fill="#1D181E"/>
       <image id="button_bottom" href="buttons/Poketch_Button_dp.png" width="100%" height="100%" fill="#FA413F">
