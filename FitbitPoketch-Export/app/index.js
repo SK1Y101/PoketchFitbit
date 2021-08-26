@@ -3,6 +3,7 @@ import clock from "clock";
 import { memory } from "system";
 import document from "document";
 import { display } from "display";
+import { me as device } from "device";
 import { me as appbit } from "appbit";
 import { peerSocket } from "messaging";
 
@@ -65,6 +66,11 @@ let updateSkin = function(skinType) {
   dpskin.forEach(function(ele) {
     ele.style.display=(skinType==0 ? "inline" : "none")
   });
+  // Update the size of the screen
+  face.groupTransform.translate.x = -Math.ceil((skinType==2 ? 0.035 * device.screen.width: 0));
+  face.groupTransform.translate.y = -Math.ceil((skinType==2 ? 0.03 * device.screen.height: 0));
+  face.groupTransform.scale.x = (skinType==2 ? 100 / 82: 1);
+  face.groupTransform.scale.y = (skinType==2 ? 100 / 94: 1);
 }
 
 // Change the colour

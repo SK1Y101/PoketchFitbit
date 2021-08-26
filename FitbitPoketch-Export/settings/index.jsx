@@ -9,6 +9,7 @@ function mySettings(props) {
           options={[
             {name:"Diamond/Pearl", value:0, subname:"The Pokétch given to the protagonist in Diamond and Pearl."},
             {name:"Platinum", value:1, subname:"The Pokétch given to the protagonist in Platinum."},
+            {name:"Watch face only", value:2, subname:"Only show the watch face, without the decorative elements."},
           ]}
           renderItem={
             (option) =>
