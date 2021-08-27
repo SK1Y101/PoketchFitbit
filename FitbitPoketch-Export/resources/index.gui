@@ -1,6 +1,6 @@
 <svg>
   // The background colour
-  <rect id="background" fill="black" width="200%" height="100%"/>
+  <rect id="background" fill="#303030" width="200%" height="100%"/>
   // Define template symbols for use
   <defs>
     // Screen mask
