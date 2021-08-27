@@ -10,6 +10,11 @@ function showDigit(ele, digit) {
   };
 };
 
+// Pad a value such that it has a defined length
+function pad(val, def="00") {
+  return (def + val.toString()).slice(-def.length);
+};
+
 // Define this module
 export let TimeIndicator = function(doc) {
   // Fetch the gui elements for the time
@@ -22,8 +27,8 @@ export let TimeIndicator = function(doc) {
   // Function to update the time
   this.drawTime = function(now) {
     // Fetch the time elements
-    var hour = now.getHours().toString();
-    var mins = now.getMinutes().toString();
+    var hour = pad(now.getHours());
+    var mins = pad(now.getMinutes());
 
     // And update the parts that need it
     console.log(now.getMonth().toString())
