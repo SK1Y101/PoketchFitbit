@@ -16,28 +16,57 @@ export let SwitchView = function(doc) {
 
   //Fetch the ui buttons to animate
   const upBut = doc.getElementsByClassName("button_top");
-  const downBbut = doc.getElementsByClassName("button_bottom");
+  const downBut = doc.getElementsByClassName("button_bottom");
 
   // Fetch the view changing screen thingy
   const view = doc.getElementsByClassName("view_change");
 
+  // Variable to store if the screen is updating
+  var updating = false;
+
   // Create event listeners
+
   // foreward button pressed
   foreBut.addEventListener("mousedown", (evt) => {
-    animateElement(downBut, "mousedown");
+    // Ensure we can animate
+    if (!updating) {
+      // start the animations
+      animateElement(downBut, "mousedown");
+    };
   });
-  // forward button is released
-  foreBut.addEventListener("mouseup", (evt) => {
-    animateElement(view, "enable");
-    animateElement(downBut, "mouseup");
-  });
+
   // forward button pressed
   backBut.addEventListener("mousedown", (evt) => {
-    animateElement(upBut, "mousedown");
+    // Ensure we can animate
+    if (!updating) {
+      // start the animations
+      animateElement(upBut, "mousedown");
+    };
   });
+
+  // forward button is released
+  foreBut.addEventListener("mouseup", (evt) => {
+    // Ensure we can animate
+    if (!updating) {
+      // start the animations
+      animateElement(view, "enable");
+      animateElement(downBut, "mouseup");
+      // And force the ui to stop until the animations are done
+      updating = true;
+      setTimeout(function() { updating = false; }, 550 + 250);
+    };
+  });
+
   // forward button is released
   backBut.addEventListener("mouseup", (evt) => {
-    animateElement(view, "enable");
-    animateElement(upBut, "mouseup");
+    // Ensure we can animate
+    if (!updating) {
+      // start the animations
+      animateElement(view, "enable");
+      animateElement(upBut, "mouseup");
+      // And force the ui to stop until the animations are done
+      updating = true;
+      setTimeout(function() { updating = false; }, 550 + 250);
+    };
   });
 };
