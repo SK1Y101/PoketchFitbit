@@ -10,28 +10,29 @@ import { peerSocket } from "messaging";
 // Import the modules I have written
 import * as utils from "../common/utils";
 import { Settings } from "../common/settings";
+import { SwitchView } from "./Poketch/switch";
 import { TimeIndicator } from "./Poketch/clock";
-
-// And fetch a reference to the modules
-let timeInd = new TimeIndicator(document);
 
 // Set the default values of all options
 let DefSet = function() {
   var defaults = {
     skin: 1,
     edgeColour: "#3050F8",
-    faceColour: "#030303",
+    faceColour: "#303030",
     screenColour: "#70B070",
   };
   return defaults;
 };
 
-// Fetch the settings, passing the defaults too
+// And fetch a reference to the modules
 let settings = new Settings("settings.cbor", DefSet);
+let timeInd = new TimeIndicator(document);
+let switchView = new SwitchView(document);
 
 // Define the clock tick rate
 clock.granularity = "minutes"; // seconds, minutes, hours
 
+// fetch elementss
 const bg = document.getElementById("background");
 const fc = document.getElementsByClassName("face_colour");
 const sc = document.getElementsByClassName("screen_colour");
