@@ -10,10 +10,8 @@ import { peerSocket } from "messaging";
 // Import the modules I have written
 import * as utils from "../common/utils";
 import { Settings } from "../common/settings";
+import { SwitchView } from "./Poketch/switch";
 import { TimeIndicator } from "./Poketch/clock";
-
-// And fetch a reference to the modules
-let timeInd = new TimeIndicator(document);
 
 // Set the default values of all options
 let DefSet = function() {
@@ -26,8 +24,10 @@ let DefSet = function() {
   return defaults;
 };
 
-// Fetch the settings, passing the defaults too
+// And fetch a reference to the modules
 let settings = new Settings("settings.cbor", DefSet);
+let timeInd = new TimeIndicator(document);
+let switchView = new SwitchView(document);
 
 // Define the clock tick rate
 clock.granularity = "minutes"; // seconds, minutes, hours
@@ -43,41 +43,6 @@ const ptskin = document.getElementsByClassName("pt_skin");
 const face = document.getElementById("screen");
 console.log(face)
 console.log((0x70b070 + 0x103010).toString(16));
-
-// click testing
-const fbut = document.getElementById("fore_button");
-const bbut = document.getElementById("back_button");
-const vchang = document.getElementsByClassName("view_change");
-
-const ubut = document.getElementsByClassName("button_top");
-const lbut = document.getElementsByClassName("button_bottom");
-
-let animateChange = function() {
-  vchang.forEach(function(ele) {
-    ele.animate("enable");
-  });
-};
-
-let animateButton = function(ele, trigger) {
-  ele.forEach(function(eles) {
-    eles.animate(trigger);
-  });
-};
-
-fbut.addEventListener("mouseup", (evt) => {
-  animateChange();
-  animateButton(lbut, "mouseup");
-});
-fbut.addEventListener("mousedown", (evt) => {
-  animateButton(lbut, "mousedown");
-});
-bbut.addEventListener("mouseup", (evt) => {
-  animateChange();
-  animateButton(ubut, "mouseup");
-});
-bbut.addEventListener("mousedown", (evt) => {
-  animateButton(ubut, "mousedown");
-});
 
 // Update elements once a minute
 clock.addEventListener("tick", (evt) => {
