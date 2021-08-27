@@ -55,6 +55,31 @@ function mySettings(props) {
           }
         />
       </Section>
+      <Section
+        title={<Text bold align="center">Screen customisation</Text>}>
+        <Select
+          label={"Screen Colour"}
+          settingsKey="screenColour"
+          options={[
+            {name: "Green", icon:"https://www.colorhexa.com/70B070.png", value: "#70B070", subname:"The default Pokétch screen colour."},
+            {name: "Yellow", icon:"https://www.colorhexa.com/B8B071.png", value: "#B8B071", subname:""},
+            {name: "Orange", icon:"https://www.colorhexa.com/C09068.png", value: "#C09068", subname:""},
+            {name: "Red", icon:"https://www.colorhexa.com/D8706F.png", value: "#D8706F", subname:""},
+            {name: "Violet", icon:"https://www.colorhexa.com/A170B1.png", value: "#A170B1", subname:""},
+            {name: "Indigo", icon:"https://www.colorhexa.com/8888F8.png", value: "#8888F8", subname:""},
+            {name: "Blue", icon:"https://www.colorhexa.com/57B8BF.png", value: "#57B8BF", subname:""},
+            {name: "Grey", icon:"https://www.colorhexa.com/A0A0A0.png", value: "#A0A0A0", subname:""},
+          ]}
+          renderItem={
+            (option) =>
+              <TextImageRow
+                label={option.name}
+                sublabel={option.subname}
+                icon={option.icon}
+              />
+          }
+        />
+      </Section>
     </Page>
   );
 }
