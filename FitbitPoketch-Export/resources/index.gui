@@ -3,13 +3,16 @@
   <rect id="background" fill="black" width="200%" height="100%"/>
   // Define template symbols for use
   <defs>
+    <mask id="screenmask">
+      <rect x="0%" y="0%" width="100%" height="100%"/>
+    </mask>
   </defs>
 
   // watch face
   // platinum
   <svg class="pt_skin" y="1%" width="102%" height="98%" display="inline">
     // face
-    <image href="ui/Poketch_Border_pt.png" width="102%" id="face_colour" fill="#E0E0E0"/>
+    <image href="ui/Poketch_Border_pt.png" width="102%" class="face_colour" id="platinum" fill="#303030"/>
     // screen connection bit
     <rect x="43% - 30%" y="-2%" width="60%" height="104%" fill="#1D181E" />
     <rect x="43% - 30% + 1%" y="-2%" width="60% - 2%" height="104%" fill="#303030" />
@@ -20,7 +23,7 @@
   <svg class="dp_skin" width="102%" display="none">
     // face
     <image href="ui/Poketch_Border_top_dp.png" fill="#FFFFFF" width="104%" opacity=".15"/>
-    <image href="ui/Poketch_Border_dp.png" id="face_colour" fill="#303030"/>
+    <image href="ui/Poketch_Border_dp.png" class="face_colour" id="diamond" fill="#303030"/>
     // screen back
     <svg fill="#1D181E">
       <rect x="1%" y="2%" width="82% + 2%" height="96%"/>
@@ -31,85 +34,87 @@
       <circle cx="84%" cy="98%" r="1%"/>
     </svg>
   </svg>
-  // screen
-  <svg id="container" x="2%" y="2%" width="84%" height="96%">
-    <rect id="screen" x="1%" y="1%" width="99%-1" height="99%-1" pointer-events="visible" fill="#70B171"/>
-    <line x1="0%" y1="95%" x2="99% + 1" y2="95%" fill="#303030" opacity=".4" stroke-width="4" stroke-linecap="butt" />
-    <line x1="0%" y1="98% + 1" x2="99% + 1" y2="98% + 1" fill="#303030" opacity=".4" stroke-width="8" stroke-linecap="butt" />
-  </svg>
 
   // side buttons
   <svg class="pt_skin" display="inline">
     // platinum top
-    <svg x="90%" y="11%" width="12%" height="40%">
-      <g transform="scale(1, 1)">
-        <image href="buttons/Poketch_Button_pt.png" x="-10%" y="-3%" width="120%" height="105%"  fill="#1D181E"/>
-        <image id="button_bottom" href="buttons/Poketch_Button_pt.png" width="100%" height="100%" fill="#FA413F">
-          // colour change
-          <animate attributeName="fill" begin="mousedown" to="#F87088" dur=".05"/>
-          <animate attributeName="fill" begin="mouseup" to="#FA413F" dur=".05"/>
-          // height change
-          <animate attributeName="height" begin="mousedown" to="96%" dur=".05"/>
-          <animate attributeName="height" begin="mouseup" to="100%" dur=".05"/>
-          // offset the top
-          <animate attributeName="y" begin="mousedown" to="4%" dur=".05"/>
-          <animate attributeName="y" begin="mouseup" to="0%" dur=".05"/>
-        </image>
-      </g>
+    <svg x="90%" y="10% - 1%" width="12%" height="40%">
+      <image href="buttons/Poketch_Button_pt.png" x="-10%" y="-3%" width="120%" height="105%"  fill="#1D181E"/>
+      <image id="button_top_shadow" href="buttons/Poketch_Button_pt.png" width="100%" height="100%" fill="#FA413F" opacity=".5"/>
+      <image id="button_top" href="buttons/Poketch_Button_pt.png" x="5%" y="2%" width="94%" height="96%" fill="#FA413F"/>
+      <image id="button_bottom_shine" href="buttons/Poketch_Button_pt_shine.png" x="5%" y="2%" width="94%" height="40%" fill="#FFFFFF" opacity=".25"/>
     </svg>
     // platinum bottom
-    <svg x="90%" y="100% - 9%" width="12%" height="40%">
-      <g transform="scale(1, -1)">
-        <image href="buttons/Poketch_Button_pt.png" x="-10%" y="-3%" width="120%" height="105%" fill="#1D181E"/>
-        <image id="button_bottom" href="buttons/Poketch_Button_pt.png" width="100%" height="100%" fill="#FA413F">
-          // colour change
-          <animate attributeName="fill" begin="mousedown" to="#F87088" dur=".05"/>
-          <animate attributeName="fill" begin="mouseup" to="#FA413F" dur=".05"/>
-          // height change
-          <animate attributeName="height" begin="mousedown" to="96%" dur=".05"/>
-          <animate attributeName="height" begin="mouseup" to="100%" dur=".05"/>
-        </image>
-      </g>
+    <svg x="90%" y="50%" width="12%" height="40%">
+      <image href="buttons/Poketch_Button_pt_bottom.png" x="-10%" y="-3%" width="120%" height="105%" fill="#1D181E"/>
+      <image id="button_bottom_shadow" href="buttons/Poketch_Button_pt_bottom.png" width="100%" height="100%" fill="#FA413F" opacity=".5"/>
+      <image id="button_bottom" href="buttons/Poketch_Button_pt_bottom.png" x="5%" y="2%" width="94%" height="96%" fill="#FA413F"/>
     </svg>
   </svg>
   // diamond and pearl button
-  <svg class="dp_skin" x="90% - 1%" y="100% - 9%" width="10%" height="40%" display="none">
-    <g transform="scale(1, -1)">
-      <image href="buttons/Poketch_Button_dp.png" x="-10%" y="-3%" width="120%" height="105%" fill="#1D181E"/>
-      <image id="button_bottom" href="buttons/Poketch_Button_dp.png" width="100%" height="100%" fill="#FA413F">
-        // colour change
-        <animate attributeName="fill" begin="mousedown" to="#F87088" dur=".05"/>
-        <animate attributeName="fill" begin="mouseup" to="#FA413F" dur=".05"/>
-        // height change
-        <animate attributeName="height" begin="mousedown" to="96%" dur=".05"/>
-        <animate attributeName="height" begin="mouseup" to="100%" dur=".05"/>
-      </image>
-    </g>
+  <svg class="dp_skin" x="90% - 1%" y="48%" width="10%" height="45%" display="none">
+    <image href="buttons/Poketch_Button_dp.png" x="-10%" y="-3%" width="120%" height="105%" fill="#1D181E"/>
+    <image id="button_bottom_shadow" href="buttons/Poketch_Button_dp.png" width="100%" height="100%" fill="#FA413F" opacity=".5"/>
+    <image id="button_bottom" href="buttons/Poketch_Button_dp.png" x="5%" y="2%" width="94%" height="96%" fill="#FA413F"/>
+    <image id="button_bottom_shine" href="buttons/Poketch_Button_dp_shine.png" x="5%" y="2%" width="94%" height="15%" fill="#FFFFFF" opacity=".25"/>
   </svg>
 
-  // time in the middle of the screen
-  <svg id="container" x="2%" y="2%" width="84%" height="96%" fill="#303030" opacity=".5">
-    <image id="hour_ten" href="icons/digit_0.png" x="14% - 9%" y="50% - 20%" width="18%" height="36%"/>
-    <image id="hour_one" href="icons/digit_0.png" x="36% - 9%" y="50% - 20%" width="18%" height="36%"/>
-    <image id="min_ten" href="icons/digit_0.png" x="64% - 9%" y="50% - 20%" width="18%" height="36%"/>
-    <image id="min_one" href="icons/digit_0.png" x="86% - 9%" y="50% - 20%" width="18%" height="36%"/>
-    <image href="icons/digit_colon.png" x="50% - 4%" y="50% - 20%" width="8%" height="36%"/>
-  </svg>
+  // watch screen
+  <g id="screen" pointer-events="visible" transform="translate(0%,0%)" fill="#303030">
+    <svg mask="#screenmask" x="3%" y="3%" width="82%" height="94%">
+      // Screen
+      <rect class="screen_colour" width="100%" height="100%" pointer-events="visible" fill="#70B070"/>
+      // platinum line
+      <line x1="-1%" y1="2%" x2="101%" y2="2%" opacity=".4" stroke-width="5%" stroke-linecap="butt" class="pt_skin"/>
+      // Top line
+      <line x1="-1%" y1="94%" x2="101%" y2="94%" opacity=".4" stroke-width="2%" stroke-linecap="butt" />
+      // Bottom line
+      <line x1="-1%" y1="98%" x2="101%" y2="98%" opacity=".4" stroke-width="5%" stroke-linecap="butt" />
+
+      // Digital clock
+      <svg class="clock" opacity=".6">
+        // Time digits
+        <image id="hour_ten" href="digits/digit_0.png" x="14% - 9%" y="50% - 20%" width="18%" height="36%"/>
+        <image id="hour_one" href="digits/digit_0.png" x="36% - 9%" y="50% - 20%" width="18%" height="36%"/>
+        <image id="min_ten" href="digits/digit_0.png" x="64% - 9%" y="50% - 20%" width="18%" height="36%"/>
+        <image id="min_one" href="digits/digit_0.png" x="86% - 9%" y="50% - 20%" width="18%" height="36%"/>
+        <image href="digits/digit_colon.png" x="50% - 4%" y="50% - 20%" width="8%" height="36%"/>
+      </svg>
+
+      // Pikachu sprite
+      <svg x="3%" y="100% - 28%" width="40%" height="28%">
+        // Block out the lines
+        <image class="screen_colour" href="icons/pikachu_night.png" fill="#FFFFFF"/>
+        // And draw the sprite
+        <svg opacity=".4">
+          <image class="day" href="icons/pikachu_day.png" display="none"/>
+          <image class="day" href="icons/pikachu_day_features.png" display="none"/>
+          <image class="night" href="icons/pikachu_night.png" display="inline"/>
+        </svg>
+      </svg>
+
+      // View change rectangles
+      <rect width="100%" height="50%" fill="#303030">
+        <animate attributeName="height" begin="enable" from="0%" to="50%" dur=".5"/>
+        <animate attributeName="height" begin="load;enable+.5" from="50%" to="0%" dur=".5"/>
+      </rect>
+      <rect y="50%" width="100%" height="50%" fill="#303030">
+        <animate attributeName="height" begin="enable" from="10%" to="60%" dur=".5"/>
+        <animate attributeName="height" begin="load;enable+.5" from="60%" to="10%" dur=".5"/>
+        <animate attributeName="y" begin="enable" from="100%" to="50%" dur=".5"/>
+        <animate attributeName="y" begin="load;enable+.5" from="50%" to="100%" dur=".5"/>
+      </rect>
+    </svg>
+  </g>
+
+  // view changing buttons
+  //rect id="back_button" width="100%" height="50%" fill="fb-blue" opacity=".1"
+  //rect id="fore_button" y="50%" width="100%" height="50%" fill="fb-red" opacity=".1"
 </svg>
 
 
-Green 70B171
-Yellow B8B071
-Orange C09068
-Red D8706F
-violet A170B1
-indigo 8888F8
-blue 57B8BF
-grey A0A0A0
-
 background of screen 303030
 border of screen 1D181E
-white background E0E0E0
 
 button static F75968
 button dark FA413F
