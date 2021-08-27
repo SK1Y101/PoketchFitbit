@@ -128,8 +128,8 @@
   </g>
 
   // view changing buttons
-  <rect id="back_button" pointer-events="visible" width="100%" height="50%" fill="fb-blue" opacity=".25"/>
-  <rect id="fore_button" pointer-events="visible" y="50%" width="100%" height="50%" fill="fb-red" opacity=".25"/>
+  <rect id="back_button" pointer-events="visible" width="100%" height="50%" fill="fb-blue" opacity="0"/>
+  <rect id="fore_button" pointer-events="visible" y="50%" width="100%" height="50%" fill="fb-red" opacity="0"/>
 </svg>
 
 
