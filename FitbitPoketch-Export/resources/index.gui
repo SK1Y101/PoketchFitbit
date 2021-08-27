@@ -84,33 +84,41 @@
     <svg mask="#screenmask" x="3%" y="3%" width="82%" height="94%">
       // Screen
       <rect class="screen_colour" width="100%" height="100%" fill="#70B070"/>
-      // top top line
-      <line x1="-1%" y1="1%" x2="101%" y2="1%" opacity=".4" stroke-width="5%" stroke-linecap="butt"/>
-      // Top line
-      <line x1="-1%" y1="95%" x2="101%" y2="95%" opacity=".4" stroke-width="2%" stroke-linecap="butt" />
-      // Bottom line
-      <line x1="-1%" y1="99%" x2="101%" y2="99%" opacity=".4" stroke-width="5%" stroke-linecap="butt" />
 
-      // Digital clock
-      <svg class="clock" opacity=".6">
-        // Time digits
-        <image id="hour_ten" href="digits/digit_0.png" x="14% - 9%" y="50% - 20%" width="18%" height="36%"/>
-        <image id="hour_one" href="digits/digit_0.png" x="36% - 9%" y="50% - 20%" width="18%" height="36%"/>
-        <image id="min_ten" href="digits/digit_0.png" x="64% - 9%" y="50% - 20%" width="18%" height="36%"/>
-        <image id="min_one" href="digits/digit_0.png" x="86% - 9%" y="50% - 20%" width="18%" height="36%"/>
-        <image href="digits/digit_colon.png" x="50% - 4%" y="50% - 20%" width="8%" height="36%"/>
+      // First view (Digital clock)
+      <svg id="view0" display="inline">
+        // top top line
+        <line x1="-1%" y1="1%" x2="101%" y2="1%" opacity=".4" stroke-width="5%" stroke-linecap="butt"/>
+        // Top line
+        <line x1="-1%" y1="95%" x2="101%" y2="95%" opacity=".4" stroke-width="2%" stroke-linecap="butt" />
+        // Bottom line
+        <line x1="-1%" y1="99%" x2="101%" y2="99%" opacity=".4" stroke-width="5%" stroke-linecap="butt" />
+        // Digital clock
+        <svg class="clock" opacity=".6">
+          // Time digits
+          <image id="hour_ten" href="digits/digit_0.png" x="14% - 9%" y="50% - 20%" width="18%" height="36%"/>
+          <image id="hour_one" href="digits/digit_0.png" x="36% - 9%" y="50% - 20%" width="18%" height="36%"/>
+          <image id="min_ten" href="digits/digit_0.png" x="64% - 9%" y="50% - 20%" width="18%" height="36%"/>
+          <image id="min_one" href="digits/digit_0.png" x="86% - 9%" y="50% - 20%" width="18%" height="36%"/>
+          <image href="digits/digit_colon.png" x="50% - 4%" y="50% - 20%" width="8%" height="36%"/>
+        </svg>
+
+        // Pikachu sprite
+        <svg x="3%" y="100% - 28%" width="40%" height="28%">
+          // Block out the lines
+          <image class="screen_colour" href="icons/pikachu_night.png" fill="#70B070"/>
+          // And draw the sprite
+          <svg opacity=".4">
+            <image class="day" href="icons/pikachu_day.png" display="none"/>
+            <image class="day" href="icons/pikachu_day_features.png" display="none"/>
+            <image class="night" href="icons/pikachu_night.png" display="inline"/>
+          </svg>
+        </svg>
       </svg>
 
-      // Pikachu sprite
-      <svg x="3%" y="100% - 28%" width="40%" height="28%">
-        // Block out the lines
-        <image class="screen_colour" href="icons/pikachu_night.png" fill="#70B070"/>
-        // And draw the sprite
-        <svg opacity=".4">
-          <image class="day" href="icons/pikachu_day.png" display="none"/>
-          <image class="day" href="icons/pikachu_day_features.png" display="none"/>
-          <image class="night" href="icons/pikachu_night.png" display="inline"/>
-        </svg>
+      // Second view (analogue clock)
+      <svg id="view1" display="none">
+        // Draw the hour ticks
       </svg>
 
       // View change rectangles
