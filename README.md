@@ -41,7 +41,7 @@ To create an issue, be it a bug, question, feature request, or other, use this l
  - [All-contributors](https://allcontributors.org/) has been managing the contributors section.
  - [Snyk](https://snyk.io/) has been monitoring for security concerns.
  - [Release-drafter](https://github.com/release-drafter/release-drafter) has been compiling all pull requests into changelogs on each draft release, massively expediating the process.
- - And while we don't have an dependencies (yet?) [Dependabot](https://dependabot.com/) has been keeping in the shadows.
+ - And [Dependabot](https://dependabot.com/) has been keeping in the shadows to deal with any npm updates.
 
 ## Contributors
 
