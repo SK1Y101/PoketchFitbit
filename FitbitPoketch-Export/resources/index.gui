@@ -81,7 +81,7 @@
 
   // watch screen
   <g id="screen" transform="translate(0%,0%)" fill="#303030">
-    <svg mask="#screenmask" x="3%" y="3%" width="82%" height="94%">
+    <svg id="screen_size" mask="#screenmask" x="3%" y="3%" width="82%" height="94%">
       // Screen
       <rect class="screen_colour" width="100%" height="100%" fill="#70B070"/>
 
@@ -138,10 +138,10 @@
           <rect x="50% - 3% - 20%" y="50% - 35% - 3%" width="6%" height="6%" />
         </svg>
         // Draw the minute hand
-        <line class="minute_hand" x1="50% - 1%" x2="50% - 1%" y1="50% - 1%" y2="50% - 35% - 1%" opacity=".624" stroke-width="2%" stroke-linecap="butt"/>
+        <line class="minute_hand" x1="50%" x2="50%" y1="50%" y2="50% - 35%" opacity=".624" stroke-width="2%" stroke-linecap="butt"/>
         // Draw the hour hand
-        <line class="hour_hand screen_colour" x1="50% - 2%" x2="50% - 2%" y1="50% - 2%" y2="50% - 20% - 2%" stroke-width="4%" stroke-linecap="butt" fill="#70B070"/>
-        <line class="hour_hand" x1="50% - 1%" x2="50% - 2%" y1="50% - 2%" y2="50% - 20% - 2%" opacity=".4" stroke-width="4%" stroke-linecap="butt"/>
+        <line class="hour_hand screen_colour" x1="50%" x2="50%" y1="50%" y2="50% - 20%" stroke-width="4%" stroke-linecap="butt" fill="#70B070"/>
+        <line class="hour_hand" x1="50%" x2="50%" y1="50%" y2="50% - 20%" opacity=".4" stroke-width="4%" stroke-linecap="butt"/>
       </svg>
 
       // View change rectangles
