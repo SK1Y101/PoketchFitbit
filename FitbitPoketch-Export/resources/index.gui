@@ -3,9 +3,23 @@
   <rect id="background" fill="black" width="200%" height="100%"/>
   // Define template symbols for use
   <defs>
+    // Screen mask
     <mask id="screenmask">
       <rect x="0%" y="0%" width="100%" height="100%"/>
     </mask>
+
+    // Button animation
+    <symbol id="button_anim">
+      // Colour change
+      <animate attributeName="fill" begin="mousedown" to="#F87088" dur=".05"/>
+      <animate attributeName="fill" begin="mouseup" to="#FA413F" dur=".05"/>
+      // Height change
+      <animate attributeName="height" begin="mousedown" to="96%" dur=".05"/>
+      <animate attributeName="height" begin="mouseup" to="100%" dur=".05"/>
+      // Coordinate change
+      <animate attributeName="y" begin="mousedown" to="4%" dur=".05"/>
+      <animate attributeName="y" begin="mouseup" to="0%" dur=".05"/>
+    </symbol>
   </defs>
 
   // watch face
@@ -40,23 +54,29 @@
     // platinum top
     <svg x="90%" y="10% - 1%" width="12%" height="40%">
       <image href="buttons/Poketch_Button_pt.png" x="-10%" y="-3%" width="120%" height="105%"  fill="#1D181E"/>
-      <image id="button_top_shadow" href="buttons/Poketch_Button_pt.png" width="100%" height="100%" fill="#FA413F" opacity=".5"/>
-      <image id="button_top" href="buttons/Poketch_Button_pt.png" x="5%" y="2%" width="94%" height="96%" fill="#FA413F"/>
-      <image id="button_bottom_shine" href="buttons/Poketch_Button_pt_shine.png" x="5%" y="2%" width="94%" height="40%" fill="#FFFFFF" opacity=".25"/>
+      <use class="button_top" href="#button_anim">
+        <image href="buttons/Poketch_Button_pt.png" width="100%" height="100%" fill="#FA413F" opacity=".5"/>
+        <image href="buttons/Poketch_Button_pt.png" x="5%" y="2%" width="94%" height="96%" fill="#FA413F"/>
+        <image href="buttons/Poketch_Button_pt_shine.png" x="5%" y="2%" width="94%" height="40%" fill="#FFFFFF" opacity=".25"/>
+      </use>
     </svg>
     // platinum bottom
     <svg x="90%" y="50%" width="12%" height="40%">
       <image href="buttons/Poketch_Button_pt_bottom.png" x="-10%" y="-3%" width="120%" height="105%" fill="#1D181E"/>
-      <image id="button_bottom_shadow" href="buttons/Poketch_Button_pt_bottom.png" width="100%" height="100%" fill="#FA413F" opacity=".5"/>
-      <image id="button_bottom" href="buttons/Poketch_Button_pt_bottom.png" x="5%" y="2%" width="94%" height="96%" fill="#FA413F"/>
+      <use class="button_bottom" href="#button_anim">
+        <image href="buttons/Poketch_Button_pt_bottom.png" width="100%" height="100%" fill="#FA413F" opacity=".5"/>
+        <image href="buttons/Poketch_Button_pt_bottom.png" x="5%" y="2%" width="94%" height="96%" fill="#FA413F"/>
+      </use>
     </svg>
   </svg>
   // diamond and pearl button
   <svg class="dp_skin" x="90% - 1%" y="48%" width="10%" height="45%" display="none">
     <image href="buttons/Poketch_Button_dp.png" x="-10%" y="-3%" width="120%" height="105%" fill="#1D181E"/>
-    <image id="button_bottom_shadow" href="buttons/Poketch_Button_dp.png" width="100%" height="100%" fill="#FA413F" opacity=".5"/>
-    <image id="button_bottom" href="buttons/Poketch_Button_dp.png" x="5%" y="2%" width="94%" height="96%" fill="#FA413F"/>
-    <image id="button_bottom_shine" href="buttons/Poketch_Button_dp_shine.png" x="5%" y="2%" width="94%" height="15%" fill="#FFFFFF" opacity=".25"/>
+    <use class="button_bottom" href="#button_anim">
+      <image href="buttons/Poketch_Button_dp.png" width="100%" height="100%" fill="#FA413F" opacity=".5"/>
+      <image href="buttons/Poketch_Button_dp.png" x="5%" y="2%" width="94%" height="96%" fill="#FA413F"/>
+      <image href="buttons/Poketch_Button_dp_shine.png" x="5%" y="2%" width="94%" height="15%" fill="#FFFFFF" opacity=".25"/>
+    </use>
   </svg>
 
   // watch screen
