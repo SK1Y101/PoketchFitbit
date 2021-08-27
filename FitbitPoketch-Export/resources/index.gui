@@ -20,6 +20,13 @@
       <animate attributeName="y" begin="mousedown" to="5%" dur=".05"/>
       <animate attributeName="y" begin="mouseup" to="0%" dur=".05"/>
     </symbol>
+
+    // Analogue clock hands
+    <symbol id="watchhand">
+      <g id="hand" transform="inherit">
+        <rect id="handrect" x="-1%" y="0%" width="2%" height="50%"/>
+      </g>
+    </symbol>
   </defs>
 
   // watch face
@@ -81,7 +88,7 @@
 
   // watch screen
   <g id="screen" transform="translate(0%,0%)" fill="#303030">
-    <svg id="screen_size" mask="#screenmask" x="3%" y="3%" width="82%" height="94%">
+    <svg mask="#screenmask" x="3%" y="3%" width="82%" height="94%">
       // Screen
       <rect class="screen_colour" width="100%" height="100%" fill="#70B070"/>
 
@@ -128,20 +135,49 @@
         </svg>
         // Minute ticks
         <svg opacity=".4">
-          <rect x="50% - 3% + 20%" y="50% - 35% - 3%" width="6%" height="6%" />
-          <rect x="50% - 3% + 35%" y="50% - 20% - 3%" width="6%" height="6%" />
-          <rect x="50% - 3% + 35%" y="50% + 20% - 3%" width="6%" height="6%" />
-          <rect x="50% - 3% + 20%" y="50% + 35% - 3%" width="6%" height="6%" />
-          <rect x="50% - 3% - 20%" y="50% + 35% - 3%" width="6%" height="6%" />
-          <rect x="50% - 3% - 35%" y="50% + 20% - 3%" width="6%" height="6%" />
-          <rect x="50% - 3% - 35%" y="50% - 20% - 3%" width="6%" height="6%" />
-          <rect x="50% - 3% - 20%" y="50% - 35% - 3%" width="6%" height="6%" />
+          <rect x="50% - 3% + 21%" y="50% - 36% - 3%" width="6%" height="6%" />
+          <rect x="50% - 3% + 36%" y="50% - 21% - 3%" width="6%" height="6%" />
+          <rect x="50% - 3% + 36%" y="50% + 21% - 3%" width="6%" height="6%" />
+          <rect x="50% - 3% + 21%" y="50% + 36% - 3%" width="6%" height="6%" />
+          <rect x="50% - 3% - 21%" y="50% + 36% - 3%" width="6%" height="6%" />
+          <rect x="50% - 3% - 36%" y="50% + 21% - 3%" width="6%" height="6%" />
+          <rect x="50% - 3% - 36%" y="50% - 21% - 3%" width="6%" height="6%" />
+          <rect x="50% - 3% - 21%" y="50% - 36% - 3%" width="6%" height="6%" />
         </svg>
-        // Draw the minute hand
-        <line class="minute_hand" x1="50%" x2="50%" y1="50%" y2="50% - 35%" opacity=".624" stroke-width="2%" stroke-linecap="butt"/>
-        // Draw the hour hand
-        <line class="hour_hand screen_colour" x1="50%" x2="50%" y1="50%" y2="50% - 20%" stroke-width="4%" stroke-linecap="butt" fill="#70B070"/>
-        <line class="hour_hand" x1="50%" x2="50%" y1="50%" y2="50% - 20%" opacity=".4" stroke-width="4%" stroke-linecap="butt"/>
+        // Centre the hands
+        <section x="50%" y="50%">
+          <section>
+            // Draw the minute hand
+            <g id="minutes" transform="rotate(0)">
+              <use href="#watchhand" opacity=".624">
+                <set href="hand/handrect" attributeName="height"  to="30%"/>
+                <set href="hand/handrect" attributeName="width"   to="2%"/>
+                <set href="hand/handrect" attributeName="x"       to="-1%"/>
+                <set href="hand"          attributeName="id"      to="minute_hand"/>
+              </use>
+            </g>
+          </section>
+          <section>
+            <g id="hoursback" transform="rotate(0)">
+              // Draw the hour hand's back
+              <use href="#watchhand" fill="#70B070">
+                <set href="hand/handrect" attributeName="height"  to="20%"/>
+                <set href="hand/handrect" attributeName="width"   to="4%"/>
+                <set href="hand/handrect" attributeName="x"       to="-2%"/>
+                <set href="hand"          attributeName="id"      to="hour_hand_back"/>
+              </use>
+            </g>
+            <g id="hours" transform="rotate(0)">
+              // Draw the hour hand
+              <use href="#watchhand" opacity=".4">
+                <set href="hand/handrect" attributeName="height"  to="20%"/>
+                <set href="hand/handrect" attributeName="width"   to="4%"/>
+                <set href="hand/handrect" attributeName="x"       to="-2%"/>
+                <set href="hand"          attributeName="id"      to="hour_hand"/>
+              </use>
+            </g>
+          </section>
+        </section>
       </svg>
 
       // View change rectangles

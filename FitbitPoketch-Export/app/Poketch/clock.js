@@ -39,30 +39,23 @@ export let TimeIndicator = function(doc) {
   const minsOne = doc.getElementById("min_one");
 
   // Analogue clock
-  const minsHand = doc.getElementsByClassName("minute_hand");
-  const hourHand = doc.getElementsByClassName("hour_hand");
-  const screenSize = doc.getElementById("screen_size");
+  const minsHand = doc.getElementById("minute_hand");
+  const hourHand = doc.getElementById("hour_hand");
+  const hourHandBack = doc.getElementById("hour_hand_back");
 
   // Fetch the pikachu sprite
-  const daySprite = doc.getElementsByClassName("day")
-  const nightSprite = doc.getElementsByClassName("night")
+  const daySprite = doc.getElementsByClassName("day");
+  const nightSprite = doc.getElementsByClassName("night");
 
   // Update the position of an analogue clock hand
-  let updateHand = function(ele, angle=0, rad=.2) {
-    // compute the x and y Coordinates of the end of the hand
-    var cx = screenSize.x + 0.5 * screenSize.width;
-    var cy = screenSize.y + 0.5 * screenSize.height;
-    var x = screenSize.width * rad * Math.sin(deg2rad * angle);
-    var y = screenSize.width * rad * Math.cos(deg2rad * angle);;
+  let updateHand = function(ele, angle=0) {
     // Update the Coordinates
     try {
       ele.forEach(function(eles) {
-        eles.x2 = cx + x;
-        eles.y2 = cy + y;
+        eles.groupTransform.rotate.angle = (angle + 180) % 360;
       });
     } catch(err) {
-      ele.x2 = cx + x;
-      ele.y2 = cy + y;
+      ele.groupTransform.rotate.angle = (angle + 180) % 360;
     };
   };
 
@@ -84,7 +77,8 @@ export let TimeIndicator = function(doc) {
 
     // Analogue time
     updateHand(hourHand, (hour%12)*30 + mins*.5);
-    updateHand(minsHand, mins * 6, .35);
+    updateHand(hourHandBack, (hour%12)*30 + mins*.5);
+    updateHand(minsHand, mins * 6);
 
     // And update the sprite
     showElement(daySprite, daytime);

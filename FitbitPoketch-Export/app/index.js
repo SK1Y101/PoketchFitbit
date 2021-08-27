@@ -41,8 +41,6 @@ const dpskin = document.getElementsByClassName("dp_skin");
 const ptskin = document.getElementsByClassName("pt_skin");
 
 const face = document.getElementById("screen");
-console.log(face)
-console.log((0x70b070 + 0x103010).toString(16));
 
 // Update elements once a minute
 clock.addEventListener("tick", (evt) => {
