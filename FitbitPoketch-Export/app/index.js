@@ -18,7 +18,7 @@ let DefSet = function() {
   var defaults = {
     skin: 1,
     edgeColour: "#3050F8",
-    faceColour: "#030303",
+    faceColour: "#303030",
     screenColour: "#70B070",
   };
   return defaults;
