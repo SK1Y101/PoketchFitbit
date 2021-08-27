@@ -84,7 +84,7 @@
       // Pikachu sprite
       <svg x="3%" y="100% - 28%" width="40%" height="28%">
         // Block out the lines
-        <image class="screen_colour" href="icons/pikachu_night.png" fill="#FFFFFF"/>
+        <image class="screen_colour" href="icons/pikachu_night.png" fill="#70B070"/>
         // And draw the sprite
         <svg opacity=".4">
           <image class="day" href="icons/pikachu_day.png" display="none"/>
