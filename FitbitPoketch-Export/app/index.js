@@ -32,6 +32,7 @@ let settings = new Settings("settings.cbor", DefSet);
 // Define the clock tick rate
 clock.granularity = "minutes"; // seconds, minutes, hours
 
+// fetch elementss
 const bg = document.getElementById("background");
 const fc = document.getElementsByClassName("face_colour");
 const sc = document.getElementsByClassName("screen_colour");
@@ -42,6 +43,27 @@ const ptskin = document.getElementsByClassName("pt_skin");
 const face = document.getElementById("screen");
 console.log(face)
 console.log((0x70b070 + 0x103010).toString(16));
+
+// click testing
+const fbut = document.getElementById("fore_button");
+const bbut = document.getElementById("back_button");
+const vchang = document.getElementsByClassName("view_change");
+
+let animateChange = function() {
+  vchang.forEach(function(ele) {
+    ele.animate("enable");
+  });
+};
+
+fbut.addEventListener("mouseup", (evt) => {
+  animateChange();
+});
+fbut.addEventListener("mousedown", (evt) => {
+  animateButton("top_");
+});
+bbut.addEventListener("mouseup", (evt) => {
+  animateChange();
+});
 
 // Update elements once a minute
 clock.addEventListener("tick", (evt) => {
