@@ -49,20 +49,34 @@ const fbut = document.getElementById("fore_button");
 const bbut = document.getElementById("back_button");
 const vchang = document.getElementsByClassName("view_change");
 
+const ubut = document.getElementsByClassName("button_top");
+const lbut = document.getElementsByClassName("button_bottom");
+
 let animateChange = function() {
   vchang.forEach(function(ele) {
     ele.animate("enable");
   });
 };
 
+let animateButton = function(ele, trigger) {
+  ele.forEach(function(eles) {
+    eles.animate(trigger);
+  });
+};
+
 fbut.addEventListener("mouseup", (evt) => {
   animateChange();
+  animateButton(lbut, "mouseup");
 });
 fbut.addEventListener("mousedown", (evt) => {
-  animateButton("top_");
+  animateButton(lbut, "mousedown");
 });
 bbut.addEventListener("mouseup", (evt) => {
   animateChange();
+  animateButton(ubut, "mouseup");
+});
+bbut.addEventListener("mousedown", (evt) => {
+  animateButton(ubut, "mousedown");
 });
 
 // Update elements once a minute
