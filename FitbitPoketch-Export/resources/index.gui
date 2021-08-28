@@ -92,11 +92,11 @@
       // First view (Digital clock)
       <svg id="view0" display="inline">
         // top top line
-        <line x1="-10%" y1="1%" x2="110%" y2="1%" opacity=".4" stroke-width="5%" stroke-linecap="butt"/>
+        <rect x="0%" y="0%" width="110%" height="4%" opacity=".4"/>
         // Top line
-        <line x1="-10%" y1="95%" x2="110%" y2="95%" opacity=".4" stroke-width="2%" stroke-linecap="butt" />
+        <rect x="0%" y="94%" width="110%" height="2%" opacity=".4"/>
         // Bottom line
-        <line x1="-10%" y1="99%" x2="110%" y2="99%" opacity=".4" stroke-width="5%" stroke-linecap="butt" />
+        <rect x="0%" y="97%" width="110%" height="5%" opacity=".4"/>
         // Digital clock
         <svg class="clock" opacity=".6">
           // Time digits
