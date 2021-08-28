@@ -11,7 +11,7 @@ export let Settings = function(settingsFile, defSet) {
     try {
       return readFileSync(settingsFile,"cbor");
     } catch(err) {
-      logerror("couldn't read settings",err);
+      console.log("couldn't read settings");
       let rawDefaults = defSet();
       let Defaults = {};
       for (var key in rawDefaults) {
@@ -106,7 +106,7 @@ export let Settings = function(settingsFile, defSet) {
     try {
       writeFileSync(settingsFile,self.sets,"cbor");
     } catch(err) {
-      logerror("couldn't save settings", err)
+      console.log("couldn't save settings")
     };
   }
 };

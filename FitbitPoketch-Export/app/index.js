@@ -11,6 +11,7 @@ import { peerSocket } from "messaging";
 import * as utils from "../common/utils";
 import { Settings } from "../common/settings";
 import { SwitchView } from "./Poketch/switch";
+import { StepCounter } from "./Poketch/steps";
 import { TimeIndicator } from "./Poketch/clock";
 
 // Set the default values of all options
@@ -27,7 +28,15 @@ let DefSet = function() {
 // And fetch a reference to the modules
 let settings = new Settings("settings.cbor", DefSet);
 let timeInd = new TimeIndicator(document);
-let switchView = new SwitchView(document, settings);
+let stepCounter = new StepCounter(document);
+
+// Define the functions that should be ran on a view update
+var viewUpdate = {
+  "1": stepCounter.draw,
+};
+
+// define the switch viewer, passing any updates needed
+let switchView = new SwitchView(document, settings, viewUpdate);
 
 // Define the clock tick rate
 clock.granularity = "minutes"; // seconds, minutes, hours
@@ -92,7 +101,7 @@ let applySettings = function() {
     // Show that settings have been loaded
     console.log("Settings applied");
   } catch (err) {
-    utils.logerror(err,"Couldn't apply settings");
+    console.log("Couldn't apply settings");
   };
 }
 applySettings();
