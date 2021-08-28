@@ -1,30 +1,7 @@
 // Import the fitbit builtins
 
 // Define any helper functions
-// Change a digit display
-function showDigit(ele, digit) {
-  try {
-    ele.href = "digits/digit_" + digit + ".png";
-  } catch(err) {
-    console.log(err + ": Couldn't assign digit '" + digit + "'")
-  };
-};
-
-// Hide a set of gui elemetns
-function showElement(ele, val) {
-  try {
-    ele.forEach(function(eles) {
-      eles.style.display = (val ? "inline" : "none");
-    });
-  } catch(err) {
-    ele.style.display = (val ? "inline" : "none");
-  };
-};
-
-// Pad a value such that it has a defined length
-function pad(val, def="00") {
-  return (def + val.toString()).slice(-def.length);
-};
+import * as utils from "../../common/utils";
 
 // Define this module
 export let TimeIndicator = function(doc) {
@@ -63,17 +40,17 @@ export let TimeIndicator = function(doc) {
   this.drawTime = function(now) {
     // Fetch the time elements
     var hour = now.getHours();
-    var hourT = pad(hour);
+    var hourT = utils.pad(hour);
     var mins = now.getMinutes();
-    var minsT = pad(mins);
+    var minsT = utils.pad(mins);
     var daytime = (hour >= 10) && (hour < 20);
 
     // update the time elements
     // Digital time
-    showDigit(hourTen, hourT[0]);
-    showDigit(hourOne, hourT[1]);
-    showDigit(minsTen, minsT[0]);
-    showDigit(minsOne, minsT[1]);
+    utils.showDigit(hourTen, hourT[0]);
+    utils.showDigit(hourOne, hourT[1]);
+    utils.showDigit(minsTen, minsT[0]);
+    utils.showDigit(minsOne, minsT[1]);
 
     // Analogue time
     updateHand(hourHand, (hour%12)*30 + mins*.5);
@@ -81,7 +58,7 @@ export let TimeIndicator = function(doc) {
     updateHand(minsHand, mins * 6);
 
     // And update the sprite
-    showElement(daySprite, daytime);
-    showElement(nightSprite, !daytime);
+    utils.showElement(daySprite, daytime);
+    utils.showElement(nightSprite, !daytime);
   };
 };
