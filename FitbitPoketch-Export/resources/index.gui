@@ -27,6 +27,27 @@
         <rect id="handrect" x="-1%" y="0%" width="2%" height="50%"/>
       </g>
     </symbol>
+
+    // Screen buttons
+    <symbol id="screen_button">
+      <svg width="40%" height="30%" fill="#303030" opacity="1">
+        // Background
+        <rect x="-50%"      y="-50%"       width="100%" height="100%"/>
+        <rect x="-50% + 4%" y="-50% + 4%"  width="92%"  height="92%" class="screen_colour"/>
+        <rect x="-50% + 4%" y="-50% + 4%"  width="92%"  height="92%"opacity=".4"/>
+        // Button
+        <use href="#button_anim">
+          // Face
+          <rect x="-50%"      y="-50%"       width="100%" height="90%"/>
+          <rect x="-50% + 4%" y="-50% + 4%"  width="92%"  height="82%" class="screen_colour"/>
+          // Icon border
+          <image id="button_icon_border" href="icons/clear_icon_back.png" x="-20%" y="-32%" width="40%" height="50%"/>
+          // Icon colour
+          <image id="button_icon_border" href="icons/clear_icon.png" x="-20%" y="-32%" width="40%" height="50%" class="screen_colour" opacity="1"/>
+          <image id="button_icon_border" href="icons/clear_icon.png" x="-20%" y="-32%" width="40%" height="50%" opacity=".4"/>
+        </use>
+      </svg>
+    </symbol>
   </defs>
 
   // watch face
@@ -152,6 +173,8 @@
           <image class="step_ten" href="digits/digit_0.png" x="50% - 4% + 10%" y="5%" width="8%" height="16%"/>
           <image class="step_one" href="digits/digit_0.png" x="50% - 4% + 20%" y="5%" width="8%" height="16%"/>
         </section>
+        // button
+        <use href="#screen_button" x="50%" y="50% + 20%"/>
       </svg>
 
       // Third view (analogue clock)
@@ -226,8 +249,8 @@
   </g>
 
   // view changing buttons
-  <rect id="back_button" pointer-events="visible"         width="100%" height="50%" opacity="0"/>
-  <rect id="fore_button" pointer-events="visible" y="50%" width="100%" height="50%" opacity="0"/>
+  <rect id="back_button" pointer-events="visible"         width="100%" height="50%" fill="fb-red" opacity="0"/>
+  <rect id="fore_button" pointer-events="visible" y="50%" width="100%" height="50%" fill="fb-blue" opacity="0"/>
 </svg>
 
 
