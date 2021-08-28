@@ -63,8 +63,8 @@ let updateSkin = function(skinType) {
   // Update the size of the screen
   face.groupTransform.translate.x = -Math.ceil((skinType==2 ? 0.035 * device.screen.width: 0));
   face.groupTransform.translate.y = -Math.ceil((skinType==2 ? 0.03 * device.screen.height: 0));
-  face.groupTransform.scale.x = (skinType==2 ? 100 / 82: 1);
-  face.groupTransform.scale.y = (skinType==2 ? 100 / 94: 1);
+  face.groupTransform.scale.x = (skinType==2 ? 100 / 81.5: 1);
+  face.groupTransform.scale.y = (skinType==2 ? 100 / 93.5: 1);
 }
 
 // Change the colour

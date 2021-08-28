@@ -66,7 +66,7 @@ export let TimeIndicator = function(doc) {
     var hourT = pad(hour);
     var mins = now.getMinutes();
     var minsT = pad(mins);
-    var daytime = Math.abs(15 - now.getHours()) < 5;
+    var daytime = (hour >= 10) && (hour < 20);
 
     // update the time elements
     // Digital time
