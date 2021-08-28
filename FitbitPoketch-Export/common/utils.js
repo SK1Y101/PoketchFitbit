@@ -4,9 +4,54 @@ import { readFileSync, unlinkSync, writeFileSync } from "fs"
 
 // Set some default values
 
-// Show an error message alongside a log
-export function logerror(error, text) {
-  console.log(error+"; "+text);
+// Change a digit display
+export function showDigit(ele, digit) {
+  try {
+    try {
+      ele.forEach(function(eles) {
+        eles.href = "digits/digit_" + digit + ".png";
+      });
+    } catch(err) {
+      ele.href = "digits/digit_" + digit + ".png";
+    };
+  } catch(err) {
+    console.log(err + ": Couldn't assign digit '" + digit + "'")
+  };
+};
+
+// animate an element
+export function animateElement(ele, trigger) {
+  try {
+    try {
+      ele.forEach(function(eles) {
+        eles.animate(trigger);
+      });
+    } catch(err) {
+      ele.animate(trigger);
+    };
+  } catch(err) {
+    console.log(err + ": Couldn't trigger animation '" + trigger + "'")
+  };
+};
+
+// Hide or show a set of gui elemetns
+export function showElement(ele, val) {
+  try {
+    try {
+      ele.forEach(function(eles) {
+        eles.style.display = (val ? "inline" : "none");
+      });
+    } catch(err) {
+      ele.style.display = (val ? "inline" : "none");
+    };
+  } catch(err) {
+    console.log(err + ": Couldn't trigger animation '" + trigger + "'")
+  };
+};
+
+// Pad a value such that it has a defined length
+export function pad(val, def="00") {
+  return (def + val.toString()).slice(-def.length);
 };
 
 // Force a field to be an array
@@ -23,7 +68,7 @@ export function saveData(filename,data,overwriteFilename) {
     filename = (overwriteFilename ? "" : "_skiylian_") + filename;
     writeFileSync(filename, data, "cbor");
   } catch(err) {
-    logerror(err,"save "+filename);
+    console.log(err + ": save "+filename);
   };
 };
 
@@ -33,7 +78,7 @@ export function loadData(filename,defaults,overwriteFilename) {
     filename = (overwriteFilename ? "" : "_skiylian_") + filename;
     defaults = readFileSync(filename, "cbor");
   } catch(err) {
-    logerror(err,"fetch "+filename);
+    console.log(err + ": fetch "+filename);
   };
   return defaults;
 };

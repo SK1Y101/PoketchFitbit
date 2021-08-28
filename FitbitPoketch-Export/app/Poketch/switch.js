@@ -1,15 +1,10 @@
 // Import the fitbit builtins
 
 // Define any helper functions
-// Animate an element
-let animateElement = function(ele, trigger) {
-  ele.forEach(function(eles) {
-    eles.animate(trigger);
-  });
-};
+import * as utils from "../../common/utils";
 
 // Define this module
-export let SwitchView = function(doc, settings) {
+export let SwitchView = function(doc, settings, viewUpdate) {
   // Fetch the elements that detect a click
   const foreBut = doc.getElementById("fore_button");
   const backBut = doc.getElementById("back_button");
@@ -39,7 +34,6 @@ export let SwitchView = function(doc, settings) {
     } while (doc.getElementById("view"+vnum) != null);
     // Load the view number from settings, or use the clock ace by default
     vnum = settings.getOrElse("viewnum", 0);
-    console.log("the current view is "+vnum);
   };
 
   // Function to switch to the next view
@@ -53,10 +47,14 @@ export let SwitchView = function(doc, settings) {
       views[vnew].style.display = "inline";
       // And update the view number
       vnum = (vnum + inc + vlen) % vlen;
+      // Update any views that need it
+      var vu = viewUpdate[vnum];
+      if (vu) {
+        vu()
+      };
     };
     // Update the view settins
     settings.replaceSettings({"viewnum":vnum});
-    console.log("the new view is "+vnum);
   };
 
   // fetch all of the views
@@ -69,8 +67,8 @@ export let SwitchView = function(doc, settings) {
     // Ensure we can animate
     if (!updating) {
       // start the animations
-      animateElement(view, "enable");
-      animateElement(button, "click");
+      utils.animateElement(view, "enable");
+      utils.animateElement(button, "click");
       // force the ui to stop until the animations are done
       updating = true;
       // wait until the view is greyed out
@@ -92,6 +90,6 @@ export let SwitchView = function(doc, settings) {
   // forward button is released
   backBut.addEventListener("mousedown", (evt) => {
     //activate the buttons
-    buttonEvent(upBut, 1);
+    buttonEvent(upBut, -1);
   });
 };
