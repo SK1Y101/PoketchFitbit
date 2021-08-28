@@ -68,7 +68,7 @@ export let SwitchView = function(doc, settings, viewUpdate) {
     if (!updating) {
       // start the animations
       utils.animateElement(view, "enable");
-      utils.animateElement(button, "click");
+      utils.animateElement(button, "enable");
       // force the ui to stop until the animations are done
       updating = true;
       // wait until the view is greyed out
