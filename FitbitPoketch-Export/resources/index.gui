@@ -1,6 +1,6 @@
 <svg>
   // The background colour
-  <rect id="background" fill="black" width="200%" height="100%"/>
+  <rect id="background" fill="#303030" width="200%" height="100%"/>
   // Define template symbols for use
   <defs>
     // Screen mask
@@ -10,15 +10,19 @@
 
     // Button animation
     <symbol id="button_anim">
-      // Colour change
-      <animate attributeName="fill" begin="mousedown" to="#F87088" dur=".05"/>
-      <animate attributeName="fill" begin="mouseup" to="#FA413F" dur=".05"/>
       // Height change
-      <animate attributeName="height" begin="mousedown" to="95%" dur=".05"/>
-      <animate attributeName="height" begin="mouseup" to="100%" dur=".05"/>
+      <animate attributeName="height" begin="click" to="95%" dur=".05"/>
+      <animate attributeName="height" begin="click+.15" to="100%" dur=".05"/>
       // Coordinate change
-      <animate attributeName="y" begin="mousedown" to="5%" dur=".05"/>
-      <animate attributeName="y" begin="mouseup" to="0%" dur=".05"/>
+      <animate attributeName="y" begin="click" to="5%" dur=".05"/>
+      <animate attributeName="y" begin="click+.15" to="0%" dur=".05"/>
+    </symbol>
+
+    // Analogue clock hands
+    <symbol id="watchhand">
+      <g id="hand" transform="inherit">
+        <rect id="handrect" x="-1%" y="0%" width="2%" height="50%"/>
+      </g>
     </symbol>
   </defs>
 
@@ -88,11 +92,11 @@
       // First view (Digital clock)
       <svg id="view0" display="inline">
         // top top line
-        <line x1="-1%" y1="1%" x2="101%" y2="1%" opacity=".4" stroke-width="5%" stroke-linecap="butt"/>
+        <line x1="-10%" y1="1%" x2="110%" y2="1%" opacity=".4" stroke-width="5%" stroke-linecap="butt"/>
         // Top line
-        <line x1="-1%" y1="95%" x2="101%" y2="95%" opacity=".4" stroke-width="2%" stroke-linecap="butt" />
+        <line x1="-10%" y1="95%" x2="110%" y2="95%" opacity=".4" stroke-width="2%" stroke-linecap="butt" />
         // Bottom line
-        <line x1="-1%" y1="99%" x2="101%" y2="99%" opacity=".4" stroke-width="5%" stroke-linecap="butt" />
+        <line x1="-10%" y1="99%" x2="110%" y2="99%" opacity=".4" stroke-width="5%" stroke-linecap="butt" />
         // Digital clock
         <svg class="clock" opacity=".6">
           // Time digits
@@ -118,7 +122,59 @@
 
       // Second view (analogue clock)
       <svg id="view1" display="none">
-        // Draw the hour ticks
+        // Draw the ticks
+        // Hour ticks
+        <svg opacity=".624">
+          <rect x="50% - 3%" y="50% - 40% - 3%" width="6%" height="6%"/>
+          <rect x="50% - 3% + 40%" y="50% - 3%" width="6%" height="6%"/>
+          <rect x="50% - 3%" y="50% + 40% - 3%" width="6%" height="6%"/>
+          <rect x="50% - 3% - 40%" y="50% - 3%" width="6%" height="6%"/>
+        </svg>
+        // Minute ticks
+        <svg opacity=".4">
+          <rect x="50% - 3% + 21%" y="50% - 35% - 3%" width="6%" height="6%" />
+          <rect x="50% - 3% + 35%" y="50% - 21% - 3%" width="6%" height="6%" />
+          <rect x="50% - 3% + 35%" y="50% + 21% - 3%" width="6%" height="6%" />
+          <rect x="50% - 3% + 21%" y="50% + 35% - 3%" width="6%" height="6%" />
+          <rect x="50% - 3% - 21%" y="50% + 35% - 3%" width="6%" height="6%" />
+          <rect x="50% - 3% - 35%" y="50% + 21% - 3%" width="6%" height="6%" />
+          <rect x="50% - 3% - 35%" y="50% - 21% - 3%" width="6%" height="6%" />
+          <rect x="50% - 3% - 21%" y="50% - 35% - 3%" width="6%" height="6%" />
+        </svg>
+        // Centre the hands
+        <section x="50%" y="50%">
+          <section>
+            // Draw the minute hand
+            <g id="minutes" transform="rotate(0)">
+              <use href="#watchhand" opacity=".624">
+                <set href="hand/handrect" attributeName="height"  to="30%"/>
+                <set href="hand/handrect" attributeName="width"   to="2%"/>
+                <set href="hand/handrect" attributeName="x"       to="-1%"/>
+                <set href="hand"          attributeName="id"      to="minute_hand"/>
+              </use>
+            </g>
+          </section>
+          <section>
+            <g id="hoursback" transform="rotate(0)">
+              // Draw the hour hand's back
+              <use href="#watchhand" fill="#70B070">
+                <set href="hand/handrect" attributeName="height"  to="20%"/>
+                <set href="hand/handrect" attributeName="width"   to="4%"/>
+                <set href="hand/handrect" attributeName="x"       to="-2%"/>
+                <set href="hand"          attributeName="id"      to="hour_hand_back"/>
+              </use>
+            </g>
+            <g id="hours" transform="rotate(0)">
+              // Draw the hour hand
+              <use href="#watchhand" opacity=".4">
+                <set href="hand/handrect" attributeName="height"  to="20%"/>
+                <set href="hand/handrect" attributeName="width"   to="4%"/>
+                <set href="hand/handrect" attributeName="x"       to="-2%"/>
+                <set href="hand"          attributeName="id"      to="hour_hand"/>
+              </use>
+            </g>
+          </section>
+        </section>
       </svg>
 
       // View change rectangles

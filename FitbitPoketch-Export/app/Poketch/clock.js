@@ -28,28 +28,57 @@ function pad(val, def="00") {
 
 // Define this module
 export let TimeIndicator = function(doc) {
+  // Simple radians to degrees
+  const deg2rad = (Math.PI / 180);
+
   // Fetch the gui elements for the time
+  // Digital clock
   const hourTen = doc.getElementById("hour_ten");
   const hourOne = doc.getElementById("hour_one");
   const minsTen = doc.getElementById("min_ten");
   const minsOne = doc.getElementById("min_one");
 
+  // Analogue clock
+  const minsHand = doc.getElementById("minute_hand");
+  const hourHand = doc.getElementById("hour_hand");
+  const hourHandBack = doc.getElementById("hour_hand_back");
+
   // Fetch the pikachu sprite
-  const daySprite = doc.getElementsByClassName("day")
-  const nightSprite = doc.getElementsByClassName("night")
+  const daySprite = doc.getElementsByClassName("day");
+  const nightSprite = doc.getElementsByClassName("night");
+
+  // Update the position of an analogue clock hand
+  let updateHand = function(ele, angle=0) {
+    // Update the Coordinates
+    try {
+      ele.forEach(function(eles) {
+        eles.groupTransform.rotate.angle = (angle + 180) % 360;
+      });
+    } catch(err) {
+      ele.groupTransform.rotate.angle = (angle + 180) % 360;
+    };
+  };
 
   // Function to update the time
   this.drawTime = function(now) {
     // Fetch the time elements
-    var hour = pad(now.getHours());
-    var mins = pad(now.getMinutes());
-    var daytime = Math.abs(15 - now.getHours()) < 5;
+    var hour = now.getHours();
+    var hourT = pad(hour);
+    var mins = now.getMinutes();
+    var minsT = pad(mins);
+    var daytime = (hour >= 10) && (hour < 20);
 
     // update the time elements
-    showDigit(hourTen, hour[0]);
-    showDigit(hourOne, hour[1]);
-    showDigit(minsTen, mins[0]);
-    showDigit(minsOne, mins[1]);
+    // Digital time
+    showDigit(hourTen, hourT[0]);
+    showDigit(hourOne, hourT[1]);
+    showDigit(minsTen, minsT[0]);
+    showDigit(minsOne, minsT[1]);
+
+    // Analogue time
+    updateHand(hourHand, (hour%12)*30 + mins*.5);
+    updateHand(hourHandBack, (hour%12)*30 + mins*.5);
+    updateHand(minsHand, mins * 6);
 
     // And update the sprite
     showElement(daySprite, daytime);
