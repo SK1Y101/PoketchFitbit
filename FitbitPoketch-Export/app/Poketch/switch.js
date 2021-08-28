@@ -9,7 +9,7 @@ let animateElement = function(ele, trigger) {
 };
 
 // Define this module
-export let SwitchView = function(doc) {
+export let SwitchView = function(doc, settings) {
   // Fetch the elements that detect a click
   const foreBut = doc.getElementById("fore_button");
   const backBut = doc.getElementById("back_button");
@@ -37,27 +37,32 @@ export let SwitchView = function(doc) {
       ++vnum;
       ++vlen;
     } while (doc.getElementById("view"+vnum) != null);
-    vnum=0;
+    // Load the view number from settings, or use the clock ace by default
+    vnum = settings.getOrElse("viewnum", 0);
+    console.log("the current view is "+vnum);
   };
 
   // Function to switch to the next view
-  let changeView = function(inc=0) {
+  let changeView = function(inc=0, forceUpdate=false) {
     // compute the new view to change to
     var vnew = (vnum + inc + vlen) % vlen;
-    console.log("new view: "+vnew, "old view: "+vnum);
-    // If it is different to the current one
-    if (vnew != vnum) {
+    // If it is different to the current one, or we are forcing an update
+    if ((vnew != vnum) || (forceUpdate)) {
       // change the display visibility of the elements
       views[vnum].style.display = "none";
       views[vnew].style.display = "inline";
       // And update the view number
       vnum = (vnum + inc + vlen) % vlen;
     };
-    console.log("vnum is now:"+vnum);
+    // Update the view settins
+    settings.replaceSettings({"viewnum":vnum});
+    console.log("the new view is "+vnum);
   };
 
-  // And fetch all of the views
+  // fetch all of the views
   fetchViews();
+  // And update them initially
+  changeView(0, true);
 
   // Create event listeners
   let buttonEvent = function(button, inc=0) {

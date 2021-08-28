@@ -27,7 +27,7 @@ let DefSet = function() {
 // And fetch a reference to the modules
 let settings = new Settings("settings.cbor", DefSet);
 let timeInd = new TimeIndicator(document);
-let switchView = new SwitchView(document);
+let switchView = new SwitchView(document, settings);
 
 // Define the clock tick rate
 clock.granularity = "minutes"; // seconds, minutes, hours
