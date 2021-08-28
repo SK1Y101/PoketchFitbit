@@ -10,28 +10,29 @@ import { peerSocket } from "messaging";
 // Import the modules I have written
 import * as utils from "../common/utils";
 import { Settings } from "../common/settings";
+import { SwitchView } from "./Poketch/switch";
 import { TimeIndicator } from "./Poketch/clock";
-
-// And fetch a reference to the modules
-let timeInd = new TimeIndicator(document);
 
 // Set the default values of all options
 let DefSet = function() {
   var defaults = {
     skin: 1,
     edgeColour: "#3050F8",
-    faceColour: "#030303",
+    faceColour: "#303030",
     screenColour: "#70B070",
   };
   return defaults;
 };
 
-// Fetch the settings, passing the defaults too
+// And fetch a reference to the modules
 let settings = new Settings("settings.cbor", DefSet);
+let timeInd = new TimeIndicator(document);
+let switchView = new SwitchView(document);
 
 // Define the clock tick rate
 clock.granularity = "minutes"; // seconds, minutes, hours
 
+// fetch elementss
 const bg = document.getElementById("background");
 const fc = document.getElementsByClassName("face_colour");
 const sc = document.getElementsByClassName("screen_colour");
@@ -40,8 +41,6 @@ const dpskin = document.getElementsByClassName("dp_skin");
 const ptskin = document.getElementsByClassName("pt_skin");
 
 const face = document.getElementById("screen");
-console.log(face)
-console.log((0x70b070 + 0x103010).toString(16));
 
 // Update elements once a minute
 clock.addEventListener("tick", (evt) => {
@@ -64,8 +63,8 @@ let updateSkin = function(skinType) {
   // Update the size of the screen
   face.groupTransform.translate.x = -Math.ceil((skinType==2 ? 0.035 * device.screen.width: 0));
   face.groupTransform.translate.y = -Math.ceil((skinType==2 ? 0.03 * device.screen.height: 0));
-  face.groupTransform.scale.x = (skinType==2 ? 100 / 82: 1);
-  face.groupTransform.scale.y = (skinType==2 ? 100 / 94: 1);
+  face.groupTransform.scale.x = (skinType==2 ? 100 / 81.5: 1);
+  face.groupTransform.scale.y = (skinType==2 ? 100 / 93.5: 1);
 }
 
 // Change the colour
