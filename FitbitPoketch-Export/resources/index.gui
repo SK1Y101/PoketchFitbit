@@ -120,8 +120,13 @@
         </svg>
       </svg>
 
-      // Second view (analogue clock)
+      // Second view (party pokemon (repurposed for stats))
       <svg id="view1" display="none">
+        
+      </svg>
+
+      // Third view (analogue clock)
+      <svg id="view2" display="none">
         // Draw the ticks
         // Hour ticks
         <svg opacity=".624">
