@@ -10,15 +10,12 @@
 
     // Button animation
     <symbol id="button_anim">
-      // Colour change
-      <animate attributeName="fill" begin="mousedown" to="#F87088" dur=".05"/>
-      <animate attributeName="fill" begin="mouseup" to="#FA413F" dur=".05"/>
       // Height change
-      <animate attributeName="height" begin="mousedown" to="95%" dur=".05"/>
-      <animate attributeName="height" begin="mouseup" to="100%" dur=".05"/>
+      <animate attributeName="height" begin="click" to="95%" dur=".05"/>
+      <animate attributeName="height" begin="click+.15" to="100%" dur=".05"/>
       // Coordinate change
-      <animate attributeName="y" begin="mousedown" to="5%" dur=".05"/>
-      <animate attributeName="y" begin="mouseup" to="0%" dur=".05"/>
+      <animate attributeName="y" begin="click" to="5%" dur=".05"/>
+      <animate attributeName="y" begin="click+.15" to="0%" dur=".05"/>
     </symbol>
 
     // Analogue clock hands
@@ -95,11 +92,11 @@
       // First view (Digital clock)
       <svg id="view0" display="inline">
         // top top line
-        <line x1="-1%" y1="1%" x2="101%" y2="1%" opacity=".4" stroke-width="5%" stroke-linecap="butt"/>
+        <line x1="-10%" y1="1%" x2="110%" y2="1%" opacity=".4" stroke-width="5%" stroke-linecap="butt"/>
         // Top line
-        <line x1="-1%" y1="95%" x2="101%" y2="95%" opacity=".4" stroke-width="2%" stroke-linecap="butt" />
+        <line x1="-10%" y1="95%" x2="110%" y2="95%" opacity=".4" stroke-width="2%" stroke-linecap="butt" />
         // Bottom line
-        <line x1="-1%" y1="99%" x2="101%" y2="99%" opacity=".4" stroke-width="5%" stroke-linecap="butt" />
+        <line x1="-10%" y1="99%" x2="110%" y2="99%" opacity=".4" stroke-width="5%" stroke-linecap="butt" />
         // Digital clock
         <svg class="clock" opacity=".6">
           // Time digits
@@ -135,14 +132,14 @@
         </svg>
         // Minute ticks
         <svg opacity=".4">
-          <rect x="50% - 3% + 21%" y="50% - 36% - 3%" width="6%" height="6%" />
-          <rect x="50% - 3% + 36%" y="50% - 21% - 3%" width="6%" height="6%" />
-          <rect x="50% - 3% + 36%" y="50% + 21% - 3%" width="6%" height="6%" />
-          <rect x="50% - 3% + 21%" y="50% + 36% - 3%" width="6%" height="6%" />
-          <rect x="50% - 3% - 21%" y="50% + 36% - 3%" width="6%" height="6%" />
-          <rect x="50% - 3% - 36%" y="50% + 21% - 3%" width="6%" height="6%" />
-          <rect x="50% - 3% - 36%" y="50% - 21% - 3%" width="6%" height="6%" />
-          <rect x="50% - 3% - 21%" y="50% - 36% - 3%" width="6%" height="6%" />
+          <rect x="50% - 3% + 21%" y="50% - 35% - 3%" width="6%" height="6%" />
+          <rect x="50% - 3% + 35%" y="50% - 21% - 3%" width="6%" height="6%" />
+          <rect x="50% - 3% + 35%" y="50% + 21% - 3%" width="6%" height="6%" />
+          <rect x="50% - 3% + 21%" y="50% + 35% - 3%" width="6%" height="6%" />
+          <rect x="50% - 3% - 21%" y="50% + 35% - 3%" width="6%" height="6%" />
+          <rect x="50% - 3% - 35%" y="50% + 21% - 3%" width="6%" height="6%" />
+          <rect x="50% - 3% - 35%" y="50% - 21% - 3%" width="6%" height="6%" />
+          <rect x="50% - 3% - 21%" y="50% - 35% - 3%" width="6%" height="6%" />
         </svg>
         // Centre the hands
         <section x="50%" y="50%">
