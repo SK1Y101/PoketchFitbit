@@ -90,7 +90,7 @@
       <rect class="screen_colour" width="100%" height="100%" fill="#70B070"/>
 
       // First view (Digital clock)
-      <svg id="view0" display="inline">
+      <svg id="view0" display="none">
         // top top line
         <rect x="0%" y="0%" width="110%" height="4%" opacity=".4"/>
         // Top line
