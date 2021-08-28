@@ -59,10 +59,18 @@ clock.addEventListener("tick", (evt) => {
   timeInd.drawTime(now);
 });
 
+// Update elements when the display is turned on
+display.addEventListener("change", () => {
+  if (display.on) {
+    // start sensors
+  } else {
+    // stop sensors
+  };
+});
+
 // Change the skin
 let updateSkin = function(skinType) {
   // Hide all the skins
-  console.log(skinType==1 ? "inline" : "none");
   ptskin.forEach(function(ele) {
     ele.style.display=(skinType==1 ? "inline" : "none")
   });
