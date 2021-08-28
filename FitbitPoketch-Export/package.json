@@ -11,7 +11,9 @@
     "wipeColor": "#607d8b",
     "requestedPermissions": [],
     "buildTargets": [
-      "meson"
+      "meson",
+      "gemini",
+      "mira"
     ],
     "i18n": {
       "en-US": {
