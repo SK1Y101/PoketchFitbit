@@ -60,60 +60,33 @@ export let SwitchView = function(doc) {
   fetchViews();
 
   // Create event listeners
+  let buttonEvent = function(button, inc=0) {
+    // Ensure we can animate
+    if (!updating) {
+      // start the animations
+      animateElement(view, "enable");
+      animateElement(button, "click");
+      // force the ui to stop until the animations are done
+      updating = true;
+      // wait until the view is greyed out
+      setTimeout(function() {
+        //change the view
+        changeView(inc);
+        // and set a timout to open the display again
+        setTimeout(function() { updating = false; }, 400);
+      }, 400 );
+    };
+  };
 
-  // foreward button pressed
+  // forward button is released
   foreBut.addEventListener("mousedown", (evt) => {
-    // Ensure we can animate
-    if (!updating) {
-      // start the animations
-      animateElement(downBut, "mousedown");
-    };
+    //activate the buttons
+    buttonEvent(downBut, 1);
   });
 
-  // forward button pressed
+  // forward button is released
   backBut.addEventListener("mousedown", (evt) => {
-    // Ensure we can animate
-    if (!updating) {
-      // start the animations
-      animateElement(upBut, "mousedown");
-    };
-  });
-
-  // forward button is released
-  foreBut.addEventListener("mouseup", (evt) => {
-    // Ensure we can animate
-    if (!updating) {
-      // start the animations
-      animateElement(view, "enable");
-      animateElement(downBut, "mouseup");
-      // force the ui to stop until the animations are done
-      updating = true;
-      // wait until the view is greyed out
-      setTimeout(function() {
-        //change the view
-        changeView(1);
-        // and set a timout to open the display again
-        setTimeout(function() { updating = false; }, 400);
-      }, 400 );
-    };
-  });
-
-  // forward button is released
-  backBut.addEventListener("mouseup", (evt) => {
-    // Ensure we can animate
-    if (!updating) {
-      // start the animations
-      animateElement(view, "enable");
-      animateElement(upBut, "mouseup");
-      // force the ui to stop until the animations are done
-      updating = true;
-      // wait until the view is greyed out
-      setTimeout(function() {
-        //change the view
-        changeView(-1);
-        // and set a timout to open the display again
-        setTimeout(function() { updating = false; }, 400);
-      }, 400 );
-    };
+    //activate the buttons
+    buttonEvent(upBut, 1);
   });
 };
