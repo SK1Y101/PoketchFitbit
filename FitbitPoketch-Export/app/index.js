@@ -17,7 +17,7 @@ import { TimeIndicator } from "./Poketch/clock";
 // Set the default values of all options
 let DefSet = function() {
   var defaults = {
-    skin: 1,
+    skin: 0,
     edgeColour: "#3050F8",
     faceColour: "#303030",
     screenColour: "#70B070",
@@ -71,12 +71,8 @@ display.addEventListener("change", () => {
 // Change the skin
 let updateSkin = function(skinType) {
   // Hide all the skins
-  ptskin.forEach(function(ele) {
-    ele.style.display=(skinType==1 ? "inline" : "none")
-  });
-  dpskin.forEach(function(ele) {
-    ele.style.display=(skinType==0 ? "inline" : "none")
-  });
+  utils.showElement(ptskin, skinType==1);
+  utils.showElement(dpskin, skinType==0);
   // Update the size of the screen
   face.groupTransform.translate.x = -Math.ceil((skinType==2 ? 0.035 * device.screen.width: 0));
   face.groupTransform.translate.y = -Math.ceil((skinType==2 ? 0.03 * device.screen.height: 0));
