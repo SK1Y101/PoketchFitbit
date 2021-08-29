@@ -1,18 +1,16 @@
 // Import the fitbit builtins
 
 // Define any helper functions
-// Animate an element
-let animateElement = function(ele, trigger) {
-  ele.forEach(function(eles) {
-    eles.animate(trigger);
-  });
-};
+import * as utils from "../../common/utils";
 
 // Define this module
-export let SwitchView = function(doc) {
+export let SwitchView = function(doc, settings, viewUpdate) {
   // Fetch the elements that detect a click
   const foreBut = doc.getElementById("fore_button");
   const backBut = doc.getElementById("back_button");
+  // Move the elements to layer 100, so that we can stack other buttons on top of them
+  utils.changeLayer(foreBut, 100);
+  utils.changeLayer(backBut, 100);
 
   //Fetch the ui buttons to animate
   const upBut = doc.getElementsByClassName("button_top");
@@ -29,6 +27,14 @@ export let SwitchView = function(doc) {
   var vnum = 0;
   var vlen = 0;
 
+  // Update any views that need it
+  let drawView = function() {
+    var vu = viewUpdate[vnum];
+    if (vu) {
+      vu()
+    };
+  };
+
   // Function to fetch the available views
   let fetchViews = function() {
     do {
@@ -37,35 +43,39 @@ export let SwitchView = function(doc) {
       ++vnum;
       ++vlen;
     } while (doc.getElementById("view"+vnum) != null);
-    vnum=0;
+    // Load the view number from settings, or use the clock ace by default
+    vnum = settings.getOrElse("viewnum", 0);
   };
 
   // Function to switch to the next view
-  let changeView = function(inc=0) {
+  let changeView = function(inc=0, forceUpdate=false) {
     // compute the new view to change to
     var vnew = (vnum + inc + vlen) % vlen;
-    console.log("new view: "+vnew, "old view: "+vnum);
-    // If it is different to the current one
-    if (vnew != vnum) {
+    // If it is different to the current one, or we are forcing an update
+    if ((vnew != vnum) || (forceUpdate)) {
       // change the display visibility of the elements
       views[vnum].style.display = "none";
       views[vnew].style.display = "inline";
       // And update the view number
       vnum = (vnum + inc + vlen) % vlen;
+      drawView();
     };
-    console.log("vnum is now:"+vnum);
+    // Update the view settins
+    settings.replaceSettings({"viewnum":vnum});
   };
 
-  // And fetch all of the views
+  // fetch all of the views
   fetchViews();
+  // And update them initially
+  changeView(0, true);
 
   // Create event listeners
   let buttonEvent = function(button, inc=0) {
     // Ensure we can animate
     if (!updating) {
       // start the animations
-      animateElement(view, "enable");
-      animateElement(button, "click");
+      utils.animateElement(view, "enable");
+      utils.animateElement(button, "click");
       // force the ui to stop until the animations are done
       updating = true;
       // wait until the view is greyed out
@@ -80,13 +90,17 @@ export let SwitchView = function(doc) {
 
   // forward button is released
   foreBut.addEventListener("mousedown", (evt) => {
-    //activate the buttons
+    // activate the buttons
     buttonEvent(downBut, 1);
   });
 
   // forward button is released
   backBut.addEventListener("mousedown", (evt) => {
-    //activate the buttons
-    buttonEvent(upBut, 1);
+    // activate the buttons
+    buttonEvent(upBut, -1);
   });
+
+  this.draw = function() {
+    drawView();
+  };
 };

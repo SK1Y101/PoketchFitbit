@@ -4,9 +4,97 @@ import { readFileSync, unlinkSync, writeFileSync } from "fs"
 
 // Set some default values
 
-// Show an error message alongside a log
-export function logerror(error, text) {
-  console.log(error+"; "+text);
+// Object that interacts with digit displays
+export let DigitDisplay = function(doc, name, def="00000") {
+  // function to fetch the elements
+  this.fetch = function() {
+    var eles = {}; var i = def.length;
+    while (i--) {
+      // set each element to the correct digit
+      eles[i] = doc.getElementsByClassName(name+i);
+    };
+    return eles;
+  };
+
+  // function to update the digits in each element
+  this.update = function(val = 0) {
+    // fetch the value to write and it's length
+    val = pad(val, def); var i = val.length;
+    // itterate over that
+    while (i--) {
+      // set each element to the correct digit
+      showDigit(elems[i], val[i]);
+    };
+  };
+
+  // fetch the elements
+  const elems = this.fetch();
+};
+
+// Change the z axis height
+export function changeLayer(ele, layer) {
+  try {
+    try {
+      ele.forEach(function(eles) {
+        eles.layer = layer;
+      });
+    } catch(err) {
+      ele.layer = layer;
+    };
+  } catch(err) {
+    console.log(err + ": Couldn't assign layer '" + layer + "'")
+  };
+};
+
+// Change a digit display
+export function showDigit(ele, digit) {
+  digit = digit.replace(":", "colon");
+  try {
+    try {
+      ele.forEach(function(eles) {
+        eles.href = "digits/digit_" + digit + ".png";
+      });
+    } catch(err) {
+      ele.href = "digits/digit_" + digit + ".png";
+    };
+  } catch(err) {
+    console.log(err + ": Couldn't assign digit '" + digit + "'")
+  };
+};
+
+// animate an element
+export function animateElement(ele, trigger) {
+  try {
+    try {
+      ele.forEach(function(eles) {
+        eles.animate(trigger);
+      });
+    } catch(err) {
+      ele.animate(trigger);
+    };
+  } catch(err) {
+    console.log(err + ": Couldn't trigger animation '" + trigger + "'")
+  };
+};
+
+// Hide or show a set of gui elemetns
+export function showElement(ele, val) {
+  try {
+    try {
+      ele.forEach(function(eles) {
+        eles.style.display = (val ? "inline" : "none");
+      });
+    } catch(err) {
+      ele.style.display = (val ? "inline" : "none");
+    };
+  } catch(err) {
+    console.log(err + ": Couldn't trigger animation '" + trigger + "'")
+  };
+};
+
+// Pad a value such that it has a defined length
+export function pad(val, def="00") {
+  return (def + val.toString()).slice(-def.length);
 };
 
 // Force a field to be an array
@@ -23,7 +111,7 @@ export function saveData(filename,data,overwriteFilename) {
     filename = (overwriteFilename ? "" : "_skiylian_") + filename;
     writeFileSync(filename, data, "cbor");
   } catch(err) {
-    logerror(err,"save "+filename);
+    console.log(err + ": save "+filename);
   };
 };
 
@@ -33,7 +121,7 @@ export function loadData(filename,defaults,overwriteFilename) {
     filename = (overwriteFilename ? "" : "_skiylian_") + filename;
     defaults = readFileSync(filename, "cbor");
   } catch(err) {
-    logerror(err,"fetch "+filename);
+    console.log(err + ": fetch "+filename);
   };
   return defaults;
 };
