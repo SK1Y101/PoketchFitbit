@@ -22,9 +22,9 @@ export let StepCounter = function(doc, settings) {
   utils.changeLayer(cst, 110);
 
   // Fetch whether we are showing the total steps or offset steps
-  var stepView = settings.getOrElse("step_view", 0);
+  var stepView = settings.getOrElse("stepView", 0);
   // Fetch the step offset
-  var offset = settings.getOrElse("step_offset", 0);
+  var offset = 5400;//settings.getOrElse("stepOffset", 0);
   // A blank timer
   var held = 0;
 
@@ -40,6 +40,10 @@ export let StepCounter = function(doc, settings) {
     utils.showDigit(one, steps[4]);
   };
 
+  let newOffset = function(ost = 0) {
+    offset = ost; settings.replaceSettings({"stepOffset":offset})
+  };
+
   // function to draw the steps on screen
   this.draw = function() {
     // Check we have permissions
@@ -47,7 +51,8 @@ export let StepCounter = function(doc, settings) {
       // Fetch the number of steps
       var steps = activity.today.adjusted.steps;
       // update the offset (ie: ie we rolled over to midnight)
-      if (steps < offset) { offset = 0; };
+      if (offset == -1)   { newOffset(steps); };
+      if (steps < offset) { newOffset(0); };
       // And show the desired step counter
       if (stepView == 0) {
         updateCount(steps);
@@ -72,11 +77,17 @@ export let StepCounter = function(doc, settings) {
   cst.addEventListener("mouseup", (evt) => {
     // Check if we had a long click
     if ((Date.now() - held) > 1000) {
-      console.log("long click");
+      // update the offset to the current steps
+        offset = -1;
     } else {
-      console.log("short click");
+      // switch the stepView
+      stepView = stepView ? 0 : 1;
+      // and store the new stepview counter
+      settings.replaceSettings({"stepView":stepView});
     };
-    // activate the buttons
+    // activate the button
     utils.animateElement(csb, "unselect");
+    // and update the step display
+    this.draw();
   });
 };
