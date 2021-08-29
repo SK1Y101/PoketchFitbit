@@ -61,7 +61,7 @@ export let StepCounter = function(doc, settings) {
       // Fetch the number of steps
       var steps = activity.today.adjusted.steps;
       // update the offset on long press
-      if (offset == -1)   { newOffset(steps); };
+      if ((offset == -1) || (offset > steps))   { newOffset(steps); };
       // And show the desired step counter
       if (stepView == 0) {
         updateCount(steps);
