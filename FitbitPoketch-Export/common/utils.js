@@ -4,6 +4,33 @@ import { readFileSync, unlinkSync, writeFileSync } from "fs"
 
 // Set some default values
 
+// Object that interacts with digit displays
+export let DigitDisplay = function(doc, name, def="00000") {
+  // function to fetch the elements
+  this.fetch = function() {
+    var eles = {}; var i = def.length;
+    while (i--) {
+      // set each element to the correct digit
+      eles[i] = doc.getElementsByClassName(name+i);
+    };
+    return eles;
+  };
+
+  // function to update the digits in each element
+  this.update = function(val = 0) {
+    // fetch the value to write and it's length
+    val = pad(val, def); var i = val.length;
+    // itterate over that
+    while (i--) {
+      // set each element to the correct digit
+      showDigit(elems[i], val[i]);
+    };
+  };
+
+  // fetch the elements
+  const elems = this.fetch();
+};
+
 // Change the z axis height
 export function changeLayer(ele, layer) {
   try {
@@ -21,6 +48,7 @@ export function changeLayer(ele, layer) {
 
 // Change a digit display
 export function showDigit(ele, digit) {
+  digit = digit.replace(":", "colon");
   try {
     try {
       ele.forEach(function(eles) {

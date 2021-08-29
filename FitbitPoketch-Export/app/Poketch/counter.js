@@ -8,12 +8,8 @@ import * as utils from "../../common/utils";
 // Define this module
 export let CountCounter = function(doc, settings) {
 
-  // Fetch the elements that correspond to the counter
-  const one = doc.getElementsByClassName("count_one");
-  const ten = doc.getElementsByClassName("count_ten");
-  const hun = doc.getElementsByClassName("count_hun");
-  const tho = doc.getElementsByClassName("count_tho");
-  const tth = doc.getElementsByClassName("count_tth");
+  // Fetch the digit handler
+  let digitHandler = new utils.DigitDisplay(doc, "count_", "00000");
 
   // Fetch the decorative button element
   const ccb = doc.getElementsByClassName("count_count_button");
@@ -27,22 +23,10 @@ export let CountCounter = function(doc, settings) {
   // A blank timer
   var held = 0;
 
-  // function to update the counters
-  let updateCount = function(count=0) {
-    // fetch the steps
-    count = utils.pad(count, "00000");
-    // and update the digits
-    utils.showDigit(tth, count[0]);
-    utils.showDigit(tho, count[1]);
-    utils.showDigit(hun, count[2]);
-    utils.showDigit(ten, count[3]);
-    utils.showDigit(one, count[4]);
-  };
-
   // function to draw the display
   this.draw = function() {
     // update the counter
-    updateCount(count);
+    digitHandler.update(count);
     // and save the value
     settings.replaceSettings({"counterValue":count})
   };
