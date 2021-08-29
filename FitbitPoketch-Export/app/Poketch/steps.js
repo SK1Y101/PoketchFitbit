@@ -21,6 +21,8 @@ export let StepCounter = function(doc, settings) {
   // Move the trigger to layer 110 so that it is above the view change buttons
   utils.changeLayer(cst, 110);
 
+  // Fetch whether we are showing the total steps or offset steps
+  var stepView = settings.getOrElse("step_view", 0);
   // Fetch the step offset
   var offset = settings.getOrElse("step_offset", 0);
   // A blank timer
@@ -44,8 +46,14 @@ export let StepCounter = function(doc, settings) {
     if (me.permissions.granted("access_activity")) {
       // Fetch the number of steps
       var steps = activity.today.adjusted.steps;
-      // Draw the steps
-      updateCount(steps);
+      // update the offset (ie: ie we rolled over to midnight)
+      if (steps < offset) { offset = 0; };
+      // And show the desired step counter
+      if (stepView == 0) {
+        updateCount(steps);
+      } else {
+        updateCount(steps - offset);
+      };
     } else {
       // Otherwise, draw nothing
       updateCount("-----");
@@ -65,6 +73,8 @@ export let StepCounter = function(doc, settings) {
     // Check if we had a long click
     if ((Date.now() - held) > 1000) {
       console.log("long click");
+    } else {
+      console.log("short click");
     };
     // activate the buttons
     utils.animateElement(csb, "unselect");
