@@ -11,14 +11,14 @@
     // Button move animation
     <symbol id="button_anim">
       // Coordinate change
-      <animate attributeName="y" begin="click"    to="5%" dur=".05"/>
-      <animate attributeName="y" begin="click+.15" to="0%" dur=".05"/>
+      <animate attributeName="y" begin="select;click"       to="5%" dur=".05"/>
+      <animate attributeName="y" begin="unselect;click+.15" to="0%" dur=".05"/>
     </symbol>
     // Button shrink animation
     <symbol id="button_anim_shrink">
       // Height change
-      <animate attributeName="height" begin="click"     to="95%" dur=".05"/>
-      <animate attributeName="height" begin="click+.15" to="100%" dur=".05"/>
+      <animate attributeName="height" begin="select;click"       to="95%" dur=".05"/>
+      <animate attributeName="height" begin="unselect;click+.15" to="100%" dur=".05"/>
     </symbol>
 
     // Analogue clock hands
@@ -32,9 +32,9 @@
     <symbol id="screen_button">
       <svg width="40%" height="30%" fill="#303030" opacity="1">
         // Background
-        <rect x="-50%"      y="-50%"       width="100%" height="100%"/>
-        <rect x="-50% + 4%" y="-50% + 4%"  width="92%"  height="92%" class="screen_colour"/>
-        <rect x="-50% + 4%" y="-50% + 4%"  width="92%"  height="92%"opacity=".4"/>
+        <rect x="-50%"      y="-40%"       width="100%" height="90%"/>
+        <rect x="-50% + 4%" y="-40% + 4%"  width="92%"  height="82%" class="screen_colour"/>
+        <rect x="-50% + 4%" y="-40% + 4%"  width="92%"  height="82%"opacity=".4"/>
         // Button
         <use href="#button_anim">
           // Face
@@ -174,7 +174,8 @@
           <image class="step_one" href="digits/digit_0.png" x="50% - 4% + 20%" y="5%" width="8%" height="16%"/>
         </section>
         // button
-        <use href="#screen_button" x="50%" y="50% + 20%"/>
+        <use class="clear_screen_button" href="#screen_button" x="50%" y="50% + 20%"/>
+        <rect id="clear_screen_but" pointer-events="visible" x="50% - 20%" y="50% + 5%" width="40%" height="30%" opacity="0"/>
       </svg>
 
       // Third view (analogue clock)
