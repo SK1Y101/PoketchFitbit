@@ -41,10 +41,10 @@
           <rect x="-50%"      y="-50%"       width="100%" height="90%"/>
           <rect x="-50% + 4%" y="-50% + 4%"  width="92%"  height="82%" class="screen_colour"/>
           // Icon border
-          <image id="button_icon_border" href="icons/clear_icon_back.png" x="-20%" y="-32%" width="40%" height="50%"/>
+          <image id="button_icon_back" href="icons/clear_icon_back.png" x="-20%" y="-32%" width="40%" height="50%"/>
           // Icon colour
-          <image id="button_icon_border" href="icons/clear_icon.png" x="-20%" y="-32%" width="40%" height="50%" class="screen_colour" opacity="1"/>
-          <image id="button_icon_border" href="icons/clear_icon.png" x="-20%" y="-32%" width="40%" height="50%" opacity=".4"/>
+          <image id="button_icon_shadow" href="icons/clear_icon.png" x="-20%" y="-32%" width="40%" height="50%" class="screen_colour" opacity="1"/>
+          <image id="button_icon" href="icons/clear_icon.png" x="-20%" y="-32%" width="40%" height="50%" opacity=".4"/>
         </use>
       </svg>
     </symbol>
@@ -138,25 +138,25 @@
         </svg>
 
         // Pikachu sprite
-        <svg x="3%" y="100% - 28%" width="40%" height="28%">
+        <section x="3%" y="100% - 28%" width="40%" height="28%">
           // Block out the lines
           <image class="screen_colour" href="icons/pikachu_night.png" fill="#70B070"/>
           // And draw the sprite
-          <svg opacity=".4">
-            <image class="day"   href="icons/pikachu_day.png"          display="none"/>
-            <image class="day"   href="icons/pikachu_day_features.png" display="none"/>
-            <image class="night" href="icons/pikachu_night.png"        display="inline"/>
-          </svg>
-        </svg>
+          <section>
+            <image class="day"   href="icons/pikachu_day.png"          display="none"   opacity=".4"/>
+            <image class="day"   href="icons/pikachu_day_features.png" display="none"   opacity=".4"/>
+            <image class="night" href="icons/pikachu_night.png"        display="inline" opacity=".4"/>
+          </section>
+        </section>
       </svg>
 
-      // Second view (step counter)
+      // Second view (Pedometer)
       <svg id="view1" display="none">
         <section y="50% - 30%">
           // Draw the lines around the counter
-          <svg x="50% - 31%" width="62%" height="28%" opacity=".4">
-            <image href="icons/step_counter_edge.png"/>
-          </svg>
+          <section x="50% - 31%" width="62%" height="28%">
+            <image id="step_count_edge" href="icons/step_counter_edge.png" opacity=".4"/>
+          </section>
 
           // Digit shadow
           <svg opacity=".56">
@@ -174,12 +174,44 @@
           <image class="step_one" href="digits/digit_0.png" x="50% - 4% + 20%" y="5%" width="8%" height="16%"/>
         </section>
         // button
-        <use class="clear_screen_button" href="#screen_button" x="50%" y="50% + 20%"/>
-        <rect id="clear_screen_but" pointer-events="visible" x="50% - 20%" y="50% + 5%" width="40%" height="30%" opacity="0"/>
+        <use class="step_count_button" href="#screen_button" x="50%" y="50% + 20%"/>
+        <rect id="step_count_but" pointer-events="visible" x="50% - 20%" y="50% + 5%" width="40%" height="30%" opacity="0"/>
       </svg>
 
-      // Third view (analogue clock)
+      // Third view (Counter)
       <svg id="view2" display="none">
+        <section y="50% - 30%">
+          // Draw the lines around the counter
+          <section x="50% - 28%" y="2%" width="56%" height="24%">
+            <image href="icons/count_counter_edge.png" opacity=".4"/>
+          </section>
+
+          // Digit shadow
+          <svg opacity=".56">
+            <image class="count_tth" href="digits/digit_0.png" x="50% - 4% - 20%" y="5% + 1%" width="8%" height="16%"/>
+            <image class="count_tho" href="digits/digit_0.png" x="50% - 4% - 10%" y="5% + 1%" width="8%" height="16%"/>
+            <image class="count_hun" href="digits/digit_0.png" x="50% - 4%"       y="5% + 1%" width="8%" height="16%"/>
+            <image class="count_ten" href="digits/digit_0.png" x="50% - 4% + 10%" y="5% + 1%" width="8%" height="16%"/>
+            <image class="count_one" href="digits/digit_0.png" x="50% - 4% + 20%" y="5% + 1%" width="8%" height="16%"/>
+          </svg>
+          // Digits
+          <image class="count_tth" href="digits/digit_0.png" x="50% - 4% - 20%" y="5%" width="8%" height="16%"/>
+          <image class="count_tho" href="digits/digit_0.png" x="50% - 4% - 10%" y="5%" width="8%" height="16%"/>
+          <image class="count_hun" href="digits/digit_0.png" x="50% - 4%"       y="5%" width="8%" height="16%"/>
+          <image class="count_ten" href="digits/digit_0.png" x="50% - 4% + 10%" y="5%" width="8%" height="16%"/>
+          <image class="count_one" href="digits/digit_0.png" x="50% - 4% + 20%" y="5%" width="8%" height="16%"/>
+        </section>
+        // button
+        <use class="count_count_button" href="#screen_button" x="50%" y="50% + 20%">
+          <set href="button_icon_back" attributeName="href" to="icons/plus_icon_back.png"/>
+          <set href="button_icon_shadow" attributeName="href" to="icons/plus_icon.png"/>
+          <set href="button_icon" attributeName="href" to="icons/plus_icon.png"/>
+        </use>
+        <rect id="count_count_but" pointer-events="visible" x="50% - 20%" y="50% + 5%" width="40%" height="30%" opacity="0"/>
+      </svg>
+
+      // Fourth view (analogue clock)
+      <svg id="view3" display="none">
         // Draw the ticks
         // Hour ticks
         <svg opacity=".624">

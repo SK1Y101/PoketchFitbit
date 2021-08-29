@@ -12,7 +12,11 @@ import * as utils from "../common/utils";
 import { Settings } from "../common/settings";
 import { SwitchView } from "./Poketch/switch";
 import { StepCounter } from "./Poketch/steps";
+import { CountCounter } from "./Poketch/counter";
 import { TimeIndicator } from "./Poketch/clock";
+
+// Log the memory usage once the entire program is loaded
+console.log("Device JS memory at import: " + memory.js.used + "/" + memory.js.total);
 
 // Set the default values of all options
 let DefSet = function() {
@@ -29,6 +33,10 @@ let DefSet = function() {
 let settings = new Settings("settings.cbor", DefSet);
 let timeInd = new TimeIndicator(document);
 let stepCounter = new StepCounter(document, settings);
+let countCounter = new CountCounter(document, settings);
+
+// Log the memory usage once the entire program is loaded
+console.log("Device JS memory at modules: " + memory.js.used + "/" + memory.js.total);
 
 // Define the functions that should be ran on a view update
 var viewUpdate = {
@@ -57,6 +65,11 @@ clock.addEventListener("tick", (evt) => {
   let now = evt.date;
   // Update the watch
   timeInd.drawTime(now);
+  // If we reach midnight
+  if (!(now.getMinutes() || now.getHours())) {
+    // Then call any reset functions
+    stepCounter.reset();
+  };
 });
 
 // Update elements when the display is turned on
@@ -69,6 +82,17 @@ display.addEventListener("change", () => {
   };
 });
 
+// Change the colour
+let updateColour = function(colour, ele) {
+  try {
+    ele.forEach(function(eles) {
+      eles.style.fill = colour;
+    });
+  } catch(err) {
+    ele.style.fill=colour;
+  };
+}
+
 // Change the skin
 let updateSkin = function(skinType) {
   // Hide all the skins
@@ -79,17 +103,6 @@ let updateSkin = function(skinType) {
   face.groupTransform.translate.y = -Math.ceil((skinType==2 ? 0.03 * device.screen.height: 0));
   face.groupTransform.scale.x = (skinType==2 ? 100 / 81.5: 1);
   face.groupTransform.scale.y = (skinType==2 ? 100 / 93.5: 1);
-}
-
-// Change the colour
-let updateColour = function(colour, ele) {
-  try {
-    ele.forEach(function(eles) {
-      eles.style.fill = colour;
-    });
-  } catch(err) {
-    ele.style.fill=colour;
-  };
 }
 
 // Define a function to apply our settings
