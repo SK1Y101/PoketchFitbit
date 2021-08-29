@@ -4,6 +4,21 @@ import { readFileSync, unlinkSync, writeFileSync } from "fs"
 
 // Set some default values
 
+// Change the z axis height
+export function changeLayer(ele, layer) {
+  try {
+    try {
+      ele.forEach(function(eles) {
+        eles.layer = layer;
+      });
+    } catch(err) {
+      ele.layer = layer;
+    };
+  } catch(err) {
+    console.log(err + ": Couldn't assign layer '" + layer + "'")
+  };
+};
+
 // Change a digit display
 export function showDigit(ele, digit) {
   try {

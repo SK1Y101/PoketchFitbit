@@ -8,6 +8,9 @@ export let SwitchView = function(doc, settings, viewUpdate) {
   // Fetch the elements that detect a click
   const foreBut = doc.getElementById("fore_button");
   const backBut = doc.getElementById("back_button");
+  // Move the elements to layer 100, so that we can stack other buttons on top of them
+  utils.changeLayer(foreBut, 100);
+  utils.changeLayer(backBut, 100);
 
   //Fetch the ui buttons to animate
   const upBut = doc.getElementsByClassName("button_top");
@@ -23,6 +26,14 @@ export let SwitchView = function(doc, settings, viewUpdate) {
   var views = {};
   var vnum = 0;
   var vlen = 0;
+
+  // Update any views that need it
+  let drawView = function() {
+    var vu = viewUpdate[vnum];
+    if (vu) {
+      vu()
+    };
+  };
 
   // Function to fetch the available views
   let fetchViews = function() {
@@ -47,11 +58,7 @@ export let SwitchView = function(doc, settings, viewUpdate) {
       views[vnew].style.display = "inline";
       // And update the view number
       vnum = (vnum + inc + vlen) % vlen;
-      // Update any views that need it
-      var vu = viewUpdate[vnum];
-      if (vu) {
-        vu()
-      };
+      drawView();
     };
     // Update the view settins
     settings.replaceSettings({"viewnum":vnum});
@@ -83,13 +90,17 @@ export let SwitchView = function(doc, settings, viewUpdate) {
 
   // forward button is released
   foreBut.addEventListener("mousedown", (evt) => {
-    //activate the buttons
+    // activate the buttons
     buttonEvent(downBut, 1);
   });
 
   // forward button is released
   backBut.addEventListener("mousedown", (evt) => {
-    //activate the buttons
+    // activate the buttons
     buttonEvent(upBut, -1);
   });
+
+  this.draw = function() {
+    drawView();
+  };
 };
