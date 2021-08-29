@@ -28,7 +28,7 @@ let DefSet = function() {
 // And fetch a reference to the modules
 let settings = new Settings("settings.cbor", DefSet);
 let timeInd = new TimeIndicator(document);
-let stepCounter = new StepCounter(document);
+let stepCounter = new StepCounter(document, settings);
 
 // Define the functions that should be ran on a view update
 var viewUpdate = {
@@ -63,6 +63,7 @@ clock.addEventListener("tick", (evt) => {
 display.addEventListener("change", () => {
   if (display.on) {
     // start sensors
+    switchView.draw();
   } else {
     // stop sensors
   };
