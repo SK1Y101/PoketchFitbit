@@ -9,7 +9,9 @@
     "appDisplayName": "Poketch",
     "iconFile": "resources/icon.png",
     "wipeColor": "#607d8b",
-    "requestedPermissions": [],
+    "requestedPermissions": [
+      "access_activity"
+    ],
     "buildTargets": [
       "meson",
       "gemini",
