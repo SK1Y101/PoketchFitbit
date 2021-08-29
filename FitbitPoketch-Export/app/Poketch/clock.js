@@ -10,15 +10,11 @@ export let TimeIndicator = function(doc) {
 
   // Fetch the gui elements for the time
   // Digital clock
-  const hourTen = doc.getElementById("hour_ten");
-  const hourOne = doc.getElementById("hour_one");
-  const minsTen = doc.getElementById("min_ten");
-  const minsOne = doc.getElementById("min_one");
+  let digitHandler = new utils.DigitDisplay(doc, "time_", "0000");
 
   // Analogue clock
   const minsHand = doc.getElementById("minute_hand");
-  const hourHand = doc.getElementById("hour_hand");
-  const hourHandBack = doc.getElementById("hour_hand_back");
+  const hourHand = doc.getElementsByClassName("hour_hand");
 
   // Fetch the pikachu sprite
   const daySprite = doc.getElementsByClassName("day");
@@ -40,21 +36,16 @@ export let TimeIndicator = function(doc) {
   this.drawTime = function(now) {
     // Fetch the time elements
     var hour = now.getHours();
-    var hourT = utils.pad(hour);
     var mins = now.getMinutes();
-    var minsT = utils.pad(mins);
+    var time = utils.pad(hour)+utils.pad(mins);
     var daytime = (hour >= 10) && (hour < 20);
 
     // update the time elements
     // Digital time
-    utils.showDigit(hourTen, hourT[0]);
-    utils.showDigit(hourOne, hourT[1]);
-    utils.showDigit(minsTen, minsT[0]);
-    utils.showDigit(minsOne, minsT[1]);
+    digitHandler.update(time);
 
     // Analogue time
     updateHand(hourHand, (hour%12)*30 + mins*.5);
-    updateHand(hourHandBack, (hour%12)*30 + mins*.5);
     updateHand(minsHand, mins * 6);
 
     // And update the sprite
