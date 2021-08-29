@@ -7,6 +7,9 @@ import * as utils from "../../common/utils";
 
 // Define this module
 export let StepCounter = function(doc, settings) {
+  // fetch the step counter edge reference
+  const sce = doc.getElementById("step_count_edge");
+
   // Fetch the elements that correspond to the counter
   const one = doc.getElementsByClassName("step_one");
   const ten = doc.getElementsByClassName("step_ten");
@@ -15,14 +18,15 @@ export let StepCounter = function(doc, settings) {
   const tth = doc.getElementsByClassName("step_tth");
 
   // Fetch the decorative button element
-  const csb = doc.getElementsByClassName("clear_screen_button");
+  const csb = doc.getElementsByClassName("step_count_button");
   // And the actual trigger
-  const cst = doc.getElementById("clear_screen_but");
+  const cst = doc.getElementById("step_count_but");
   // Move the trigger to layer 110 so that it is above the view change buttons
   utils.changeLayer(cst, 110);
 
   // Fetch whether we are showing the total steps or offset steps
   var stepView = settings.getOrElse("stepView", 0);
+  sce.style.opacity = stepView ? 1 : .4;
   // Fetch the step offset
   var offset = 5400;//settings.getOrElse("stepOffset", 0);
   // A blank timer
@@ -40,8 +44,14 @@ export let StepCounter = function(doc, settings) {
     utils.showDigit(one, steps[4]);
   };
 
+  // change the offset and save it
   let newOffset = function(ost = 0) {
     offset = ost; settings.replaceSettings({"stepOffset":offset})
+  };
+
+  // Function to reset the step counter at midnight
+  this.reset = function() {
+    newOffset(0);
   };
 
   // function to draw the steps on screen
@@ -50,9 +60,8 @@ export let StepCounter = function(doc, settings) {
     if (me.permissions.granted("access_activity")) {
       // Fetch the number of steps
       var steps = activity.today.adjusted.steps;
-      // update the offset (ie: ie we rolled over to midnight)
+      // update the offset on long press
       if (offset == -1)   { newOffset(steps); };
-      if (steps < offset) { newOffset(0); };
       // And show the desired step counter
       if (stepView == 0) {
         updateCount(steps);
@@ -84,6 +93,8 @@ export let StepCounter = function(doc, settings) {
       stepView = stepView ? 0 : 1;
       // and store the new stepview counter
       settings.replaceSettings({"stepView":stepView});
+      // update the opacity of the border
+      sce.style.opacity = stepView ? 1 : .4;
     };
     // activate the button
     utils.animateElement(csb, "unselect");
