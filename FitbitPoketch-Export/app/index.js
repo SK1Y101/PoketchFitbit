@@ -15,6 +15,7 @@ import { StepCounter } from "./Poketch/steps";
 import { TimeIndicator } from "./Poketch/clock";
 import { CountCounter } from "./Poketch/counter";
 import { CalendarView } from "./Poketch/calendar";
+import { StatsIndicator} from "./Poketch/stats";
 
 // Log the memory usage once the entire program is loaded
 console.log("Device JS memory at import: " + memory.js.used + "/" + memory.js.total);
@@ -41,6 +42,7 @@ let DefSet = function() {
 // And fetch a reference to the modules
 let settings = new Settings("settings.cbor", DefSet);
 let timeInd = new TimeIndicator(document);
+let statsInd = new StatsIndicator(document);
 let stepCounter = new StepCounter(document, settings);
 let calendarView = new CalendarView(document, settings);
 let countCounter = new CountCounter(document, settings);
@@ -51,6 +53,7 @@ console.log("Device JS memory at modules: " + memory.js.used + "/" + memory.js.t
 // Define the functions that should be ran on a view update
 var viewUpdate = {
   "1": stepCounter.draw,
+  "2": statsInd.draw,
 };
 
 // define the switch viewer, passing any updates needed
