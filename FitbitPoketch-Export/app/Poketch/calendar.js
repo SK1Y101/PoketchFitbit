@@ -5,7 +5,7 @@ import { preferences } from "user-settings";
 import * as utils from "../../common/utils";
 
 // Define this module
-export let CalendarView = function(doc) {
+export let CalendarView = function(doc, settings) {
   // Fetch the gui elements for the calendar
   // Month number
   const digitHandler = new utils.DigitDisplay(doc, "calendar_", "___");
@@ -43,9 +43,9 @@ export let CalendarView = function(doc) {
     var mon = now.getMonth() + 1;
     var date = now.getDate();
     // fetch the first day of the week (user preference)
-    var fdw = preferences.firstDayOfWeek;
+    var fwd = settings.getOrElse("fwd", 0);
     // fetch the first day of the month
-    var fdy = (new Date(year, mon - 1, 1).getDay() - fdw + 7) % 7;
+    var fdy = (new Date(year, mon - 1, 1).getDay() - fwd + 7) % 7;
     // Fetch the length of the month
     var lmon = new Date(year, mon, 0).getDate();
     // And offset all of the days by the user prefered weekday begining
@@ -53,26 +53,26 @@ export let CalendarView = function(doc) {
     // update the elements
     // Month at the top of screen
     digitHandler.update((mon > 10) ? mon+"_" : mon);
-    utils.showElement(monStart, fdw);
-    utils.showElement(sunStart, !fdw);
+    utils.showElement(monStart, fwd);
+    utils.showElement(sunStart, !fwd);
 
     // Weekday display
     weekSelect.href = "icons/calendar_"+fdy+".png";
 
     // Current day highlight
-    var hcor = dayCoor(year, mon, date, fdy, fdw);
+    var hcor = dayCoor(year, mon, date, fdy, fwd);
     daySelect.x = hcor[0]; daySelect.y = hcor[1];
 
     // And any required day obscuration
     if (lmon < 31) {
       // obscure the day after last
-      var ldy = dayCoor(year, mon, lmon+1, fdy, fdw);
+      var ldy = dayCoor(year, mon, lmon+1, fdy, fwd);
       endObs.x = ldy[0]; endObs.y = ldy[1];
       // if february
       if (lmon < 30) {
         // fetch the coordinates of 30 and 31
-        var te = dayCoor(year, mon, 30, fdy, fdw);
-        var to = dayCoor(year, mon, 31, fdy, fdw);
+        var te = dayCoor(year, mon, 30, fdy, fwd);
+        var to = dayCoor(year, mon, 31, fdy, fwd);
         // and figure out if the bottom row needs to be obscured
         botObs.x = Math.min(te[0], to[0]);
         botObs.y = Math.max(te[1], to[1]);

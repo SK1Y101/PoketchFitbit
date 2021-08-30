@@ -33,7 +33,7 @@ let DefSet = function() {
     stepView: 0,
     stepView: 0,
     // counter
-    counterValue: 0
+    counterValue: 0,
   };
   return defaults;
 };
@@ -42,7 +42,7 @@ let DefSet = function() {
 let settings = new Settings("settings.cbor", DefSet);
 let timeInd = new TimeIndicator(document);
 let stepCounter = new StepCounter(document, settings);
-let calendarView = new CalendarView(document);
+let calendarView = new CalendarView(document, settings);
 let countCounter = new CountCounter(document, settings);
 
 // Log the memory usage once the entire program is loaded
