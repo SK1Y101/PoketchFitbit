@@ -272,9 +272,20 @@
         // Top border
         <image href="icons/icon_date_top.png" height="10%" opacity=".4"/>
         // Month digits
-        <image class="calendar_0" href="digits/digit_0.png" x="50% - 2% - 2%" y="1%" width="4%" height="8%"/>
-        <image class="calendar_1" href="digits/digit_0.png" x="50% - 2% + 3%" y="1%" width="4%" height="8%"/>
+        <image class="calendar_0" href="digits/digit_0.png" x="50% - 2% + 2%" y="1%" width="4%" height="8%"/>
+        <image class="calendar_1" href="digits/digit_0.png" x="50% - 2% - 3%" y="1%" width="4%" height="8%"/>
         <image class="calendar_2" href="digits/digit__.png" x="50% - 2%"      y="1%" width="4%" height="8%"/>
+        < section x="0%" y="11%" width="100%" height="85%">
+          // Weekend colourer
+          <rect width="100%" height="100%" opacity=".624"/>
+          // Weekday colourer
+          <rect id="sunday_start" width="100%" height="100%" display="inline" x="17%"/>
+          <rect id="monday_start" width="70%" display="none"/>
+          // Calendar view
+          <image id="calendar_week" class="screen_colour" href="icons/calendar_0.png"/>
+          // Current day overlay
+          <image id="calendar_day" href="icons/calendar_circle.png" height="12%" width="12%"/>
+        </section>
       </svg>
 
       // View change rectangles

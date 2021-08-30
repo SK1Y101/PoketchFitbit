@@ -41,8 +41,8 @@ let DefSet = function() {
 // And fetch a reference to the modules
 let settings = new Settings("settings.cbor", DefSet);
 let timeInd = new TimeIndicator(document);
-let calendarView = new CalendarView(document);
 let stepCounter = new StepCounter(document, settings);
+let calendarView = new CalendarView(document);
 let countCounter = new CountCounter(document, settings);
 
 // Log the memory usage once the entire program is loaded
@@ -73,12 +73,17 @@ clock.addEventListener("tick", (evt) => {
   let now = evt.date;
   // Update the watch
   timeInd.drawTime(now);
-  // And the calendar
-  calendarView.drawTime(now);
+  // And ensure we initialise the calendar
+  if (!calendarView.init) {
+    calendarView.drawTime(now);
+    calendarView.init = true;
+  };
   // If we reach midnight
   if (!(now.getMinutes() || now.getHours())) {
     // Then call any reset functions
     stepCounter.reset();
+    // And update the calendar at the end of the day
+    calendarView.drawTime(now);
   };
 });
 
