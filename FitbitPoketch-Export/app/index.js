@@ -21,10 +21,18 @@ console.log("Device JS memory at import: " + memory.js.used + "/" + memory.js.to
 // Set the default values of all options
 let DefSet = function() {
   var defaults = {
+    // Visual settings
     skin: 0,
     edgeColour: "#3050F8",
     faceColour: "#303030",
     screenColour: "#70B070",
+    // switch view
+    viewnum: 0,
+    // Pedometer
+    stepView: 0,
+    stepView: 0,
+    // counter
+    counterValue: 0
   };
   return defaults;
 };
@@ -53,10 +61,8 @@ clock.granularity = "minutes"; // seconds, minutes, hours
 const bg = document.getElementById("background");
 const fc = document.getElementsByClassName("face_colour");
 const sc = document.getElementsByClassName("screen_colour");
-
 const dpskin = document.getElementsByClassName("dp_skin");
 const ptskin = document.getElementsByClassName("pt_skin");
-
 const face = document.getElementById("screen");
 
 // Update elements once a minute
