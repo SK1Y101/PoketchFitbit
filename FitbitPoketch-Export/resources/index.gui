@@ -280,7 +280,10 @@
           <rect width="100%" height="100%" opacity=".624"/>
           // Weekday colourer
           <rect id="sunday_start" width="100%" height="100%" display="inline" x="17%"/>
-          <rect id="monday_start" width="70%" display="none"/>
+          <rect id="monday_start" width="70%"  height="100%" display="none"/>
+          // Day obscurer (if a month has less than 31 days)
+          <rect id="calendar_bot_obs" height="12%" width="100%" fill="fb-red"/>
+          <rect id="calendar_end_obs" height="12%" width="100%" fill="fb-red"/>
           // Calendar view
           <image id="calendar_week" class="screen_colour" href="icons/calendar_0.png"/>
           // Current day overlay
