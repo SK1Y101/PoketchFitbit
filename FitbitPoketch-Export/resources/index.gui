@@ -178,8 +178,12 @@
         <rect id="step_count_but" pointer-events="visible" x="50% - 20%" y="50% + 5%" width="40%" height="30%" opacity="0"/>
       </svg>
 
-      // Third view (Counter)
+      // Third view (Stats indicator)
       <svg id="view2" display="none">
+      </svg>
+
+      // Fourth view (Counter)
+      <svg id="view3" display="none">
         <section y="50% - 30%">
           // Draw the lines around the counter
           <section x="50% - 28%" y="2%" width="56%" height="24%">
@@ -210,8 +214,8 @@
         <rect id="count_count_but" pointer-events="visible" x="50% - 20%" y="50% + 5%" width="40%" height="30%" opacity="0"/>
       </svg>
 
-      // Fourth view (analogue clock)
-      <svg id="view3" display="none">
+      // Fifth view (analogue clock)
+      <svg id="view4" display="none">
         // Draw the ticks
         // Hour ticks
         <svg opacity=".624">
@@ -267,8 +271,8 @@
         </section>
       </svg>
 
-      // Fifth view (Calendar)
-      <svg id="view4" display="none">
+      // Sixth view (Calendar)
+      <svg id="view5" display="none">
         // Top border
         <image href="icons/icon_date_top.png" height="10%" opacity=".4"/>
         // Month digits
