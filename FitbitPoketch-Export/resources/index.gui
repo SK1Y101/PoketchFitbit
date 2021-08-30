@@ -275,7 +275,7 @@
         <image class="calendar_0" href="digits/digit_0.png" x="50% - 2% + 2%" y="1%" width="4%" height="8%"/>
         <image class="calendar_1" href="digits/digit_0.png" x="50% - 2% - 3%" y="1%" width="4%" height="8%"/>
         <image class="calendar_2" href="digits/digit__.png" x="50% - 2%"      y="1%" width="4%" height="8%"/>
-        < section x="0%" y="11%" width="100%" height="85%">
+        <section x="0%" y="11%" width="100%" height="85%">
           // Weekend colourer
           <rect width="100%" height="100%" opacity=".624"/>
           // Weekday colourer
