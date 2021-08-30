@@ -25,7 +25,7 @@ export let StepCounter = function(doc, settings) {
   var stepView = settings.getOrElse("stepView", 0);
   sce.style.opacity = stepView ? 1 : .4;
   // Fetch the step offset
-  var offset = 5400;//settings.getOrElse("stepOffset", 0);
+  var offset = settings.getOrElse("stepOffset", 0);
   // A blank timer
   var held = 0;
 

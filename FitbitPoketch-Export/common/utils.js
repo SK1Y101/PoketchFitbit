@@ -48,7 +48,11 @@ export function changeLayer(ele, layer) {
 
 // Change a digit display
 export function showDigit(ele, digit) {
+  // replace any colon inputs
   digit = digit.replace(":", "colon");
+  // hide if empty space
+  showElement(ele, digit!="_");
+  // and then the other stuff
   try {
     try {
       ele.forEach(function(eles) {

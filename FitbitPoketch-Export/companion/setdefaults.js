@@ -15,7 +15,7 @@ function fetchdefs() {
     if (typeof val === "boolean") {
       Defaults[key] = val;
     } else {
-      Defaults[key] = {values:[{name: val["name"], value: val["value"]}],selected:val["selected"]};
+      Defaults[key] = {values:[{name: val["name"], value: val["value"]}], selected:val["selected"]};
     };
   };
   return Defaults;

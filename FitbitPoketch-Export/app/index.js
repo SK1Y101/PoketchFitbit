@@ -12,8 +12,9 @@ import * as utils from "../common/utils";
 import { Settings } from "../common/settings";
 import { SwitchView } from "./Poketch/switch";
 import { StepCounter } from "./Poketch/steps";
-import { CountCounter } from "./Poketch/counter";
 import { TimeIndicator } from "./Poketch/clock";
+import { CountCounter } from "./Poketch/counter";
+import { CalendarView } from "./Poketch/calendar";
 
 // Log the memory usage once the entire program is loaded
 console.log("Device JS memory at import: " + memory.js.used + "/" + memory.js.total);
@@ -21,10 +22,18 @@ console.log("Device JS memory at import: " + memory.js.used + "/" + memory.js.to
 // Set the default values of all options
 let DefSet = function() {
   var defaults = {
+    // Visual settings
     skin: 0,
     edgeColour: "#3050F8",
     faceColour: "#303030",
     screenColour: "#70B070",
+    // switch view
+    viewnum: 0,
+    // Pedometer
+    stepView: 0,
+    stepView: 0,
+    // counter
+    counterValue: 0,
   };
   return defaults;
 };
@@ -33,6 +42,7 @@ let DefSet = function() {
 let settings = new Settings("settings.cbor", DefSet);
 let timeInd = new TimeIndicator(document);
 let stepCounter = new StepCounter(document, settings);
+let calendarView = new CalendarView(document, settings);
 let countCounter = new CountCounter(document, settings);
 
 // Log the memory usage once the entire program is loaded
@@ -53,10 +63,8 @@ clock.granularity = "minutes"; // seconds, minutes, hours
 const bg = document.getElementById("background");
 const fc = document.getElementsByClassName("face_colour");
 const sc = document.getElementsByClassName("screen_colour");
-
 const dpskin = document.getElementsByClassName("dp_skin");
 const ptskin = document.getElementsByClassName("pt_skin");
-
 const face = document.getElementById("screen");
 
 // Update elements once a minute
@@ -65,10 +73,17 @@ clock.addEventListener("tick", (evt) => {
   let now = evt.date;
   // Update the watch
   timeInd.drawTime(now);
+  // And ensure we initialise the calendar
+  if (!calendarView.init) {
+    calendarView.drawTime(now);
+    calendarView.init = true;
+  };
   // If we reach midnight
   if (!(now.getMinutes() || now.getHours())) {
     // Then call any reset functions
     stepCounter.reset();
+    // And update the calendar at the end of the day
+    calendarView.drawTime(now);
   };
 });
 
