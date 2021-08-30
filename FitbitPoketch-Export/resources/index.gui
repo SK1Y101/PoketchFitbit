@@ -140,12 +140,12 @@
         // Pikachu sprite
         <section x="3%" y="100% - 28%" width="40%" height="28%">
           // Block out the lines
-          <image class="screen_colour" href="icons/pikachu_night.png" fill="#70B070"/>
+          <image class="screen_colour clock_sprite" href="icons/pikachu_night.png" fill="#70B070"/>
           // And draw the sprite
           <section>
-            <image class="day"   href="icons/pikachu_day.png"          display="none"   opacity=".4"/>
-            <image class="day"   href="icons/pikachu_day_features.png" display="none"   opacity=".4"/>
-            <image class="night" href="icons/pikachu_night.png"        display="inline" opacity=".4"/>
+            <image class="day clock_sprite"   href="icons/pikachu_day.png"          display="none"   opacity=".4"/>
+            <image class="day clock_sprite"   href="icons/pikachu_day_features.png" display="none"   opacity=".4"/>
+            <image class="night clock_sprite" href="icons/pikachu_night.png"        display="inline" opacity=".4"/>
           </section>
         </section>
       </svg>
@@ -264,6 +264,30 @@
               </use>
             </g>
           </section>
+        </section>
+      </svg>
+
+      // Fifth view (Calendar)
+      <svg id="view4" display="none">
+        // Top border
+        <image href="icons/icon_date_top.png" height="10%" opacity=".4"/>
+        // Month digits
+        <image class="calendar_0" href="digits/digit_0.png" x="50% - 2% + 2%" y="1%" width="4%" height="8%"/>
+        <image class="calendar_1" href="digits/digit_0.png" x="50% - 2% - 3%" y="1%" width="4%" height="8%"/>
+        <image class="calendar_2" href="digits/digit__.png" x="50% - 2%"      y="1%" width="4%" height="8%"/>
+        <section x="0%" y="11%" width="100%" height="85%">
+          // Weekend colourer
+          <rect width="100%" height="100%" opacity=".624"/>
+          // Weekday colourer
+          <rect id="sunday_start" width="100%" height="100%" display="inline" x="17%"/>
+          <rect id="monday_start" width="70%"  height="100%" display="none"/>
+          // Day obscurer (if a month has less than 31 days)
+          <rect id="calendar_bot_obs" y="100%" height="12%" width="100%" class="screen_colour"/>
+          <rect id="calendar_end_obs" y="100%" height="12%" width="100%" class="screen_colour"/>
+          // Calendar view
+          <image id="calendar_week" class="screen_colour" href="icons/calendar_0.png"/>
+          // Current day overlay
+          <image id="calendar_day" href="icons/calendar_circle.png" height="12%" width="12%"/>
         </section>
       </svg>
 
