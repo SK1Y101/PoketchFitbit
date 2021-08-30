@@ -269,7 +269,9 @@
 
       // Fifth view (Calendar)
       <svg id="view4" display="none">
+        // Top border
         <image href="icons/icon_date_top.png" height="10%" opacity=".4"/>
+        // Month digits
         <image class="calendar_0" href="digits/digit_0.png" x="50% - 2% - 2%" y="1%" width="4%" height="8%"/>
         <image class="calendar_1" href="digits/digit_0.png" x="50% - 2% + 3%" y="1%" width="4%" height="8%"/>
         <image class="calendar_2" href="digits/digit__.png" x="50% - 2%"      y="1%" width="4%" height="8%"/>

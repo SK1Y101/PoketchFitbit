@@ -12,8 +12,9 @@ import * as utils from "../common/utils";
 import { Settings } from "../common/settings";
 import { SwitchView } from "./Poketch/switch";
 import { StepCounter } from "./Poketch/steps";
-import { CountCounter } from "./Poketch/counter";
 import { TimeIndicator } from "./Poketch/clock";
+import { CountCounter } from "./Poketch/counter";
+import { CalendarView } from "./Poketch/calendar";
 
 // Log the memory usage once the entire program is loaded
 console.log("Device JS memory at import: " + memory.js.used + "/" + memory.js.total);
@@ -40,6 +41,7 @@ let DefSet = function() {
 // And fetch a reference to the modules
 let settings = new Settings("settings.cbor", DefSet);
 let timeInd = new TimeIndicator(document);
+let calendarView = new CalendarView(document);
 let stepCounter = new StepCounter(document, settings);
 let countCounter = new CountCounter(document, settings);
 
@@ -71,6 +73,8 @@ clock.addEventListener("tick", (evt) => {
   let now = evt.date;
   // Update the watch
   timeInd.drawTime(now);
+  // And the calendar
+  calendarView.drawTime(now);
   // If we reach midnight
   if (!(now.getMinutes() || now.getHours())) {
     // Then call any reset functions
