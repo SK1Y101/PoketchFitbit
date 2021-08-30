@@ -28,6 +28,14 @@
       </g>
     </symbol>
 
+    // Stats bar
+    <symbol id="statbar">
+      <section height="6%" width="40%">
+        <rect id="stat_bar" height="100%" width="100%" opacity=".4"/>
+        <image href="icons/stats_edge.png" opacity="1"/>
+      </section>
+    </symbol>
+
     // Screen buttons
     <symbol id="screen_button">
       <svg width="40%" height="30%" fill="#303030" opacity="1">
@@ -180,6 +188,15 @@
 
       // Third view (Stats indicator)
       <svg id="view2" display="none">
+        <section x="7%" width="100% - 14%">
+          // create each of the bars
+          <use href="#statbar" y="30%"><set href="stat_bar" attributeName="id" to="charge_bar"/></use>
+          <use href="#statbar" y="60%"></use>
+          <use href="#statbar" y="90%"></use>
+          <use href="#statbar" y="30%" x="100% - 40%"></use>
+          <use href="#statbar" y="60%" x="100% - 40%"></use>
+          <use href="#statbar" y="90%" x="100% - 40%"></use>
+        </section>
       </svg>
 
       // Fourth view (Counter)
