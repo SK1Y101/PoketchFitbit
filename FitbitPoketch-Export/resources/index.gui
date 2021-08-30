@@ -140,12 +140,12 @@
         // Pikachu sprite
         <section x="3%" y="100% - 28%" width="40%" height="28%">
           // Block out the lines
-          <image class="screen_colour" href="icons/pikachu_night.png" fill="#70B070"/>
+          <image class="screen_colour clock_sprite" href="icons/pikachu_night.png" fill="#70B070"/>
           // And draw the sprite
           <section>
-            <image class="day"   href="icons/pikachu_day.png"          display="none"   opacity=".4"/>
-            <image class="day"   href="icons/pikachu_day_features.png" display="none"   opacity=".4"/>
-            <image class="night" href="icons/pikachu_night.png"        display="inline" opacity=".4"/>
+            <image class="day clock_sprite"   href="icons/pikachu_day.png"          display="none"   opacity=".4"/>
+            <image class="day clock_sprite"   href="icons/pikachu_day_features.png" display="none"   opacity=".4"/>
+            <image class="night clock_sprite" href="icons/pikachu_night.png"        display="inline" opacity=".4"/>
           </section>
         </section>
       </svg>
