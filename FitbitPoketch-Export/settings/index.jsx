@@ -54,9 +54,6 @@ function mySettings(props) {
               />
           }
         />
-      </Section>
-      <Section
-        title={<Text bold align="center">Screen customisation</Text>}>
         <Select
           label={"Screen Colour"}
           settingsKey="screenColour"
