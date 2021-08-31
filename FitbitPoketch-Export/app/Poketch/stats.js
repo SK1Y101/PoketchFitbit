@@ -1,7 +1,6 @@
 // Import the fitbit builtins
 import { me } from "appbit";
 import { battery } from "power";
-import { units } from "user-settings";
 import { today, goals } from "user-activity";
 
 // Define any helper functions
@@ -32,21 +31,22 @@ export let StatsIndicator = function(doc, settings) {
   const azmIcon = doc.getElementsByClassName("azm_icon");
   */
 
+  // Function to set the properties correctly
+  let setStat = function(bar, txt, value, maxval, unit="", text="") {
+    bar.width = 78 * Math.min(1, value / maxval);
+    txt.text = value + " " + unit;
+  };
+
   // function to draw the steps on screen
   this.draw = function() {
     // Update the battery percentage (as it doesn't need permissions)
-    chargeBar.width = .78 * Math.floor(battery.chargeLevel);
-    chargeTxt.text = battery.chargeLevel + " %";
+    setStat(chargeBar, chargeTxt, battery.chargeLevel, 100, "%");
     // Check we have permissions
     if (me.permissions.granted("access_activity")) {
-      distBar.width = 78 * Math.min(1, today.adjusted.distance / goals.distance);
-      distTxt.text = today.adjusted.distance + " m";
-      calsBar.width = 78 * Math.min(1, today.adjusted.calories / goals.calories);
-      calsTxt.text = today.adjusted.calories + " kcal";
-      eleBar.width = 78 * Math.min(1, today.adjusted.elevationGain / goals.elevationGain);
-      eleTxt.text = today.adjusted.elevationGain + " floors";
-      azmBar.width = 78 * Math.min(1, today.adjusted.activeZoneMinutes.total / goals.activeZoneMinutes.total);
-      azmTxt.text = today.adjusted.activeZoneMinutes.total + " mins";
+      setStat(distBar, distTxt, today.adjusted.distance, goals.distance, "m");
+      setStat(calsBar, calsTxt, today.adjusted.calories, goals.calories, "kcal");
+      setStat(eleBar,  eleTxt,  today.adjusted.elevationGain, goals.elevationGain, "floors");
+      setStat(azmBar,  azmTxt,  today.adjusted.activeZoneMinutes.total, goals.activeZoneMinutes.total, "mins");
     } else {
       // Otherwise
     };
