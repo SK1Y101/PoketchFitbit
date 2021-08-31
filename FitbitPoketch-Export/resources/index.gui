@@ -32,8 +32,8 @@
     <symbol id="statbar">
       <section height="6%" width="40%">
         <rect id="stat_bar" x="4%" width="93%" height="100%" opacity=".4"/>
-        <text id="stat_txt" x="6%" font-size="9" text-length="20" font-weight="bold" opacity="1"></text>
         <image href="icons/stats_edge.png" opacity="1" />
+        <text id="stat_txt" x="4%" y="-10%" font-size="15" text-length="20" font-weight="bold" opacity="1"></text>
       </section>
     </symbol>
 

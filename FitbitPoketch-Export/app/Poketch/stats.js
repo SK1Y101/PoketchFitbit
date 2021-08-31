@@ -1,6 +1,7 @@
 // Import the fitbit builtins
 import { me } from "appbit";
 import { battery } from "power";
+import { units } from "user-settings";
 import { today, goals } from "user-activity";
 
 // Define any helper functions
@@ -27,17 +28,17 @@ export let StatsIndicator = function(doc, settings) {
   this.draw = function() {
     // Update the battery percentage (as it doesn't need permissions)
     chargeBar.width = .78 * Math.floor(battery.chargeLevel);
-    chargeTxt.text = battery.chargeLevel + " / " + 100;
+    chargeTxt.text = battery.chargeLevel + " %";
     // Check we have permissions
     if (me.permissions.granted("access_activity")) {
       distBar.width = 78 * Math.min(1, today.adjusted.distance / goals.distance);
-      distTxt.text = today.adjusted.distance + " / " + goals.distance;
+      distTxt.text = today.adjusted.distance + " m";
       calsBar.width = 78 * Math.min(1, today.adjusted.calories / goals.calories);
-      calsTxt.text = today.adjusted.calories + " / " + goals.calories;
+      calsTxt.text = today.adjusted.calories + " kcal";
       eleBar.width = 78 * Math.min(1, today.adjusted.elevationGain / goals.elevationGain);
-      eleTxt.text = today.adjusted.elevationGain + " / " + goals.elevationGain;
+      eleTxt.text = today.adjusted.elevationGain + " floors";
       azmBar.width = 78 * Math.min(1, today.adjusted.activeZoneMinutes.total / goals.activeZoneMinutes.total);
-      azmTxt.text = today.adjusted.activeZoneMinutes.total + " / " + goals.activeZoneMinutes.total;
+      azmTxt.text = today.adjusted.activeZoneMinutes.total + " mins";
     } else {
       // Otherwise
     };
