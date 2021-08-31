@@ -1,6 +1,6 @@
 // Import the fitbit builtins
 import { me } from "appbit";
-import * as activity from "user-activity";
+import { today } from "user-activity";
 
 // Define any helper functions
 import * as utils from "../../common/utils";
@@ -44,7 +44,7 @@ export let StepCounter = function(doc, settings) {
     // Check we have permissions
     if (me.permissions.granted("access_activity")) {
       // Fetch the number of steps
-      var steps = activity.today.adjusted.steps;
+      var steps = today.adjusted.steps;
       // update the offset on long press
       if ((offset == -1) || (offset > steps))   { newOffset(steps); };
       // And show the desired step counter
