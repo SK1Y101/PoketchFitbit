@@ -17,12 +17,20 @@ export let StatsIndicator = function(doc, settings) {
   const eleBar = doc.getElementById("ele_bar");
   const azmBar = doc.getElementById("azm_bar");
 
-  //text overlay
+  // text overlay
   const chargeTxt = doc.getElementById("charge_txt");
   const distTxt = doc.getElementById("dist_txt");
   const calsTxt = doc.getElementById("cals_txt");
   const eleTxt = doc.getElementById("ele_txt");
   const azmTxt = doc.getElementById("azm_txt");
+
+  // Icons
+  /*const chargeIcon = doc.getElementsByClassName("charge_icon");
+  const distIcon = doc.getElementsByClassName("dist_icon");
+  const calsIcon = doc.getElementsByClassName("cals_icon");
+  const eleIcon = doc.getElementsByClassName("ele_icon");
+  const azmIcon = doc.getElementsByClassName("azm_icon");
+  */
 
   // function to draw the steps on screen
   this.draw = function() {
