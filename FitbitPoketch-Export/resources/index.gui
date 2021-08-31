@@ -33,7 +33,9 @@
       <section height="6%" width="40%">
         <rect id="stat_bar" x="4%" width="93%" height="100%" opacity=".4"/>
         <image href="icons/stats_edge.png" opacity="1" />
-        <text id="stat_txt" x="4%" y="-20%" font-size="15" text-length="20" font-weight="bold" opacity="1"></text>
+        <image id="stat_img_back"  href="icons/icon_power_back.png"  y="-400%" x="10%" width="80%" height="300%" opacity=".4"/>
+        <image id="stat_img_front" href="icons/icon_power_front.png" y="-400%" x="10%" width="80%" height="300%" opacity="1" display="inline"/>
+        <text id="stat_txt" x="4%" y="-20%" font-size="15" text-length="20" font-weight="bold"></text>
       </section>
     </symbol>
 
@@ -193,10 +195,10 @@
           // create each of the bars
           <use href="#statbar" y="30%"        ><set href="stat_bar" attributeName="id" to="charge_bar"/><set href="stat_txt" attributeName="id" to="charge_txt"/></use>
           <use href="#statbar" y="30%" x="60%"></use>
-          <use href="#statbar" y="60%"        ><set href="stat_bar" attributeName="id" to="dist_bar"/><set href="stat_txt" attributeName="id" to="dist_txt"/></use>
-          <use href="#statbar" y="60%" x="60%"><set href="stat_bar" attributeName="id" to="cals_bar"/><set href="stat_txt" attributeName="id" to="cals_txt"/></use>
-          <use href="#statbar" y="90%"        ><set href="stat_bar" attributeName="id" to="ele_bar"/><set href="stat_txt" attributeName="id" to="ele_txt"/></use>
-          <use href="#statbar" y="90%" x="60%"><set href="stat_bar" attributeName="id" to="azm_bar"/><set href="stat_txt" attributeName="id" to="azm_txt"/></use>
+          <use href="#statbar" y="60%"        ><set href="stat_bar" attributeName="id" to="dist_bar"/><set href="stat_txt" attributeName="id" to="dist_txt"/><set href="stat_img_back" attributeName="href" to="icons/icon_distance_back.png"/><set href="stat_img_front" attributeName="href" to="icons/icon_distance_front.png"/></use>
+          <use href="#statbar" y="60%" x="60%"><set href="stat_bar" attributeName="id" to="cals_bar"/><set href="stat_txt" attributeName="id" to="cals_txt"/><set href="stat_img_back" attributeName="href" to="icons/icon_calories_back.png"/><set href="stat_img_front" attributeName="href" to="icons/icon_calories_front.png"/></use>
+          <use href="#statbar" y="90%"        ><set href="stat_bar" attributeName="id" to="ele_bar"/><set href="stat_txt" attributeName="id" to="ele_txt"/><set href="stat_img_back" attributeName="href" to="icons/icon_floor_back.png"/><set href="stat_img_front" attributeName="href" to="icons/icon_floor_front.png"/></use>
+          <use href="#statbar" y="90%" x="60%"><set href="stat_bar" attributeName="id" to="azm_bar"/><set href="stat_txt" attributeName="id" to="azm_txt"/><set href="stat_img_back" attributeName="href" to="icons/icon_azm_back.png"/><set href="stat_img_front" attributeName="href" to="icons/icon_azm_front.png"/></use>
         </section>
       </svg>
 
