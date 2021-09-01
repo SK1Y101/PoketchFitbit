@@ -28,13 +28,13 @@
       </g>
     </symbol>
 
-    // Stats bar
+    // Stats bar + icons
     <symbol id="statbar">
       <section height="6%" width="40%">
         <rect id="stat_bar" x="4%" width="93%" height="100%" opacity=".4"/>
         <image href="icons/stats_edge.png" opacity="1" />
-        <image id="stat_img_back"  href="icons/icon_power_back.png"  y="-400%" x="15%" width="70%" height="300%" opacity=".3"/>
-        <image id="stat_img_front" href="icons/icon_power_front.png" y="-400%" x="15%" width="70%" height="300%"/>
+        <image id="stat_img_back"  href="icons/icon_power_back.png"  y="-400%" x="20%" width="60%" height="300%" opacity=".3"/>
+        <image id="stat_img_front" href="icons/icon_power_front.png" y="-400%" x="20%" width="60%" height="300%"/>
         <text id="stat_txt" x="4%" y="-20%" font-size="15" text-length="20" font-weight="bold">No Access</text>
       </section>
     </symbol>
