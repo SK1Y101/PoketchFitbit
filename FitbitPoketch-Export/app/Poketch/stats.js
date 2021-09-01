@@ -46,7 +46,7 @@ export let StatsIndicator = function(doc, settings) {
     setStat(chargeBar, chargeTxt, battery.chargeLevel);
     // Check we have permissions
     if (me.permissions.granted("access_activity")) {
-      setStat(stepBar, stepTxt, today.adjusted.steps, goals.steps, "m", stepIcon);
+      setStat(stepBar, stepTxt, today.adjusted.steps, goals.steps, "", stepIcon);
       setStat(distBar, distTxt, today.adjusted.distance, goals.distance, "m", distIcon);
       setStat(calsBar, calsTxt, today.adjusted.calories, goals.calories, "kcal", calsIcon);
       setStat(eleBar,  eleTxt,  today.adjusted.elevationGain, goals.elevationGain, "floors", eleIcon);
