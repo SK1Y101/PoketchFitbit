@@ -278,22 +278,26 @@
       <svg id="view4" display="none">
         // Draw the ticks
         // Hour ticks
-        <svg opacity=".624">
-          <rect x="50% - 3%"       y="50% - 40% - 3%" width="6%" height="6%"/>
-          <rect x="50% - 3% + 40%" y="50% - 3%"       width="6%" height="6%"/>
-          <rect x="50% - 3%"       y="50% + 40% - 3%" width="6%" height="6%"/>
-          <rect x="50% - 3% - 40%" y="50% - 3%"       width="6%" height="6%"/>
+        <svg opacity=".624" x="50%" y="50%">
+          <rect x="-3%"       y="-3% - 40%" width="6%" height="6%"/>
+          <rect x="-3% + 40%" y="-3%"       width="6%" height="6%"/>
+          <rect x="-3%"       y="-3% + 40%" width="6%" height="6%"/>
+          <rect x="-3% - 40%" y="-3%"       width="6%" height="6%"/>
         </svg>
         // Minute ticks
-        <svg opacity=".4">
-          <rect x="50% - 3% + 21%" y="50% - 35% - 3%" width="6%" height="6%" />
-          <rect x="50% - 3% + 35%" y="50% - 21% - 3%" width="6%" height="6%" />
-          <rect x="50% - 3% + 35%" y="50% + 21% - 3%" width="6%" height="6%" />
-          <rect x="50% - 3% + 21%" y="50% + 35% - 3%" width="6%" height="6%" />
-          <rect x="50% - 3% - 21%" y="50% + 35% - 3%" width="6%" height="6%" />
-          <rect x="50% - 3% - 35%" y="50% + 21% - 3%" width="6%" height="6%" />
-          <rect x="50% - 3% - 35%" y="50% - 21% - 3%" width="6%" height="6%" />
-          <rect x="50% - 3% - 21%" y="50% - 35% - 3%" width="6%" height="6%" />
+        <svg opacity=".4" x="50%" y="50%">
+          // 1, 2
+          <rect x="-3% + 23%" y="-3% - 35%" width="6%" height="6%"/>
+          <rect x="-3% + 37%" y="-3% - 20%" width="6%" height="6%"/>
+          // 4, 5
+          <rect x="-3% + 37%" y="-3% + 20%" width="6%" height="6%"/>
+          <rect x="-3% + 23%" y="-3% + 35%" width="6%" height="6%"/>
+          // 7, 8
+          <rect x="-3% - 37%" y="-3% + 20%" width="6%" height="6%"/>
+          <rect x="-3% - 23%" y="-3% + 35%" width="6%" height="6%"/>
+          // 10, 11
+          <rect x="-3% - 23%" y="-3% - 35%" width="6%" height="6%"/>
+          <rect x="-3% - 37%" y="-3% - 20%" width="6%" height="6%"/>
         </svg>
         // Centre the hands
         <section x="50%" y="50%">
