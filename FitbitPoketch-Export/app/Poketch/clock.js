@@ -1,4 +1,5 @@
 // Import the fitbit builtins
+let debug = true;
 
 // Define any helper functions
 import * as utils from "../../common/utils";
@@ -35,8 +36,8 @@ export let TimeIndicator = function(doc) {
   // Function to update the time
   this.drawTime = function(now) {
     // Fetch the time elements
-    var hour = now.getHours();
-    var mins = now.getMinutes();
+    var hour = debug ? 10 : now.getHours();
+    var mins = debug ? 10 : now.getMinutes();
     var time = utils.pad(hour)+utils.pad(mins);
     var daytime = (hour >= 10) && (hour < 20);
 
