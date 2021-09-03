@@ -1,5 +1,5 @@
 // Import the fitbit builtins
-let debug = true;
+let debug = false;
 
 // Define any helper functions
 import * as utils from "../../common/utils";

@@ -81,12 +81,15 @@ clock.addEventListener("tick", (evt) => {
     calendarView.drawTime(now);
     calendarView.init = true;
   };
-  // If we reach midnight
-  if (!(now.getMinutes() || now.getHours())) {
-    // Then call any reset functions
-    stepCounter.reset();
+  // Update once an hour
+  if (!now.getMinutes()) {
     // And update the calendar at the end of the day
     calendarView.drawTime(now);
+    // Update once a day
+    if (!npw.getHours()) {
+      // Call any reset functions
+      stepCounter.reset();
+    };
   };
 });
 
