@@ -141,11 +141,11 @@
         // Digital clock
         <svg class="clock" opacity=".6">
           // Time digits
-          <image class="time_0" href="digits/digit_0.png"  x="14% - 9%" y="50% - 20%" width="18%" height="36%"/>
-          <image class="time_1" href="digits/digit_0.png"  x="36% - 9%" y="50% - 20%" width="18%" height="36%"/>
-          <image class="time_2"  href="digits/digit_0.png" x="64% - 9%" y="50% - 20%" width="18%" height="36%"/>
-          <image class="time_3"  href="digits/digit_0.png" x="86% - 9%" y="50% - 20%" width="18%" height="36%"/>
-          <image href="digits/digit_colon.png"             x="50% - 4%" y="50% - 20%" width="8%"  height="36%"/>
+          <image id="time_0" href="digits/digit_0.png"  x="14% - 9%" y="50% - 20%" width="18%" height="36%"/>
+          <image id="time_1" href="digits/digit_0.png"  x="36% - 9%" y="50% - 20%" width="18%" height="36%"/>
+          <image id="time_2"  href="digits/digit_0.png" x="64% - 9%" y="50% - 20%" width="18%" height="36%"/>
+          <image id="time_3"  href="digits/digit_0.png" x="86% - 9%" y="50% - 20%" width="18%" height="36%"/>
+          <image href="digits/digit_colon.png"          x="50% - 4%" y="50% - 20%" width="8%"  height="36%"/>
         </svg>
 
         // Pikachu sprite
@@ -168,21 +168,12 @@
           <section x="50% - 31%" width="62%" height="28%">
             <image id="step_count_edge" href="icons/step_counter_edge.png" opacity=".4"/>
           </section>
-
-          // Digit shadow
-          <svg opacity=".56">
-            <image class="step_0" href="digits/digit_0.png" x="50% - 4% - 20%" y="5% + 1%" width="8%" height="16%"/>
-            <image class="step_1" href="digits/digit_0.png" x="50% - 4% - 10%" y="5% + 1%" width="8%" height="16%"/>
-            <image class="step_2" href="digits/digit_0.png" x="50% - 4%"       y="5% + 1%" width="8%" height="16%"/>
-            <image class="step_3" href="digits/digit_0.png" x="50% - 4% + 10%" y="5% + 1%" width="8%" height="16%"/>
-            <image class="step_4" href="digits/digit_0.png" x="50% - 4% + 20%" y="5% + 1%" width="8%" height="16%"/>
-          </svg>
           // Digits
-          <image class="step_0" href="digits/digit_0.png" x="50% - 4% - 20%" y="5%" width="8%" height="16%"/>
-          <image class="step_1" href="digits/digit_0.png" x="50% - 4% - 10%" y="5%" width="8%" height="16%"/>
-          <image class="step_2" href="digits/digit_0.png" x="50% - 4%"       y="5%" width="8%" height="16%"/>
-          <image class="step_3" href="digits/digit_0.png" x="50% - 4% + 10%" y="5%" width="8%" height="16%"/>
-          <image class="step_4" href="digits/digit_0.png" x="50% - 4% + 20%" y="5%" width="8%" height="16%"/>
+          <image id="step_0" href="digits/digit_shadow_0.png" x="50% - 4% - 20%" y="5% + 1%" width="8%" height="16% + 1%"/>
+          <image id="step_1" href="digits/digit_shadow_0.png" x="50% - 4% - 10%" y="5% + 1%" width="8%" height="16% + 1%"/>
+          <image id="step_2" href="digits/digit_shadow_0.png" x="50% - 4%"       y="5% + 1%" width="8%" height="16% + 1%"/>
+          <image id="step_3" href="digits/digit_shadow_0.png" x="50% - 4% + 10%" y="5% + 1%" width="8%" height="16% + 1%"/>
+          <image id="step_4" href="digits/digit_shadow_0.png" x="50% - 4% + 20%" y="5% + 1%" width="8%" height="16% + 1%"/>
         </section>
         // button
         <use class="step_count_button" href="#screen_button" x="50%" y="50% + 20%"/>
@@ -249,21 +240,12 @@
           <section x="50% - 28%" y="2%" width="56%" height="24%">
             <image href="icons/count_counter_edge.png" opacity=".4"/>
           </section>
-
-          // Digit shadow
-          <svg opacity=".56">
-            <image class="count_0" href="digits/digit_0.png" x="50% - 4% - 20%" y="5% + 1%" width="8%" height="16%"/>
-            <image class="count_1" href="digits/digit_0.png" x="50% - 4% - 10%" y="5% + 1%" width="8%" height="16%"/>
-            <image class="count_2" href="digits/digit_0.png" x="50% - 4%"       y="5% + 1%" width="8%" height="16%"/>
-            <image class="count_3" href="digits/digit_0.png" x="50% - 4% + 10%" y="5% + 1%" width="8%" height="16%"/>
-            <image class="count_4" href="digits/digit_0.png" x="50% - 4% + 20%" y="5% + 1%" width="8%" height="16%"/>
-          </svg>
           // Digits
-          <image class="count_0" href="digits/digit_0.png" x="50% - 4% - 20%" y="5%" width="8%" height="16%"/>
-          <image class="count_1" href="digits/digit_0.png" x="50% - 4% - 10%" y="5%" width="8%" height="16%"/>
-          <image class="count_2" href="digits/digit_0.png" x="50% - 4%"       y="5%" width="8%" height="16%"/>
-          <image class="count_3" href="digits/digit_0.png" x="50% - 4% + 10%" y="5%" width="8%" height="16%"/>
-          <image class="count_4" href="digits/digit_0.png" x="50% - 4% + 20%" y="5%" width="8%" height="16%"/>
+          <image id="count_0" href="digits/digit_shadow_0.png" x="50% - 4% - 20%" y="5% + 1%" width="8%" height="16% + 1%"/>
+          <image id="count_1" href="digits/digit_shadow_0.png" x="50% - 4% - 10%" y="5% + 1%" width="8%" height="16% + 1%"/>
+          <image id="count_2" href="digits/digit_shadow_0.png" x="50% - 4%"       y="5% + 1%" width="8%" height="16% + 1%"/>
+          <image id="count_3" href="digits/digit_shadow_0.png" x="50% - 4% + 10%" y="5% + 1%" width="8%" height="16% + 1%"/>
+          <image id="count_4" href="digits/digit_shadow_0.png" x="50% - 4% + 20%" y="5% + 1%" width="8%" height="16% + 1%"/>
         </section>
         // button
         <use class="count_count_button" href="#screen_button" x="50%" y="50% + 20%">
@@ -340,9 +322,9 @@
         // Top border
         <image href="icons/icon_date_top.png" height="10%" opacity=".4"/>
         // Month digits
-        <image class="calendar_0" href="digits/digit_0.png" x="50% - 2% + 2%" y="1%" width="4%" height="8%"/>
-        <image class="calendar_1" href="digits/digit_0.png" x="50% - 2% - 3%" y="1%" width="4%" height="8%"/>
-        <image class="calendar_2" href="digits/digit__.png" x="50% - 2%"      y="1%" width="4%" height="8%"/>
+        <image id="calendar_0" href="digits/digit_0.png" x="50% - 2% + 2%" y="1%" width="4%" height="8%"/>
+        <image id="calendar_1" href="digits/digit_0.png" x="50% - 2% - 3%" y="1%" width="4%" height="8%"/>
+        <image id="calendar_2" href="digits/digit__.png" x="50% - 2%"      y="1%" width="4%" height="8%"/>
         <section x="0%" y="11%" width="100%" height="85%">
           // Weekend colourer
           <rect width="100%" height="100%" opacity=".624"/>
@@ -361,19 +343,11 @@
 
       // Seventh view (timer)
       <svg id="view6" display="none">
-
-        // Digit shadow
-        <svg opacity=".56">
-          <image class="timer_0" href="digits/digit_0.png" x="50% - 4% - 15%" y="5% + 1%" width="8%" height="16%"/>
-          <image class="timer_1" href="digits/digit_0.png" x="50% - 4% - 5%"  y="5% + 1%" width="8%" height="16%"/>
-          <image class="timer_2" href="digits/digit_0.png" x="50% - 4% + 5%"  y="5% + 1%" width="8%" height="16%"/>
-          <image class="timer_3" href="digits/digit_0.png" x="50% - 4% + 15%" y="5% + 1%" width="8%" height="16%"/>
-        </svg>
         // Digits
-        <image class="timer_0" href="digits/digit_0.png" x="50% - 4% - 15%" y="5%" width="8%" height="16%"/>
-        <image class="timer_1" href="digits/digit_0.png" x="50% - 4% - 5%"  y="5%" width="8%" height="16%"/>
-        <image class="timer_2" href="digits/digit_0.png" x="50% - 4% + 5%"  y="5%" width="8%" height="16%"/>
-        <image class="timer_3" href="digits/digit_0.png" x="50% - 4% + 15%" y="5%" width="8%" height="16%"/>
+        <image id="timer_0" href="digits/digit_shadow_0.png" x="50% - 4% - 15%" y="5% + 1%" width="8%" height="16% + 1%"/>
+        <image id="timer_1" href="digits/digit_shadow_0.png" x="50% - 4% - 5%"  y="5% + 1%" width="8%" height="16% + 1%"/>
+        <image id="timer_2" href="digits/digit_shadow_0.png" x="50% - 4% + 5%"  y="5% + 1%" width="8%" height="16% + 1%"/>
+        <image id="timer_3" href="digits/digit_shadow_0.png" x="50% - 4% + 15%" y="5% + 1%" width="8%" height="16% + 1%"/>
       </svg>
 
       // View change rectangles
