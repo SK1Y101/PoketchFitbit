@@ -47,22 +47,24 @@ export function changeLayer(ele, layer) {
 };
 
 // Change a digit display
-export function showDigit(ele, digit) {
+export function showDigit(ele, digit, path="digit") {
   // replace any colon inputs
   digit = digit.replace(":", "colon");
   // hide if empty space
   showElement(ele, digit!="_");
+  // Compute the path of the digit
+  path = "digits/" + path + "_" + digit + ".png"
   // and then the other stuff
   try {
     try {
       ele.forEach(function(eles) {
-        eles.href = "digits/digit_" + digit + ".png";
+        eles.href = path;
       });
     } catch(err) {
-      ele.href = "digits/digit_" + digit + ".png";
+      ele.href = path;
     };
   } catch(err) {
-    console.log(err + ": Couldn't assign digit '" + digit + "'")
+    console.log(err + ": Couldn't assign digit '" + path + "'")
   };
 };
 
