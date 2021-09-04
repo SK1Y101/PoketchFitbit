@@ -41,7 +41,7 @@
 
     // Screen buttons
     <symbol id="screen_button">
-      <svg width="40%" height="30%" fill="#303030" opacity="1">
+      <svg fill="#303030" opacity="1">
         // Background
         <rect x="-50%"      y="-40%"       width="100%" height="90%"/>
         <rect x="-50% + 4%" y="-40% + 4%"  width="92%"  height="82%" class="screen_colour"/>
@@ -51,11 +51,8 @@
           // Face
           <rect x="-50%"      y="-50%"       width="100%" height="90%"/>
           <rect x="-50% + 4%" y="-50% + 4%"  width="92%"  height="82%" class="screen_colour"/>
-          // Icon border
-          <image id="button_icon_back" href="icons/clear_icon_back.png" x="-20%" y="-32%" width="40%" height="50%"/>
-          // Icon colour
-          <image id="button_icon_shadow" href="icons/clear_icon.png" x="-20%" y="-32%" width="40%" height="50%" class="screen_colour" opacity="1"/>
-          <image id="button_icon" href="icons/clear_icon.png" x="-20%" y="-32%" width="40%" height="50%" opacity=".4"/>
+          // Icon
+          <image id="button_icon" href="icons/clear_icon.png" x="-20%" y="-32%" width="40%" height="50%"/>
         </use>
       </svg>
     </symbol>
@@ -176,7 +173,7 @@
           <image id="step_4" href="digits/digit_shadow_0.png" x="50% - 4% + 20%" y="5% + 1%" width="8%" height="16% + 1%"/>
         </section>
         // button
-        <use class="step_count_button" href="#screen_button" x="50%" y="50% + 20%"/>
+        <use class="step_count_button" href="#screen_button" x="50%" y="50% + 20%" width="40%" height="30%"/>
         <rect id="step_count_but" pointer-events="visible" x="50% - 20%" y="50% + 5%" width="40%" height="30%" opacity="0"/>
       </svg>
 
@@ -248,9 +245,7 @@
           <image id="count_4" href="digits/digit_shadow_0.png" x="50% - 4% + 20%" y="5% + 1%" width="8%" height="16% + 1%"/>
         </section>
         // button
-        <use class="count_count_button" href="#screen_button" x="50%" y="50% + 20%">
-          <set href="button_icon_back" attributeName="href" to="icons/plus_icon_back.png"/>
-          <set href="button_icon_shadow" attributeName="href" to="icons/plus_icon.png"/>
+        <use class="count_count_button" href="#screen_button" x="50%" y="50% + 20%" width="40%" height="30%">
           <set href="button_icon" attributeName="href" to="icons/plus_icon.png"/>
         </use>
         <rect id="count_count_but" pointer-events="visible" x="50% - 20%" y="50% + 5%" width="40%" height="30%" opacity="0"/>
@@ -343,12 +338,16 @@
 
       // Seventh view (timer)
       <svg id="view6" display="none">
-        // Digits
-        <image id="timer_0" href="digits/digit_shadow_0.png" x="50% - 4% - 20%" y="50% - 8% + 1%" width="8%" height="16% + 1%"/>
-        <image id="timer_1" href="digits/digit_shadow_0.png" x="50% - 4% - 10%" y="50% - 8% + 1%" width="8%" height="16% + 1%"/>
-        <image href="digits/digit_shadow_colon.png"          x="50% - 4%"       y="50% - 8% + 1%" width="8%" height="16% + 1%"/>
-        <image id="timer_2" href="digits/digit_shadow_0.png" x="50% - 4% + 10%" y="50% - 8% + 1%" width="8%" height="16% + 1%"/>
-        <image id="timer_3" href="digits/digit_shadow_0.png" x="50% - 4% + 20%" y="50% - 8% + 1%" width="8%" height="16% + 1%"/>
+        // Timer interface
+        <section x="50%" y="50%">
+          // Digits
+          <image id="timer_0" href="digits/digit_shadow_0.png" x="-4% - 20%" y="-8% + 1%" width="8%" height="16% + 1%"/>
+          <image id="timer_1" href="digits/digit_shadow_0.png" x="-4% - 10%" y="-8% + 1%" width="8%" height="16% + 1%"/>
+          <image href="digits/digit_shadow_colon.png"          x="-3%"       y="-8% + 1%" width="6%" height="16% + 1%"/>
+          <image id="timer_2" href="digits/digit_shadow_0.png" x="-4% + 10%" y="-8% + 1%" width="8%" height="16% + 1%"/>
+          <image id="timer_3" href="digits/digit_shadow_0.png" x="-4% + 20%" y="-8% + 1%" width="8%" height="16% + 1%"/>
+          // Time selection Buttons
+        </section>
       </svg>
 
       // View change rectangles
