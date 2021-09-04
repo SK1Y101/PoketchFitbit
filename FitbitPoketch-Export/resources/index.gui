@@ -359,6 +359,23 @@
         </section>
       </svg>
 
+      // Seventh view (timer)
+      <svg id="view6" display="none">
+
+        // Digit shadow
+        <svg opacity=".56">
+          <image class="timer_0" href="digits/digit_0.png" x="50% - 4% - 15%" y="5% + 1%" width="8%" height="16%"/>
+          <image class="timer_1" href="digits/digit_0.png" x="50% - 4% - 5%"  y="5% + 1%" width="8%" height="16%"/>
+          <image class="timer_2" href="digits/digit_0.png" x="50% - 4% + 5%"  y="5% + 1%" width="8%" height="16%"/>
+          <image class="timer_3" href="digits/digit_0.png" x="50% - 4% + 15%" y="5% + 1%" width="8%" height="16%"/>
+        </svg>
+        // Digits
+        <image class="timer_0" href="digits/digit_0.png" x="50% - 4% - 15%" y="5%" width="8%" height="16%"/>
+        <image class="timer_1" href="digits/digit_0.png" x="50% - 4% - 5%"  y="5%" width="8%" height="16%"/>
+        <image class="timer_2" href="digits/digit_0.png" x="50% - 4% + 5%"  y="5%" width="8%" height="16%"/>
+        <image class="timer_3" href="digits/digit_0.png" x="50% - 4% + 15%" y="5%" width="8%" height="16%"/>
+      </svg>
+
       // View change rectangles
       <rect class="view_change" width="100%" height="50%" fill="#303030">
         <animate attributeName="height" begin="enable"          from="0%"  to="50%" dur=".25"/>
