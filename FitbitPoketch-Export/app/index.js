@@ -86,7 +86,7 @@ clock.addEventListener("tick", (evt) => {
     // And update the calendar at the end of the day
     calendarView.drawTime(now);
     // Update once a day
-    if (!npw.getHours()) {
+    if (!now.getHours()) {
       // Call any reset functions
       stepCounter.reset();
     };
