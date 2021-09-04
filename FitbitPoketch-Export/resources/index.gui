@@ -344,10 +344,11 @@
       // Seventh view (timer)
       <svg id="view6" display="none">
         // Digits
-        <image id="timer_0" href="digits/digit_shadow_0.png" x="50% - 4% - 15%" y="5% + 1%" width="8%" height="16% + 1%"/>
-        <image id="timer_1" href="digits/digit_shadow_0.png" x="50% - 4% - 5%"  y="5% + 1%" width="8%" height="16% + 1%"/>
-        <image id="timer_2" href="digits/digit_shadow_0.png" x="50% - 4% + 5%"  y="5% + 1%" width="8%" height="16% + 1%"/>
-        <image id="timer_3" href="digits/digit_shadow_0.png" x="50% - 4% + 15%" y="5% + 1%" width="8%" height="16% + 1%"/>
+        <image id="timer_0" href="digits/digit_shadow_0.png" x="50% - 4% - 20%" y="50% - 8% + 1%" width="8%" height="16% + 1%"/>
+        <image id="timer_1" href="digits/digit_shadow_0.png" x="50% - 4% - 10%" y="50% - 8% + 1%" width="8%" height="16% + 1%"/>
+        <image href="digits/digit_shadow_colon.png"          x="50% - 4%"       y="50% - 8% + 1%" width="8%" height="16% + 1%"/>
+        <image id="timer_2" href="digits/digit_shadow_0.png" x="50% - 4% + 10%" y="50% - 8% + 1%" width="8%" height="16% + 1%"/>
+        <image id="timer_3" href="digits/digit_shadow_0.png" x="50% - 4% + 20%" y="50% - 8% + 1%" width="8%" height="16% + 1%"/>
       </svg>
 
       // View change rectangles
