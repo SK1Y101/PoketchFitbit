@@ -338,15 +338,29 @@
 
       // Seventh view (timer)
       <svg id="view6" display="none">
+        // Snorlax image
+        <image id="timer_snorlax" href="icons/snorlax_up.png" x="-4%" y="7%" width="108%" height="80%"/>
         // Timer interface
-        <section x="50%" y="50%">
+        <section x="50%" y="60%">
           // Digits
-          <image id="timer_0" href="digits/digit_shadow_0.png" x="-4% - 20%" y="-8% + 1%" width="8%" height="16% + 1%"/>
-          <image id="timer_1" href="digits/digit_shadow_0.png" x="-4% - 10%" y="-8% + 1%" width="8%" height="16% + 1%"/>
+          <image id="timer_0" href="digits/digit_shadow_0.png" x="-4% - 18%" y="-8% + 1%" width="8%" height="16% + 1%"/>
+          <image id="timer_1" href="digits/digit_shadow_0.png" x="-4% -  8%" y="-8% + 1%" width="8%" height="16% + 1%"/>
           <image href="digits/digit_shadow_colon.png"          x="-3%"       y="-8% + 1%" width="6%" height="16% + 1%"/>
-          <image id="timer_2" href="digits/digit_shadow_0.png" x="-4% + 10%" y="-8% + 1%" width="8%" height="16% + 1%"/>
-          <image id="timer_3" href="digits/digit_shadow_0.png" x="-4% + 20%" y="-8% + 1%" width="8%" height="16% + 1%"/>
+          <image id="timer_2" href="digits/digit_shadow_0.png" x="-4% +  8%" y="-8% + 1%" width="8%" height="16% + 1%"/>
+          <image id="timer_3" href="digits/digit_shadow_0.png" x="-4% + 18%" y="-8% + 1%" width="8%" height="16% + 1%"/>
           // Time selection Buttons
+        </section>
+        // start / Reset buttons
+        <section x="0%" y="91%" height="20%">
+          <use id="timer_start_button" href="#screen_button" x="17%" width="34%" >
+            <set href="button_icon" attributeName="href" to="icons/plus_icon.png"/>
+          </use>
+          <use id="timer_stop_button" href="#screen_button"  x="50%" width="34%" >
+            <set href="button_icon" attributeName="href" to="icons/plus_icon.png"/>
+          </use>
+          <use id="timer_reset_button" href="#screen_button" x="83%" width="34%" >
+            <set href="button_icon" attributeName="href" to="icons/plus_icon.png"/>
+          </use>
         </section>
       </svg>
 
