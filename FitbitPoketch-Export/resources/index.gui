@@ -350,16 +350,24 @@
           <image id="timer_3" href="digits/digit_shadow_0.png" x="-4% + 18%" y="-8% + 1%" width="8%" height="16% + 1%"/>
           // Time selection Buttons
         </section>
-        // start / Reset buttons
-        <section x="0%" y="91%" height="20%">
+        <section x="0%" y="91%" height="20%" opacity="1">
+          // Start button
           <use id="timer_start_button" href="#screen_button" x="17%" width="34%" >
-            <set href="button_icon" attributeName="href" to="icons/plus_icon.png"/>
+            <set href="button_icon" attributeName="href" to="icons/start_icon.png"/>
+            <set href="button_icon" attributeName="width" to="110%"/>
+            <set href="button_icon" attributeName="x" to="-55%"/>
           </use>
+          // Stop button
           <use id="timer_stop_button" href="#screen_button"  x="50%" width="34%" >
-            <set href="button_icon" attributeName="href" to="icons/plus_icon.png"/>
+            <set href="button_icon" attributeName="href" to="icons/stop_icon.png"/>
+            <set href="button_icon" attributeName="width" to="110%"/>
+            <set href="button_icon" attributeName="x" to="-55%"/>
           </use>
+          //Reset button
           <use id="timer_reset_button" href="#screen_button" x="83%" width="34%" >
-            <set href="button_icon" attributeName="href" to="icons/plus_icon.png"/>
+            <set href="button_icon" attributeName="href" to="icons/reset_icon.png"/>
+            <set href="button_icon" attributeName="width" to="110%"/>
+            <set href="button_icon" attributeName="x" to="-55%"/>
           </use>
         </section>
       </svg>
