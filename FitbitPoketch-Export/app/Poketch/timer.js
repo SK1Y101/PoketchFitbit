@@ -81,7 +81,7 @@ export let KitchenTimer = function(doc) {
   };
 
   // function that executes on the start button press
-  let startPress = function(startPress = false) {
+  let buttonPress = function(startPress = false) {
     // activate the buttons
     utils.animateElement(strtBut, startPress ? "select" : "unselect");
     utils.animateElement(stopBut, startPress ? "unselect" : "select");
