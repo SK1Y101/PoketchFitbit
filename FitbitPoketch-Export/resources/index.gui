@@ -54,6 +54,7 @@
           // Icon
           <image id="button_icon" href="icons/clear_icon.png" x="-20%" y="-32%" width="40%" height="50%"/>
         </use>
+        <rect id="count_but" pointer-events="visible" x="-50%" y="-50%" width="100%" height="100%" opacity="0"/>
       </svg>
     </symbol>
   </defs>
@@ -173,8 +174,9 @@
           <image id="step_4" href="digits/digit_shadow_0.png" x="50% - 4% + 20%" y="5% + 1%" width="8%" height="16% + 1%"/>
         </section>
         // button
-        <use class="step_count_button" href="#screen_button" x="50%" y="50% + 20%" width="40%" height="30%"/>
-        <rect id="step_count_but" pointer-events="visible" x="50% - 20%" y="50% + 5%" width="40%" height="30%" opacity="0"/>
+        <use class="step_count_button" href="#screen_button" x="50%" y="50% + 20%" width="40%" height="30%">
+          <set href="count_but" attributeName="id" to="step_count_but"/>
+        </use>
       </svg>
 
       // Third view (Stats indicator)
@@ -247,8 +249,8 @@
         // button
         <use class="count_count_button" href="#screen_button" x="50%" y="50% + 20%" width="40%" height="30%">
           <set href="button_icon" attributeName="href" to="icons/plus_icon.png"/>
+          <set href="count_but" attributeName="id" to="count_count_but"/>
         </use>
-        <rect id="count_count_but" pointer-events="visible" x="50% - 20%" y="50% + 5%" width="40%" height="30%" opacity="0"/>
       </svg>
 
       // Fifth view (analogue clock)
@@ -350,24 +352,27 @@
           <image id="timer_3" href="digits/digit_shadow_0.png" x="-4% + 18%" y="-8% + 1%" width="8%" height="16% + 1%"/>
           // Time selection Buttons
         </section>
-        <section x="0%" y="91%" height="20%" opacity="1">
+        <section x="0%" y="91%" height="20%">
           // Start button
           <use id="timer_start_button" href="#screen_button" x="17%" width="34%" >
             <set href="button_icon" attributeName="href" to="icons/start_icon.png"/>
             <set href="button_icon" attributeName="width" to="110%"/>
             <set href="button_icon" attributeName="x" to="-55%"/>
+            <set href="count_but" attributeName="id" to="timer_start_but"/>
           </use>
           // Stop button
           <use id="timer_stop_button" href="#screen_button"  x="50%" width="34%" >
             <set href="button_icon" attributeName="href" to="icons/stop_icon.png"/>
             <set href="button_icon" attributeName="width" to="110%"/>
             <set href="button_icon" attributeName="x" to="-55%"/>
+            <set href="count_but" attributeName="id" to="timer_stop_but"/>
           </use>
           //Reset button
           <use id="timer_reset_button" href="#screen_button" x="83%" width="34%" >
             <set href="button_icon" attributeName="href" to="icons/reset_icon.png"/>
             <set href="button_icon" attributeName="width" to="110%"/>
             <set href="button_icon" attributeName="x" to="-55%"/>
+            <set href="count_but" attributeName="id" to="timer_reset_but"/>
           </use>
         </section>
       </svg>
