@@ -20,9 +20,9 @@ export let KitchenTimer = function(doc) {
   let stopBt = doc.getElementById("timer_stop_but");
   let restBt = doc.getElementById("timer_reset_but");
   // Change the layer height
-  utils.changeLayer(strtBt, 120);
-  utils.changeLayer(stopBt, 121);
-  utils.changeLayer(restBt, 122);
+  utils.changeLayer(strtBt, 110);
+  utils.changeLayer(stopBt, 110);
+  utils.changeLayer(restBt, 110);
   utils.animateElement(stopBut, "select");
 
   // Time buttons (aesthetic)
@@ -32,9 +32,15 @@ export let KitchenTimer = function(doc) {
   let minDownBut = doc.getElementById("timer_min_down_button");
   let secUpBut = doc.getElementById("timer_sec_up_button");
   let secDownBut = doc.getElementById("timer_sec_down_button");
+  // change the layer height
+  utils.changeLayer(minUpBut, 110);
+  utils.changeLayer(minDownBut, 110);
+  utils.changeLayer(secUpBut, 110);
+  utils.changeLayer(secDownBut, 110);
 
   // Timer variable
   let timerVar = 0;
+  let showArrow = false;
   let startTimer = false;
 
   // Function to replace the snorlax href
@@ -99,10 +105,41 @@ export let KitchenTimer = function(doc) {
     startTimer = startPress;
   };
 
+  // Function to set and update the display
+  let updateDisplay = function(newTime = "false") {
+    // set the time if given
+    if (newTime != "false") {
+      // ensure the timer is within the 99:59 possible timer
+      timerVar = (newTime + 6000) % 6000;
+    };
+    // and draw
+    digitHandler.update(sec2string(timerVar));
+  };
+
+  // function to toggle the showing of the arrow display
+  let toggleArrows = function(display=true) {
+    // if we want to show them
+    if (showArrow) {
+      // set the display to the function
+      utils.showElement(timeButs, display);
+      // and in 500 seconds
+      setTimeout(function() {
+        // call the function again with the opposite value
+        toggleArrows(!display);
+      }, 500);
+    } else {
+      // otherwise, hide them
+      utils.showElement(timeButs, false);
+    };
+  };
+
   // Event listeners
   // Start click
   strtBt.addEventListener("click", (evt) => {
-    // ceck we have a timer that can count down.
+    // make the selection arrows invisible
+    showArrow = false;
+    toggleArrows();
+    // check we have a timer that can count down.
     if (timerVar > 0) {
       // Update the buttons
       buttonPress(true);
@@ -127,7 +164,33 @@ export let KitchenTimer = function(doc) {
     // deal with the other button stuff too
     buttonPress(false);
     // set the timerVariable.
-    timerVar = 0;
-    this.draw();
+    updateDisplay(0);
+    // make the selection arrows visible on a timer
+    showArrow = true;
+    toggleArrows();
+  });
+
+  // Increment minute button
+  minUpBut.addEventListener("click", (evt) => {
+    // Increment the timer by 60 seconds
+    updateDisplay(timerVar + 60);
+  });
+
+  // Increment minute button
+  minDownBut.addEventListener("click", (evt) => {
+    // Increment the timer by 60 seconds
+    updateDisplay(timerVar - 60);
+  });
+
+  // Increment Second button
+  secUpBut.addEventListener("click", (evt) => {
+    // Increment the timer by 60 seconds
+    updateDisplay(timerVar + 1);
+  });
+
+  // Increment Second button
+  secDownBut.addEventListener("click", (evt) => {
+    // Increment the timer by 60 seconds
+    updateDisplay(timerVar - 1);
   });
 };
