@@ -1,4 +1,5 @@
 // Import the fitbit builtins
+import { vibration } from "haptics";
 
 // Define any helper functions
 import * as utils from "../../common/utils";
@@ -69,7 +70,10 @@ export let KitchenTimer = function(doc) {
       snorlaxHref(left ? "left" : "right");
       // and set a timeout to call the function again
       setTimeout(function() {
+        // call the function with the opposite thing
         timerEnd(!left);
+        // and buzz the motor
+        left ? vibration.start("nudge") : vibration.stop();
       }, 250);
     };
   };
