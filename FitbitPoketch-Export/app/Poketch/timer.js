@@ -27,6 +27,7 @@ export let KitchenTimer = function(doc) {
 
   // Time buttons (aesthetic)
   let timeButs = doc.getElementsByClassName("time_change_but");
+  let timeButsIcon = doc.getElementsByClassName("time_change_icon");
   // Time change buttons
   let minUpBut = doc.getElementById("timer_min_up_button");
   let minDownBut = doc.getElementById("timer_min_down_button");
@@ -120,8 +121,10 @@ export let KitchenTimer = function(doc) {
   let toggleArrows = function(display=true) {
     // if we want to show them
     if (showArrow) {
-      // set the display to the function
-      utils.showElement(timeButs, display);
+      // Show everything
+      utils.showElement(timeButs, true);
+      // set the display of the arrows to the function input
+      utils.showElement(timeButsIcon, display);
       // and in 500 seconds
       setTimeout(function() {
         // call the function again with the opposite value
