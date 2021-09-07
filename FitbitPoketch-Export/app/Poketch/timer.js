@@ -25,6 +25,14 @@ export let KitchenTimer = function(doc) {
   utils.changeLayer(restBt, 122);
   utils.animateElement(stopBut, "select");
 
+  // Time buttons (aesthetic)
+  let timeButs = doc.getElementsByClassName("time_change_but");
+  // Time change buttons
+  let minUpBut = doc.getElementById("timer_min_up_button");
+  let minDownBut = doc.getElementById("timer_min_down_button");
+  let secUpBut = doc.getElementById("timer_sec_up_button");
+  let secDownBut = doc.getElementById("timer_sec_down_button");
+
   // Timer variable
   let timerVar = 0;
   let startTimer = false;
