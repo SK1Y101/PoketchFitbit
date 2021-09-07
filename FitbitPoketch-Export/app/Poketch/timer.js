@@ -25,6 +25,10 @@ export let KitchenTimer = function(doc) {
   utils.changeLayer(restBt, 122);
   utils.animateElement(stopBut, "select");
 
+  // Timer variable
+  let timerVar = 0;
+  let startTimer = false;
+
   // Function to replace the snorlax href
   let snorlaxHref = function(text="down") {
     snorlax.href = snorlax.href.splice(snorlax.href.indexOf("_")+1, snorlax.href.indexOf("."), text);
@@ -39,32 +43,75 @@ export let KitchenTimer = function(doc) {
 
   // function to draw the display
   this.draw = function() {
+    digitHandler.update(sec2string(timerVar));
+  };
+
+  // Function to draw the snorlax when the timer has finished
+  let timerEnd = function(left = true) {
+    // If we haven't pressed stop
+    if (startTimer) {
+      // update the snorlax image
+      snorlaxHref(left ? "left" : "right");
+      // and set a timeout to call the function again
+      setTimeout(function() {
+        timerEnd(!left);
+      }, 250);
+    };
+  };
+
+  // Function to reduce the timer
+  let timerLoop = function() {
+    // If the timer is not at zero
+    if (timerVar > 0) {
+      // create a timeout function
+      setTimeout(function() {
+        // if we are still running
+        if (startTimer) {
+          // Decrement the timer
+          timerVar--;
+          // update the display
+          digitHandler.update(sec2string(timerVar));
+          // and execute again
+          timerLoop();
+        };
+      }, 1000);
+    } else {
+      timerEnd();
+    };
+  };
+
+  // function that executes on the start button press
+  let startPress = function(startPress = false) {
+    // activate the buttons
+    utils.animateElement(strtBut, startPress ? "select" : "unselect");
+    utils.animateElement(stopBut, startPress ? "unselect" : "select");
+    // Change the snorlax image
+    snorlaxHref(startPress ? "down" : "up");
+    // set the start timer to false if the press is false
+    if(!startPress) { startTimer = false; };
   };
 
   // Event listeners
   // Start click
   strtBt.addEventListener("click", (evt) => {
-    // activate the buttons
-    utils.animateElement(strtBut, "select");
-    utils.animateElement(stopBut, "unselect");
-    // Change the snorlax image
-    snorlaxHref("down");
-    console.log("start click");
+    // Update the buttons
+    buttonPress(true);
+    // start the timer if we haven't already
+    if (!startTimer && timerVar > 0) { startTimer = true; timerLoop(); };
   });
   // Stop click
   stopBt.addEventListener("click", (evt) => {
     // activate the buttons
-    utils.animateElement(stopBut, "select");
-    utils.animateElement(strtBut, "unselect");
-    // Change the snorlax image
-    snorlaxHref("up");
-    console.log("stop click");
+    buttonPress(false);
   });
   // Reset click
   restBt.addEventListener("click", (evt) => {
     // activate the buttons
     utils.animateElement(restBut, "click");
-    digitHandler.update(sec2string(185));
-    console.log("reset click");
+    // deal with the other button stuff too
+    buttonPress(false);
+    // set the timerVariable.
+    timerVar = 10;
+    this.draw();
   });
 };
