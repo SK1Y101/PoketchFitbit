@@ -87,23 +87,31 @@ export let KitchenTimer = function(doc) {
     utils.animateElement(stopBut, startPress ? "unselect" : "select");
     // Change the snorlax image
     snorlaxHref(startPress ? "down" : "up");
-    // set the start timer to false if the press is false
-    if(!startPress) { startTimer = false; };
+    // set the start timer to the press
+    startTimer = startPress;
   };
 
   // Event listeners
   // Start click
   strtBt.addEventListener("click", (evt) => {
-    // Update the buttons
-    buttonPress(true);
-    // start the timer if we haven't already
-    if (!startTimer && timerVar > 0) { startTimer = true; timerLoop(); };
+    // ceck we have a timer that can count down.
+    if (timerVar > 0) {
+      // Update the buttons
+      buttonPress(true);
+      // start the timer
+      timerLoop();
+    } else {
+      // otherwise, animate it clicking
+      utils.animateElement(strtBut, "click");
+    };
   });
+
   // Stop click
   stopBt.addEventListener("click", (evt) => {
     // activate the buttons
     buttonPress(false);
   });
+
   // Reset click
   restBt.addEventListener("click", (evt) => {
     // activate the buttons
@@ -111,7 +119,7 @@ export let KitchenTimer = function(doc) {
     // deal with the other button stuff too
     buttonPress(false);
     // set the timerVariable.
-    timerVar = 10;
+    timerVar = 0;
     this.draw();
   });
 };
