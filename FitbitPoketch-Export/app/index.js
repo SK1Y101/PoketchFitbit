@@ -12,8 +12,11 @@ import * as utils from "../common/utils";
 import { Settings } from "../common/settings";
 import { SwitchView } from "./Poketch/switch";
 import { StepCounter } from "./Poketch/steps";
-import { CountCounter } from "./Poketch/counter";
+import { KitchenTimer } from "./Poketch/timer";
 import { TimeIndicator } from "./Poketch/clock";
+import { CountCounter } from "./Poketch/counter";
+import { CalendarView } from "./Poketch/calendar";
+import { StatsIndicator} from "./Poketch/stats";
 
 // Log the memory usage once the entire program is loaded
 console.log("Device JS memory at import: " + memory.js.used + "/" + memory.js.total);
@@ -21,18 +24,34 @@ console.log("Device JS memory at import: " + memory.js.used + "/" + memory.js.to
 // Set the default values of all options
 let DefSet = function() {
   var defaults = {
+    // Visual settings
     skin: 0,
     edgeColour: "#3050F8",
     faceColour: "#303030",
     screenColour: "#70B070",
+    // switch view
+    viewnum: 0,
+    // Pedometer
+    stepView: 0,
+    stepView: 0,
+    // counter
+    counterValue: 0,
   };
   return defaults;
 };
 
+// Splice function
+String.prototype.splice = function(start, end, replacement) {
+  return this.substr(0, start) + replacement + this.substr(end);
+}
+
 // And fetch a reference to the modules
 let settings = new Settings("settings.cbor", DefSet);
 let timeInd = new TimeIndicator(document);
+let statsInd = new StatsIndicator(document);
+let kitchenTimer = new KitchenTimer(document);
 let stepCounter = new StepCounter(document, settings);
+let calendarView = new CalendarView(document, settings);
 let countCounter = new CountCounter(document, settings);
 
 // Log the memory usage once the entire program is loaded
@@ -41,6 +60,7 @@ console.log("Device JS memory at modules: " + memory.js.used + "/" + memory.js.t
 // Define the functions that should be ran on a view update
 var viewUpdate = {
   "1": stepCounter.draw,
+  "2": statsInd.draw,
 };
 
 // define the switch viewer, passing any updates needed
@@ -53,10 +73,8 @@ clock.granularity = "minutes"; // seconds, minutes, hours
 const bg = document.getElementById("background");
 const fc = document.getElementsByClassName("face_colour");
 const sc = document.getElementsByClassName("screen_colour");
-
 const dpskin = document.getElementsByClassName("dp_skin");
 const ptskin = document.getElementsByClassName("pt_skin");
-
 const face = document.getElementById("screen");
 
 // Update elements once a minute
@@ -65,10 +83,20 @@ clock.addEventListener("tick", (evt) => {
   let now = evt.date;
   // Update the watch
   timeInd.drawTime(now);
-  // If we reach midnight
-  if (!(now.getMinutes() || now.getHours())) {
-    // Then call any reset functions
-    stepCounter.reset();
+  // And ensure we initialise the calendar
+  if (!calendarView.init) {
+    calendarView.drawTime(now);
+    calendarView.init = true;
+  };
+  // Update once an hour
+  if (!now.getMinutes()) {
+    // And update the calendar at the end of the day
+    calendarView.drawTime(now);
+    // Update once a day
+    if (!now.getHours()) {
+      // Call any reset functions
+      stepCounter.reset();
+    };
   };
 });
 

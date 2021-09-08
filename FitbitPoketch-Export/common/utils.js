@@ -5,13 +5,13 @@ import { readFileSync, unlinkSync, writeFileSync } from "fs"
 // Set some default values
 
 // Object that interacts with digit displays
-export let DigitDisplay = function(doc, name, def="00000") {
+export let DigitDisplay = function(doc, name, def="00000", path="digit") {
   // function to fetch the elements
   this.fetch = function() {
     var eles = {}; var i = def.length;
     while (i--) {
       // set each element to the correct digit
-      eles[i] = doc.getElementsByClassName(name+i);
+      eles[i] = doc.getElementById(name+i);
     };
     return eles;
   };
@@ -23,7 +23,7 @@ export let DigitDisplay = function(doc, name, def="00000") {
     // itterate over that
     while (i--) {
       // set each element to the correct digit
-      showDigit(elems[i], val[i]);
+      showDigit(elems[i], val[i], path);
     };
   };
 
@@ -47,18 +47,18 @@ export function changeLayer(ele, layer) {
 };
 
 // Change a digit display
-export function showDigit(ele, digit) {
+export function showDigit(ele, digit, path="digit") {
+  // replace any colon inputs
   digit = digit.replace(":", "colon");
+  // hide if empty space
+  showElement(ele, digit!="_");
+  // Compute the path of the digit
+  path = "digits/" + path + "_" + digit + ".png"
+  // and then the other stuff
   try {
-    try {
-      ele.forEach(function(eles) {
-        eles.href = "digits/digit_" + digit + ".png";
-      });
-    } catch(err) {
-      ele.href = "digits/digit_" + digit + ".png";
-    };
+    ele.href = path;
   } catch(err) {
-    console.log(err + ": Couldn't assign digit '" + digit + "'")
+    console.log(err + ": Couldn't assign digit '" + path + "'")
   };
 };
 

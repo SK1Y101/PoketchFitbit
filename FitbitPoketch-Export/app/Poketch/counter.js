@@ -9,7 +9,7 @@ import * as utils from "../../common/utils";
 export let CountCounter = function(doc, settings) {
 
   // Fetch the digit handler
-  let digitHandler = new utils.DigitDisplay(doc, "count_", "00000");
+  let digitHandler = new utils.DigitDisplay(doc, "count_", "00000", "digit_shadow");
 
   // Fetch the decorative button element
   const ccb = doc.getElementsByClassName("count_count_button");
