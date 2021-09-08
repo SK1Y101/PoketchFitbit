@@ -31,7 +31,8 @@ export let CalendarView = function(doc, settings) {
     dy = (dy - fdw + 7) % 7;
     // compute x and y
     const x = 15 + 31 * dy;
-    const y = 12 + 39.5 * ~~((date + fy - fdw) / 7);
+    // offset the y by .1, as the saturday is sometimes misrepresented
+    const y = 12 + 39.5 * ~~((date + fy - fdw - .1) / 7);
     // return
     return [x, y];
   };
@@ -60,7 +61,7 @@ export let CalendarView = function(doc, settings) {
     weekSelect.href = "icons/calendar_"+fdy+".png";
 
     // Current day highlight
-    var hcor = dayCoor(year, mon, date, fdy, fwd);
+    var hcor = dayCoor(year, mon, date, fdy, fwd);//dayCoor(year, mon, date, fdy, fwd);
     daySelect.x = hcor[0]; daySelect.y = hcor[1];
 
     // And any required day obscuration

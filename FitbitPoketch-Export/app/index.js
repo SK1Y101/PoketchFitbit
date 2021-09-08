@@ -12,6 +12,7 @@ import * as utils from "../common/utils";
 import { Settings } from "../common/settings";
 import { SwitchView } from "./Poketch/switch";
 import { StepCounter } from "./Poketch/steps";
+import { KitchenTimer } from "./Poketch/timer";
 import { TimeIndicator } from "./Poketch/clock";
 import { CountCounter } from "./Poketch/counter";
 import { CalendarView } from "./Poketch/calendar";
@@ -39,10 +40,16 @@ let DefSet = function() {
   return defaults;
 };
 
+// Splice function
+String.prototype.splice = function(start, end, replacement) {
+  return this.substr(0, start) + replacement + this.substr(end);
+}
+
 // And fetch a reference to the modules
 let settings = new Settings("settings.cbor", DefSet);
 let timeInd = new TimeIndicator(document);
 let statsInd = new StatsIndicator(document);
+let kitchenTimer = new KitchenTimer(document);
 let stepCounter = new StepCounter(document, settings);
 let calendarView = new CalendarView(document, settings);
 let countCounter = new CountCounter(document, settings);
@@ -86,7 +93,7 @@ clock.addEventListener("tick", (evt) => {
     // And update the calendar at the end of the day
     calendarView.drawTime(now);
     // Update once a day
-    if (!npw.getHours()) {
+    if (!now.getHours()) {
       // Call any reset functions
       stepCounter.reset();
     };
