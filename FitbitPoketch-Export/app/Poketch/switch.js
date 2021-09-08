@@ -24,6 +24,7 @@ export let SwitchView = function(doc, settings, viewUpdate) {
 
   // Store the view information
   var views = {};
+  var apps = [];
   var vnum = 0;
   var vlen = 0;
 
@@ -33,6 +34,11 @@ export let SwitchView = function(doc, settings, viewUpdate) {
     if (vu) {
       vu()
     };
+  };
+
+  // Function to fetch the allowed applications
+  let fetchApps = function(newApps) {
+    apps = [0].concat(newApps)
   };
 
   // Function to fetch the available views
@@ -47,17 +53,37 @@ export let SwitchView = function(doc, settings, viewUpdate) {
     vnum = settings.getOrElse("viewnum", 0);
   };
 
+  // Function to compute the next available application
+  let fetchNextApp = function(inc = 0) {
+    // If we are not changing apps
+    if (inc == 0) {
+      // return the current app
+      return vnum;
+    } else {
+      // define our temporary increment
+      var i = 0;
+      // execute at least once
+      do {
+        // increment i by our increment
+        i = i + inc;
+        // keep looping if the selected app is not in our list of allowed apps
+      } while (apps.indexOf((vnum + i + vlen) % vlen) == -1);
+      // and return the next allowed one
+      return (vnum + i + vlen) % vlen
+    };
+  };
+
   // Function to switch to the next view
   let changeView = function(inc=0, forceUpdate=false) {
-    // compute the new view to change to
-    var vnew = (vnum + inc + vlen) % vlen;
+    // compute the new view to change to, ensuring it is within our allowed application
+    var vnew = fetchNextApp(inc);
     // If it is different to the current one, or we are forcing an update
     if ((vnew != vnum) || (forceUpdate)) {
       // change the display visibility of the elements
       views[vnum].style.display = "none";
       views[vnew].style.display = "inline";
       // And update the view number
-      vnum = (vnum + inc + vlen) % vlen;
+      vnum = fetchNextApp(inc);
       drawView();
     };
     // Update the view settins
@@ -66,6 +92,7 @@ export let SwitchView = function(doc, settings, viewUpdate) {
 
   // fetch all of the views
   fetchViews();
+  fetchApps();
   // And update them initially
   changeView(0, true);
 
@@ -102,5 +129,9 @@ export let SwitchView = function(doc, settings, viewUpdate) {
 
   this.draw = function() {
     drawView();
+  };
+
+  this.appSettings = function(newtabs) {
+    fetchApps(newtabs);
   };
 };
