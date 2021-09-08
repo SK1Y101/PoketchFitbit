@@ -1,6 +1,6 @@
 // Import the fitbit builtins
 import { me } from "appbit";
-import * as activity from "user-activity";
+import { today } from "user-activity";
 
 // Define any helper functions
 import * as utils from "../../common/utils";
@@ -9,7 +9,7 @@ import * as utils from "../../common/utils";
 export let StepCounter = function(doc, settings) {
 
   // Fetch the digit handler
-  let digitHandler = new utils.DigitDisplay(doc, "step_", "00000");
+  let digitHandler = new utils.DigitDisplay(doc, "step_", "00000", "digit_shadow");
 
   // fetch the step counter edge reference
   const sce = doc.getElementById("step_count_edge");
@@ -25,7 +25,7 @@ export let StepCounter = function(doc, settings) {
   var stepView = settings.getOrElse("stepView", 0);
   sce.style.opacity = stepView ? 1 : .4;
   // Fetch the step offset
-  var offset = 5400;//settings.getOrElse("stepOffset", 0);
+  var offset = settings.getOrElse("stepOffset", 0);
   // A blank timer
   var held = 0;
 
@@ -44,7 +44,7 @@ export let StepCounter = function(doc, settings) {
     // Check we have permissions
     if (me.permissions.granted("access_activity")) {
       // Fetch the number of steps
-      var steps = activity.today.adjusted.steps;
+      var steps = today.adjusted.steps;
       // update the offset on long press
       if ((offset == -1) || (offset > steps))   { newOffset(steps); };
       // And show the desired step counter
