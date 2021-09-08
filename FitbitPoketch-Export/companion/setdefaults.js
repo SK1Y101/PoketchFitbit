@@ -7,6 +7,7 @@ function fetchdefs() {
     edgeColour: {name: "D/P Blue", icon:"https://www.colorhexa.com/3050F8.png", value: "#3050F8", subname:"The Male Pokétch colour in Diamond and Pearl."},
     faceColour: {name: "D/P", icon:"https://www.colorhexa.com/303030.png", value: "#303030", subname:"The Pokétch face colour in Diamond and Pearl."},
     screenColour: {name: "Green", icon:"https://www.colorhexa.com/70B070.png", value: "#70B070", subname:"The default Pokétch screen colour."},
+    activeApps: {name:"Pedometer", value:1, selected:[0]},
   };
 
   let Defaults = {};

@@ -77,6 +77,30 @@ function mySettings(props) {
           }
         />
       </Section>
+      <Section
+        title={<Text bold align="center">Application settings</Text>}>
+        <Select
+          label={"Visible apps"}
+          multiple
+          settingsKey="activeApps"
+          options={[
+            {name:"Pedometer",    value:1},
+            {name:"Stats View",   value:2},
+            {name:"Counter",      value:3},
+            {name:"Analog Watch", value:4},
+            {name:"Calendar",     value:5},
+            {name:"Timer",        value:6},
+          ]}
+        />
+        <Text>The Pokétch applications that will be accessible to the user.</Text>
+      </Section>
+      <Section
+        title={<Text bold align="center">Additional links</Text>}>
+        <Link source="https://github.com/SK1Y101/PoketchFitbit">The development page for this project.</Link>
+        <Link source="https://github.com/SK1Y101/PoketchFitbit/wiki">Wiki for this watch face.</Link>
+        <Link source="https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9tch">Pokétch information from the games.</Link>
+        <Link source="https://www.buymeacoffee.com/lloydwaltersj">Support my work!</Link>
+      </Section>
     </Page>
   );
 }
