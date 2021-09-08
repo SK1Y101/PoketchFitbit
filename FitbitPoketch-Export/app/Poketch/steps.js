@@ -9,7 +9,7 @@ import * as utils from "../../common/utils";
 export let StepCounter = function(doc, settings) {
 
   // Fetch the digit handler
-  let digitHandler = new utils.DigitDisplay(doc, "step_", "00000");
+  let digitHandler = new utils.DigitDisplay(doc, "step_", "00000", "digit_shadow");
 
   // fetch the step counter edge reference
   const sce = doc.getElementById("step_count_edge");
