@@ -31,6 +31,7 @@ let DefSet = function() {
     screenColour: "#70B070",
     // switch view
     viewnum: 0,
+    activeApps: [1],
     // Pedometer
     stepView: 0,
     stepView: 0,
@@ -144,6 +145,7 @@ let applySettings = function() {
     settings.isPresent("edgeColour", updateColour, bg);
     settings.isPresent("faceColour", updateColour, fc);
     settings.isPresent("screenColour", updateColour, sc);
+    settings.isPresent("activeApps", switchView.appSettings);
     // Show that settings have been loaded
     console.log("Settings applied");
   } catch (err) {
