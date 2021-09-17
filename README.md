@@ -1,5 +1,7 @@
 # Fitbit Pokétch
-A Fitbit clockface in the style of the Gen IV Pokétch.
+A Fitbit clock-face in the style of the Pokémon Generation IV Pokétch.
+
+![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/screenshots/applicationExample.png)
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](https://forthebadge.com)
@@ -33,6 +35,52 @@ A Fitbit clockface in the style of the Gen IV Pokétch.
 Open issues can be found here: [issues](../../issues)
 
 To create an issue, be it a bug, question, feature request, or other, use this link here: [Open an issue](../../issues/new/choose)
+
+
+All of my work is open source and completely free, although if you'd like to support me further, you can follow [this link](https://www.buymeacoffee.com/lloydwaltersj)
+
+## Pokétch.
+
+### Features available
+
+Unlike the original Pokétch, which came with 25 applications, my Pokétch watch face comes with just 7, which are, in order:
+
+Digital clock        - Shows the time
+
+Pedometer          - Shows your steps
+
+Stats view           - Shows your other stats
+
+Counter               - Manually count something with the press of a button
+
+Analogue Watch  - Shows the time again!
+
+Calendar              - Want to know the current date?
+
+Timer                   - Count down from up to 99 minutes. (Accuracy may vary)
+
+Tap the bottom half of the screen to cycle through the applications, or tap the top half to cycle backwards.
+
+To enable/disable certain applications, use the dropdown available in the settings for the watch face. By default, only the digital watch face is visible.
+
+![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/screenshots/applicationExample.png)
+
+### Customisation
+
+Button             - Diamond/Pearl single button, or the Platinum double button.
+
+Face colour     - Dark watch face, or the Light watch face.
+
+Edge colour     - Diamond blue, Pearl pink, Barry's orange, Platnium blue, or Platinum pink.
+
+Screen colour  - Default Green, Yellow, Orange, Red, Violet, Indigo, Blue, and Grey.
+
+Wherever possible, I have tried to keep the watch feature and aesthetics as close to the original Pokétch from the games, with minimal changes.
+
+For further description of watch features, see the wiki pages in the github repo [here](https://github.com/SK1Y101/PoketchFitbit/wiki)
+
+![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/screenshots/screenColourExample.png)
+![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/screenshots/WatchColourExample.png)
 
 ## Tools
 
