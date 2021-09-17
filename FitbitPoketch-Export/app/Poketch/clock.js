@@ -18,8 +18,9 @@ export let TimeIndicator = function(doc) {
   const hourHand = doc.getElementsByClassName("hour_hand");
 
   // Fetch the pikachu sprite
-  const daySprite = doc.getElementsByClassName("day");
-  const nightSprite = doc.getElementsByClassName("night");
+  const backSprite = doc.getElementById("back_sprite");
+  const daySprite = doc.getElementById("day_sprite");
+  const nightSprite = doc.getElementById("night_sprite");
 
   // Update the position of an analogue clock hand
   let updateHand = function(ele, angle=0) {
