@@ -84,7 +84,7 @@ For further description of watch features, see the wiki pages in the github repo
 ![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/SDK4.3/screenshots/screenColourExample.png)
 ![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/SDK5.2/screenshots/screenColourExample.png)
 ![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/SDK4.3/screenshots/WatchColourExample.png)
-![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/SDK5.2/screenshots/WatchColourExample.png)
+![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/SDK5.2/screenshots/watchColourExample.png)
 
 ## Tools
 
