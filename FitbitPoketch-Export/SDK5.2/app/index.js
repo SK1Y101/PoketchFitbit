@@ -71,7 +71,7 @@ let switchView = new SwitchView(document, settings, viewUpdate);
 clock.granularity = "minutes"; // seconds, minutes, hours
 
 // fetch elementss
-const bg = document.getElementById("background");
+const bg = document.getElementsByClassName("background");
 const fc = document.getElementsByClassName("face_colour");
 const sc = document.getElementsByClassName("screen_colour");
 const dpskin = document.getElementsByClassName("dp_skin");
