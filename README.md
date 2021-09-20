@@ -30,7 +30,7 @@ A Fitbit clock-face in the style of the Pokémon Generation IV Pokétch.
 ![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/SK1Y101/PoketchFitbit)
 ![GitHub last commit](https://img.shields.io/github/last-commit/SK1Y101/PoketchFitbit)
 
-**Fitbit Pokétch: [Latest release](../../releases)**
+**Fitbit Pokétch: [Store page](https://gallery.fitbit.com/details/c69cadcb-a312-4be3-a51f-681b259364c4)**
 
 Open issues can be found here: [issues](../../issues)
 
