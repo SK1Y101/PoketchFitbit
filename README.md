@@ -1,7 +1,8 @@
 # Fitbit Pokétch
 A Fitbit clock-face in the style of the Pokémon Generation IV Pokétch.
 
-![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/screenshots/applicationExample.png)
+![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/SDK4.3/screenshots/applicationExample.png)
+![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/SDK5.2/screenshots/applicationExample.png)
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](https://forthebadge.com)
@@ -30,7 +31,7 @@ A Fitbit clock-face in the style of the Pokémon Generation IV Pokétch.
 ![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/SK1Y101/PoketchFitbit)
 ![GitHub last commit](https://img.shields.io/github/last-commit/SK1Y101/PoketchFitbit)
 
-**Fitbit Pokétch: [Store page](https://gallery.fitbit.com/details/c69cadcb-a312-4be3-a51f-681b259364c4)**
+**Fitbit Pokétch: [Store page (Versa 1, 2, Lite)](https://gallery.fitbit.com/details/c69cadcb-a312-4be3-a51f-681b259364c4), [Store page (Versa 3, and Sense)](https://gallery.fitbit.com/details/5f740578-6ec4-4bf3-a98b-561e2d94fd0c)**
 
 Open issues can be found here: [issues](../../issues)
 
@@ -63,7 +64,8 @@ Tap the bottom half of the screen to cycle through the applications, or tap the 
 
 To enable/disable certain applications, use the dropdown available in the settings for the watch face. By default, only the digital watch face is visible.
 
-![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/screenshots/applicationExample.png)
+![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/SDK4.3/screenshots/applicationExample.png)
+![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/SDK5.2/screenshots/applicationExample.png)
 
 ### Customisation
 
@@ -79,12 +81,14 @@ Wherever possible, I have tried to keep the watch feature and aesthetics as clos
 
 For further description of watch features, see the wiki pages in the github repo [here](https://github.com/SK1Y101/PoketchFitbit/wiki)
 
-![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/screenshots/screenColourExample.png)
-![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/screenshots/WatchColourExample.png)
+![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/SDK4.3/screenshots/screenColourExample.png)
+![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/SDK5.2/screenshots/screenColourExample.png)
+![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/SDK4.3/screenshots/WatchColourExample.png)
+![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/SDK5.2/screenshots/WatchColourExample.png)
 
 ## Tools
 
- - The project was written in [Javascript](https://www.javascript.com/), and can be downloaded from the [fitbit store at this link](https://gallery.fitbit.com/details/c69cadcb-a312-4be3-a51f-681b259364c4).
+ - The project was written in [Javascript](https://www.javascript.com/), and can be downloaded from the fitbit store at: [this link for versa 1, 2, and lite](https://gallery.fitbit.com/details/c69cadcb-a312-4be3-a51f-681b259364c4), or [this link for versa 3, and sense](https://gallery.fitbit.com/details/5f740578-6ec4-4bf3-a98b-561e2d94fd0c).
  - [Mergify](https://mergify.io/) has been automatically managing all of the repository branches.
  - [All-contributors](https://allcontributors.org/) has been managing the contributors section.
  - [Snyk](https://snyk.io/) has been monitoring for security concerns.
