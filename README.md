@@ -84,7 +84,7 @@ For further description of watch features, see the wiki pages in the github repo
 
 ## Tools
 
- - The project was written in [Javascript](https://www.javascript.com/), and can be (eventually) downloaded from the fitbit store.
+ - The project was written in [Javascript](https://www.javascript.com/), and can be downloaded from the [fitbit store at this link](https://gallery.fitbit.com/details/c69cadcb-a312-4be3-a51f-681b259364c4).
  - [Mergify](https://mergify.io/) has been automatically managing all of the repository branches.
  - [All-contributors](https://allcontributors.org/) has been managing the contributors section.
  - [Snyk](https://snyk.io/) has been monitoring for security concerns.
