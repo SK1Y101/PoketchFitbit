@@ -1,5 +1,5 @@
 {
-  "name": "poketch-sense",
+  "name": "Poketch Clockface",
   "version": "0.1.0",
   "private": true,
   "license": "UNLICENSED",
@@ -10,7 +10,7 @@
   "fitbit": {
     "appUUID": "5f740578-6ec4-4bf3-a98b-561e2d94fd0c",
     "appType": "clockface",
-    "appDisplayName": "Poketch",
+    "appDisplayName": "Poketch Clockface",
     "iconFile": "resources/icon.png",
     "wipeColor": "#ffffff",
     "requestedPermissions": [
