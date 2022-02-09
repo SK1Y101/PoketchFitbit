@@ -9,7 +9,6 @@ pull_request_rules:
         users: [SK1Y101]
       merge:
         method: merge
-        strict: smart+fasttrack
 
   - name: apply patches to developmental and stable branches
     conditions:
@@ -33,7 +32,6 @@ pull_request_rules:
         type: APPROVE
       merge:
         method: merge
-        strict: smart+fasttrack
 
   - name: automatic merge for Dependabot pull requests
     conditions:
@@ -47,7 +45,6 @@ pull_request_rules:
         type: APPROVE
       merge:
         method: merge
-        strict: smart+fasttrack
 
   - name: automatic merge for Allcontributors bot pull requests
     conditions:
@@ -61,7 +58,6 @@ pull_request_rules:
         type: APPROVE
       merge:
         method: merge
-        strict: smart+fasttrack
 
   - name: remove outdated reviews
     conditions:
