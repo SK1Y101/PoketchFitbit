@@ -50,19 +50,6 @@ export let StatsIndicator = function(doc, settings) {
     if (icon) {icon.style.display = (value >= maxval) ? "inline" : "none"};
   };
 
-  // function to draw the stats on the screen
-  this.draw = function() {
-    // Update the battery percentage (as it doesn't need permissions)
-    setStat(chargeBar, chargeTxt, battery.chargeLevel);
-    // Check we have permissions
-    if (me.permissions.granted("access_activity")) {
-      setStat(distBar, distTxt, today.adjusted.distance, goals.distance, "m", distIcon);
-      setStat(calsBar, calsTxt, today.adjusted.calories, goals.calories, "kcal", calsIcon);
-      setStat(eleBar,  eleTxt,  today.adjusted.elevationGain, goals.elevationGain, "floors", eleIcon);
-      setStat(azmBar,  azmTxt,  today.adjusted.activeZoneMinutes.total, goals.activeZoneMinutes.total, "mins",  azmIcon);
-    };
-  };
-
   // function to start the heartrate monitor
   this.start = function() {
     if (me.permissions.granted("access_heart_rate")) {
@@ -80,6 +67,21 @@ export let StatsIndicator = function(doc, settings) {
     // update the display
     setStat(heartBar, heartTxt, hrm.heartRate, maxHr, "bpm");
   });
+
+  // function to draw the stats on the screen
+  this.draw = function() {
+    // ensure the heart rate sensor is started
+    start();
+    // Update the battery percentage (as it doesn't need permissions)
+    setStat(chargeBar, chargeTxt, battery.chargeLevel);
+    // Check we have permissions
+    if (me.permissions.granted("access_activity")) {
+      setStat(distBar, distTxt, today.adjusted.distance, goals.distance, "m", distIcon);
+      setStat(calsBar, calsTxt, today.adjusted.calories, goals.calories, "kcal", calsIcon);
+      setStat(eleBar,  eleTxt,  today.adjusted.elevationGain, goals.elevationGain, "floors", eleIcon);
+      setStat(azmBar,  azmTxt,  today.adjusted.activeZoneMinutes.total, goals.activeZoneMinutes.total, "mins",  azmIcon);
+    };
+  };
 };
 
 // Planning

@@ -35,7 +35,7 @@ export let StatsIndicator = function(doc, settings) {
 
   // Maximum heart rate, from the formula (211 - age*.64), else just 220
   let maxHr = 220;
-  if (me.permissions.granted("access_user_profile")) { maxHr = Math.round(211 - user.age * .64); };
+  if (me.permissions.granted("access_user_profile")) { maxHr = user.maxHeartRate; };
 
   // fetch a reference to the heartRateSensor
   let hrm = new HeartRateSensor();
@@ -48,19 +48,6 @@ export let StatsIndicator = function(doc, settings) {
     // draw the rest of the ui bits
     bar.width = Math.min(value / maxval, 1) * 78;
     if (icon) {icon.style.display = (value >= maxval) ? "inline" : "none"};
-  };
-
-  // function to draw the stats on the screen
-  this.draw = function() {
-    // Update the battery percentage (as it doesn't need permissions)
-    setStat(chargeBar, chargeTxt, battery.chargeLevel);
-    // Check we have permissions
-    if (me.permissions.granted("access_activity")) {
-      setStat(distBar, distTxt, today.adjusted.distance, goals.distance, "m", distIcon);
-      setStat(calsBar, calsTxt, today.adjusted.calories, goals.calories, "kcal", calsIcon);
-      setStat(eleBar,  eleTxt,  today.adjusted.elevationGain, goals.elevationGain, "floors", eleIcon);
-      setStat(azmBar,  azmTxt,  today.adjusted.activeZoneMinutes.total, goals.activeZoneMinutes.total, "mins",  azmIcon);
-    };
   };
 
   // function to start the heartrate monitor
@@ -80,6 +67,21 @@ export let StatsIndicator = function(doc, settings) {
     // update the display
     setStat(heartBar, heartTxt, hrm.heartRate, maxHr, "bpm");
   });
+
+  // function to draw the stats on the screen
+  this.draw = function() {
+    // ensure the heart rate sensor is started
+    start();
+    // Update the battery percentage (as it doesn't need permissions)
+    setStat(chargeBar, chargeTxt, battery.chargeLevel);
+    // Check we have permissions
+    if (me.permissions.granted("access_activity")) {
+      setStat(distBar, distTxt, today.adjusted.distance, goals.distance, "m", distIcon);
+      setStat(calsBar, calsTxt, today.adjusted.calories, goals.calories, "kcal", calsIcon);
+      setStat(eleBar,  eleTxt,  today.adjusted.elevationGain, goals.elevationGain, "floors", eleIcon);
+      setStat(azmBar,  azmTxt,  today.adjusted.activeZoneMinutes.total, goals.activeZoneMinutes.total, "mins",  azmIcon);
+    };
+  };
 };
 
 // Planning
