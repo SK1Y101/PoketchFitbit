@@ -47,16 +47,6 @@ String.prototype.splice = function(start, end, replacement) {
   return this.substr(0, start) + replacement + this.substr(end);
 }
 
-// check for permissions before creating the heart rate monitor
-//if (HeartRateSensor && appbit.permissions.granted("access_heart_rate")) {
-//  // fetch the sensor
-//  const hrm = new HeartRateSensor();
-//  // and start recording
-//  hrm.start();
-//} else {
-//  const hrm = 0;
-//}
-
 // And fetch a reference to the modules
 let settings = new Settings("settings.cbor", DefSet);
 let timeInd = new TimeIndicator(document);
@@ -117,14 +107,9 @@ display.addEventListener("change", () => {
   if (display.on) {
     // start sensors
     switchView.draw();
-    //if (HeartRateSensor) {
-    //  hrm.start();
-    //}
+    statsInd.start();
   } else {
-    // stop sensors
-    //if (HeartRateSensor) {
-    //  hrm.stop();
-    //}
+    statsInd.stop();
   };
 });
 
