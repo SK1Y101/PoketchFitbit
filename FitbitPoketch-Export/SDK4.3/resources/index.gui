@@ -188,13 +188,13 @@
             <set href="stat_txt" attributeName="id" to="charge_txt"/>
             <set href="stat_img_front" attributeName="id" to="charge_icon"/>
           </use>
-          // Steps taken stats
+          // Heart rate stats
           <use href="#statbar" y="30%" x="60%">
-            <set href="stat_bar" attributeName="id" to="step_bar"/>
-            <set href="stat_txt" attributeName="id" to="step_txt"/>
-            <set href="stat_img_back" attributeName="href" to="icons/icon_steps_back.png"/>
-            <set href="stat_img_front" attributeName="href" to="icons/icon_steps_front.png"/>
-            <set href="stat_img_front" attributeName="id" to="step_icon"/>
+            <set href="stat_bar" attributeName="id" to="heart_bar"/>
+            <set href="stat_txt" attributeName="id" to="heart_txt"/>
+            <set href="stat_img_back" attributeName="href" to="icons/icon_heart_back.png"/>
+            <set href="stat_img_front" attributeName="href" to="icons/icon_heart_front.png"/>
+            <set href="stat_img_front" attributeName="id" to="heart_icon"/>
           </use>
           // Distance traveled stats
           <use href="#statbar" y="60%">
