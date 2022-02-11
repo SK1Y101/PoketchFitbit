@@ -3,6 +3,8 @@ import { me } from "appbit";
 import { battery } from "power";
 import { user } from "user-profile";
 import { today, goals } from "user-activity";
+import { HeartRateSensor } from "heart-rate";
+import { BodyPresenceSensor } from "body-presence";
 
 // Define any helper functions
 import * as utils from "../../common/utils";
@@ -35,20 +37,12 @@ export let StatsIndicator = function(doc) {
   const azmIcon = doc.getElementById("azm_icon");
 
   // Maximum heart rate, from the formula (211 - age*.64), else just 220
-  //const maxHr = me.persmissions.granted("access_user_profile") ? Math.round(211 - user.age*.64) : 220;
+  const maxHr = me.persmissions.granted("access_user_profile") ? Math.round(211 - user.age*.64) : 220;
 
-  // update the heart rate monitor
-  // check for permissions first
-  //if (HeartRateSensor && me.permissions.granted("access_heart_rate")) {
-  //  // update on a new reading
-  //  hrm.onreading = function() {
-  //    // set the stats bar
-  //    setStat(heartBar, heartTxt, hrm.heartRate, maxHr, "bpm");
-  //  };
-  //} else {
-  //  // provide a null value
-  //  setStat(heartBar, heartTxt, "--", maxHr, "bpm");
-  //};
+  // fetch a reference to the heartRateSensor
+  let hrm = new HeartRateSensor();
+  // and the body prescence sensor
+  let bps = new BodyPresenceSensor();
 
   // Function to set the properties correctly
   let setStat = function(bar, txt, value, maxval=100, unit="%", icon=null) {
@@ -70,6 +64,41 @@ export let StatsIndicator = function(doc) {
       setStat(eleBar,  eleTxt,  today.adjusted.elevationGain, goals.elevationGain, "floors", eleIcon);
       setStat(azmBar,  azmTxt,  today.adjusted.activeZoneMinutes.total, goals.activeZoneMinutes.total, "mins",  azmIcon);
     };
+  };
+
+  // Update the display if the user is no longer wearing the device
+  bps.onreading = function() {
+    // if the user is not wearing the device
+    if (!bps.present) {
+      // turn of the heart rate monitor if it wasn't already
+      hrm.stop();
+      // and display no heart rate info
+      setStat(heartBar, heartTxt, "--", maxHr);
+    } else {
+      // turn the heartrate monitor back on if it wasn't already
+      hrm.start();
+    }
+  }
+
+  // function to update the display if we have a new heartrate
+  hrm.onreading = function() {
+    setStat(heartBar, heartTxt, hrm.heartRate, maxHr, "bpm");
+  };
+
+  // function to start the heartrate monitor
+  this.start = function() {
+    if (me.permissions.granted("access_heart_rate")) {
+      hrm.start();
+      if (anim) {
+        animateHr();
+      };
+    };
+  };
+
+  // function to stop the heartrate monitor
+  this.stop = function() {
+    hrm.stop();
+    clearInterval(hrinterval);
   };
 };
 
