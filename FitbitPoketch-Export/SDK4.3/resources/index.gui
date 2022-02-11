@@ -35,7 +35,7 @@
         <image href="icons/stats_edge.png" opacity="1" />
         <image id="stat_img_back"  href="icons/icon_power_back.png"  y="-400%" x="20%" width="60%" height="300%" opacity=".3"/>
         <image id="stat_img_front" href="icons/icon_power_front.png" y="-400%" x="20%" width="60%" height="300%"/>
-        <text id="stat_txt" x="4%" y="-20%" font-size="15" text-length="20" font-weight="bold">No Access</text>
+        <text id="stat_txt" x="4%" y="-20%" font-size="15" text-length="20" font-weight="bold">--</text>
       </section>
     </symbol>
 
@@ -189,13 +189,13 @@
             <set href="stat_img_front" attributeName="id" to="charge_icon"/>
           </use>
           // Heart rate stats
-          //<use href="#statbar" y="30%" x="60%">
-          //  <set href="stat_bar" attributeName="id" to="heart_bar"/>
-          //  <set href="stat_txt" attributeName="id" to="heart_txt"/>
-          //  <set href="stat_img_back" attributeName="href" to="icons/icon_heart_back.png"/>
-          //  <set href="stat_img_front" attributeName="href" to="icons/icon_heart_front.png"/>
-          //  <set href="stat_img_front" attributeName="id" to="heart_icon"/>
-          //</use>
+          <use href="#statbar" y="30%" x="60%">
+            <set href="stat_bar" attributeName="id" to="heart_bar"/>
+            <set href="stat_txt" attributeName="id" to="heart_txt"/>
+            <set href="stat_img_back" attributeName="href" to="icons/icon_heart_back.png"/>
+            <set href="stat_img_front" attributeName="href" to="icons/icon_heart_front.png"/>
+            <set href="stat_img_front" attributeName="id" to="heart_icon"/>
+          </use>
           // Distance traveled stats
           <use href="#statbar" y="60%">
             <set href="stat_bar" attributeName="id" to="dist_bar"/>
