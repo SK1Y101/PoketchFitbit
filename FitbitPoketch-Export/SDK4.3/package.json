@@ -10,7 +10,9 @@
     "iconFile": "resources/icon.png",
     "wipeColor": "#607d8b",
     "requestedPermissions": [
-      "access_activity"
+      "access_activity",
+      "access_heart_rate",
+      "access_user_profile"
     ],
     "buildTargets": [
       "meson",
