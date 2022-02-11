@@ -106,8 +106,9 @@ display.addEventListener("change", () => {
   if (display.on) {
     // start sensors
     switchView.draw();
+    statsInd.start();
   } else {
-    // stop sensors
+    statsInd.stop();
   };
 });
 
