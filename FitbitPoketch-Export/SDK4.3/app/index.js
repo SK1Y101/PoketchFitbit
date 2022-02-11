@@ -6,6 +6,7 @@ import { display } from "display";
 import { me as device } from "device";
 import { me as appbit } from "appbit";
 import { peerSocket } from "messaging";
+import { HeartRateSensor } from "heart-rate";
 
 // Import the modules I have written
 import * as utils from "../common/utils";
@@ -46,10 +47,20 @@ String.prototype.splice = function(start, end, replacement) {
   return this.substr(0, start) + replacement + this.substr(end);
 }
 
+// check for permissions before creating the heart rate monitor
+if (HeartRateSensor && appbit.permissions.granted("access_heart_rate")) {
+  // fetch the sensor
+  const hrm = new HeartRateSensor();
+  // and start recording
+  hrm.start();
+} else {
+  const hrm = 0;
+}
+
 // And fetch a reference to the modules
 let settings = new Settings("settings.cbor", DefSet);
 let timeInd = new TimeIndicator(document);
-let statsInd = new StatsIndicator(document);
+let statsInd = new StatsIndicator(document, hrm, settings);
 let kitchenTimer = new KitchenTimer(document);
 let stepCounter = new StepCounter(document, settings);
 let calendarView = new CalendarView(document, settings);
@@ -106,8 +117,14 @@ display.addEventListener("change", () => {
   if (display.on) {
     // start sensors
     switchView.draw();
+    if (HeartRateSensor) {
+      hrm.start();
+    }
   } else {
     // stop sensors
+    if (HeartRateSensor) {
+      hrm.stop();
+    }
   };
 });
 
