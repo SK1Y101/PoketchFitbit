@@ -17,10 +17,13 @@ export let TimeIndicator = function(doc) {
   const minsHand = doc.getElementById("minute_hand");
   const hourHand = doc.getElementsByClassName("hour_hand");
 
-  // Fetch the pikachu sprite
-  const backSprite = doc.getElementById("back_sprite");
-  const daySprite = doc.getElementById("day_sprite");
-  const nightSprite = doc.getElementById("night_sprite");
+  // Fetch the pikachu and eevee sprite layers
+  const pikasprite = doc.getElementById("pikachu_sprite");
+  const eeveesprite = doc.getElementById("eevee_sprite");
+  // and fetch their three layers
+  //const backSprite = doc.getElementsByClassName("back_sprite");
+  const daySprite = doc.getElementsByClassName("day_sprite");
+  const nightSprite = doc.getElementsByClassName("night_sprite");
 
   // Update the position of an analogue clock hand
   let updateHand = function(ele, angle=0) {

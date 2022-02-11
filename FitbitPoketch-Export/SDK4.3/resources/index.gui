@@ -147,13 +147,24 @@
         </svg>
 
         // Pikachu sprite
-        <section x="3%" y="100% - 28%" width="40%" height="28%">
+        <section x="3%" y="100% - 28%" width="40%" height="28%" id="pikachu_sprite" display="none">
           // Block out the lines
-          <image id="back_sprite" class="screen_colour clock_sprite" href="icons/pikachu_night.png" fill="#70B070"/>
+          <image class="back_sprite screen_colour clock_sprite" href="icons/pikachu_night.png" fill="#70B070"/>
           // And draw the sprite
           <section>
-            <image id="day_sprite"   href="icons/pikachu_day.png"          display="none"   opacity="1"/>
-            <image id="night_sprite" href="icons/pikachu_night.png"        display="inline" opacity=".4"/>
+            <image class="day_sprite"   href="icons/pikachu_day.png"   display="none"   opacity="1"/>
+            <image class="night_sprite" href="icons/pikachu_night.png" display="inline" opacity=".4"/>
+          </section>
+        </section>
+
+        // Eevee sprite
+        <section x="3%" y="100% - 28%" width="40%" height="28%" id="eevee_sprite" display="inline">
+          // Block out the lines
+          <image class="back_sprite screen_colour clock_sprite" href="icons/eevee_night.png" fill="#70B070"/>
+          // And draw the sprite
+          <section>
+            <image class="day_sprite"   href="icons/eevee_day.png"   display="none"   opacity="1"/>
+            <image class="night_sprite" href="icons/eevee_night.png" display="inline" opacity=".4"/>
           </section>
         </section>
       </svg>
