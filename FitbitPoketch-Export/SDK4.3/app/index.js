@@ -6,6 +6,7 @@ import { display } from "display";
 import { me as device } from "device";
 import { me as appbit } from "appbit";
 import { peerSocket } from "messaging";
+//import { HeartRateSensor } from "heart-rate";
 
 // Import the modules I have written
 import * as utils from "../common/utils";
@@ -106,8 +107,9 @@ display.addEventListener("change", () => {
   if (display.on) {
     // start sensors
     switchView.draw();
+    statsInd.start();
   } else {
-    // stop sensors
+    statsInd.stop();
   };
 });
 
