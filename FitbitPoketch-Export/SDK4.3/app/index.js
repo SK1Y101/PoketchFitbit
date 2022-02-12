@@ -54,6 +54,7 @@ let settings = new Settings("settings.cbor", DefSet);
 let timeInd = new TimeIndicator(document, settings);
 let statsInd = new StatsIndicator(document);
 let kitchenTimer = new KitchenTimer(document);
+let moveCalc = new TypeCalc(document);
 let stepCounter = new StepCounter(document, settings);
 let calendarView = new CalendarView(document, settings);
 let countCounter = new CountCounter(document, settings);
