@@ -31,44 +31,69 @@ export let TypeCalc = function(doc, settings) {
   var moveTypeDisplay = settings.getOrElse("MoveTypeValue", 0);
   var typeOneDisplay = settings.getOrElse("TypeOneValue", 0);
   var typeTwoDisplay = settings.getOrElse("TypeTwoValue", 0);
+  var held = 0;
 
-  moveTypeText.text = numToType[moveTypeDisplay];
-  typeOneText.text = numToType[typeOneDisplay];
-  typeTwoText.text = numToType[typeTwoDisplay];
-
-  // function to draw the display
-  //this.draw = function() {
-  //  // update the types
-  //  moveTypeText.text = numToType[moveTypeDisplay];
-  //  typeOneText.text = numToType[typeOneDisplay];
-  //  typeTwoText.text = numToType[typeTwoDisplay];
-  //  // and save the value
-  //  settings.replaceSettings({"MoveTypeValue":moveTypeDisplay});
-  //  settings.replaceSettings({"TypeOneValue":typeOneDisplay});
-  //  settings.replaceSettings({"TypeTwoValue":typeTwoDisplay});
-  //};
-
-  // increment the move type on click
-  mtb.addEventListener("click", (evt) => {
-    // increment the type
-    moveTypeDisplay = (moveTypeDisplay + 1 + numTypes) % numTypes;
-    // animate the click
-    utils.animateElement(moveTypeBut, "click");
-    // and update the display
-    moveTypeText.text = numToType[moveTypeDisplay];
-    // save the type
+  // update the buttons So they show the correct type values
+  let updateTyping = function() {
+    // update text saved
     settings.replaceSettings({"MoveTypeValue":moveTypeDisplay})
+    settings.replaceSettings({"TypeOneValue":typeOneDisplay})
+    settings.replaceSettings({"TypeTwoValue":typeTwoDisplay})
+    // and update the display after 150 ms
+    moveTypeText.text = numToType[moveTypeDisplay];
+    typeOneText.text = numToType[typeOneDisplay];
+    typeTwoText.text = numToType[typeTwoDisplay];
+  };
+  updateTyping();
+
+  // -----< Move Typing >-----
+  mtb.addEventListener("mousedown", (evt) => {
+    // start a timer
+    held = Date.now();
+    // animate
+    utils.animateElement(moveTypeBut, "select");
   });
 
-  // increment the first type on click
-  otb.addEventListener("click", (evt) => {
-    // animate the click
-    utils.animateElement(typeOneBut, "click");
+  mtb.addEventListener("mouseup", (evt) => {
+    // increment
+    moveTypeDisplay = (moveTypeDisplay + 1 + numTypes) % numTypes;
+    // reset if held
+    if ((Date.now() - held) > 1000) { moveTypeDisplay = 0; };
+    // update the display
+    utils.animateElement(moveTypeBut, "unselect"); updateTyping();
   });
 
-  // increment the first type on click
-  ttb.addEventListener("click", (evt) => {
-    // animate the click
-    utils.animateElement(typeTwoBut, "click");
+  // -----< First Typing >-----
+  otb.addEventListener("mousedown", (evt) => {
+    // start a timer
+    held = Date.now();
+    // animate
+    utils.animateElement(typeOneBut, "select");
+  });
+
+  otb.addEventListener("mouseup", (evt) => {
+    // increment
+    typeOneDisplay = (typeOneDisplay + 1 + numTypes) % numTypes;
+    // reset if held
+    if ((Date.now() - held) > 1000) { typeOneDisplay = 0; };
+    // update the display
+    utils.animateElement(typeOneBut, "unselect"); updateTyping();
+  });
+
+  // -----< Second Typing >-----
+  ttb.addEventListener("mousedown", (evt) => {
+    // start a timer
+    held = Date.now();
+    // animate
+    utils.animateElement(typeTwoBut, "select");
+  });
+
+  ttb.addEventListener("mouseup", (evt) => {
+    // increment
+    typeTwoDisplay = (typeTwoDisplay + 1 + numTypes) % numTypes;
+    // reset if held
+    if ((Date.now() - held) > 1000) { typeTwoDisplay = 0; };
+    // update the display
+    utils.animateElement(typeTwoBut, "unselect"); updateTyping();
   });
 };
