@@ -30,6 +30,7 @@ let DefSet = function() {
     edgeColour: "#3050F8",
     faceColour: "#303030",
     screenColour: "#70B070",
+    mascotSprite: 0,
     // switch view
     viewnum: 0,
     activeApps: [1],
@@ -49,7 +50,7 @@ String.prototype.splice = function(start, end, replacement) {
 
 // And fetch a reference to the modules
 let settings = new Settings("settings.cbor", DefSet);
-let timeInd = new TimeIndicator(document);
+let timeInd = new TimeIndicator(document, settings);
 let statsInd = new StatsIndicator(document);
 let kitchenTimer = new KitchenTimer(document);
 let stepCounter = new StepCounter(document, settings);
@@ -148,6 +149,8 @@ let applySettings = function() {
     settings.isPresent("faceColour", updateColour, fc);
     settings.isPresent("screenColour", updateColour, sc);
     settings.isPresent("activeApps", switchView.appSettings);
+    // Choose the mascot
+    settings.isPresent("mascotSprite", timeInd.switchMascot);
     // Show that settings have been loaded
     console.log("Settings applied");
   } catch (err) {
