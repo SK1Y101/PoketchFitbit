@@ -147,7 +147,7 @@
         </svg>
 
         // Pikachu sprite
-        <section x="3%" y="100% - 28%" width="40%" height="28%" id="pikachu_sprite" display="none">
+        <svg x="3%" y="100% - 28%" width="40%" height="28%" id="pikachu_sprite" display="inline">
           // Block out the lines
           <image class="back_sprite screen_colour clock_sprite" href="icons/pikachu_night.png" fill="#70B070"/>
           // And draw the sprite
@@ -155,10 +155,10 @@
             <image class="day_sprite"   href="icons/pikachu_day.png"   display="none"   opacity="1"/>
             <image class="night_sprite" href="icons/pikachu_night.png" display="inline" opacity=".4"/>
           </section>
-        </section>
+        </svg>
 
         // Eevee sprite
-        <section x="3%" y="100% - 28%" width="40%" height="28%" id="eevee_sprite" display="inline">
+        <svg x="3%" y="100% - 30%" width="45%" height="35%" id="eevee_sprite" display="none">
           // Block out the lines
           <image class="back_sprite screen_colour clock_sprite" href="icons/eevee_night.png" fill="#70B070"/>
           // And draw the sprite
@@ -166,7 +166,7 @@
             <image class="day_sprite"   href="icons/eevee_day.png"   display="none"   opacity="1"/>
             <image class="night_sprite" href="icons/eevee_night.png" display="inline" opacity=".4"/>
           </section>
-        </section>
+        </svg>
       </svg>
 
       // Second view (Pedometer)
