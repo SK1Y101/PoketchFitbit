@@ -53,9 +53,9 @@ String.prototype.splice = function(start, end, replacement) {
 let settings = new Settings("settings.cbor", DefSet);
 let timeInd = new TimeIndicator(document, settings);
 let statsInd = new StatsIndicator(document);
-let kitchenTimer = new KitchenTimer(document);
-let moveCalc = new TypeCalc(document);
+let moveCalc = new TypeCalc(document, settings);
 let stepCounter = new StepCounter(document, settings);
+let kitchenTimer = new KitchenTimer(document);
 let calendarView = new CalendarView(document, settings);
 let countCounter = new CountCounter(document, settings);
 
