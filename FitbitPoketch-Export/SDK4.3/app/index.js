@@ -11,6 +11,7 @@ import { peerSocket } from "messaging";
 // Import the modules I have written
 import * as utils from "../common/utils";
 import { Settings } from "../common/settings";
+import { TypeCalc } from "./Poketch/typecalc";
 import { SwitchView } from "./Poketch/switch";
 import { StepCounter } from "./Poketch/steps";
 import { KitchenTimer } from "./Poketch/timer";
