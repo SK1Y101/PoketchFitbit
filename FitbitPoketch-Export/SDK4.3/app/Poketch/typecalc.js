@@ -59,7 +59,7 @@ export let TypeCalc = function(doc, settings) {
   // compute effectiveness
   let compEffect = function(move_type, type_one, type_two) {
     var eff_row = weakness[move_type];
-    return eff_row[type_one] * ((type_one == type_two) ? 1 : eff_row[type_two]);
+    return eff_row[type_one] * ((type_one == type_two) ? 2 : eff_row[type_two]);
   };
 
   // change effectiveness given typings

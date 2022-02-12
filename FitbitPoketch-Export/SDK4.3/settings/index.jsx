@@ -81,7 +81,7 @@ function mySettings(props) {
           settingsKey="mascotSprite"
           options={[
             {name:"Pikachu", value:0, subname:"The Original Poketch Mascot."},
-            {name:"Eevee", value:1, subname:"Want an adorable eevee on your Poketch instead?."},
+            {name:"Eevee", value:1, subname:"Want an adorable Eevee on your Poketch instead?."},
           ]}
           renderItem={
             (option) =>
@@ -99,12 +99,13 @@ function mySettings(props) {
           multiple
           settingsKey="activeApps"
           options={[
-            {name:"Pedometer",    value:1},
-            {name:"Stats View",   value:2},
-            {name:"Counter",      value:3},
-            {name:"Analog Watch", value:4},
-            {name:"Calendar",     value:5},
-            {name:"Timer",        value:6},
+            {name:"Pedometer",       value:1},
+            {name:"Stats View",      value:2},
+            {name:"Counter",         value:3},
+            {name:"Analog Watch",    value:4},
+            {name:"Move Calculator", value:5},
+            {name:"Calendar",        value:6},
+            {name:"Timer",           value:7},
           ]}
         />
         <Text>The Pokétch applications that will be accessible to the user.</Text>
