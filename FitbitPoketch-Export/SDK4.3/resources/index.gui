@@ -345,14 +345,19 @@
       // Sixth view (Type calc)
       <svg id="view5" display="none">
         // move type
-        <use class="move_type_button" href="#screen_button_text" x="50% - 20%" y="50% + 35%" width="40%" height="15%">
+        <use class="move_type_button" href="#screen_button_text" x="50% - 25%" y="50% + 38%" width="45%" height="20%">
           <set href="button_text" attributeName="id" to="move_type_text"/>
           <set href="count_but" attributeName="id" to="move_type_but"/>
         </use>
         // opponent first type
-        <use class="type_one_button" href="#screen_button_text" x="50% + 20%" y="50% - 35%" width="40%" height="15%">
+        <use class="type_one_button" href="#screen_button_text" x="50% + 25%" y="50% - 38%" width="45%" height="20%">
           <set href="button_text" attributeName="id" to="type_one_text"/>
           <set href="count_but" attributeName="id" to="type_one_but"/>
+        </use>
+        // opponent second type
+        <use class="type_two_button" href="#screen_button_text" x="50% + 25%" y="50% - 38% + 22%" width="45%" height="20%">
+          <set href="button_text" attributeName="id" to="type_two_text"/>
+          <set href="count_but" attributeName="id" to="type_two_but"/>
         </use>
       </svg>
 
