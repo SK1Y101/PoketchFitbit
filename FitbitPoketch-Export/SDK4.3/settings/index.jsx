@@ -76,6 +76,21 @@ function mySettings(props) {
               />
           }
         />
+        <Select
+          label={"Mascot Sprite"}
+          settingsKey="mascotSprite"
+          options={[
+            {name:"Pikachu", value:0, subname:"The Original Poketch Mascot."},
+            {name:"Eevee", value:1, subname:"Want an adorable eevee on your Poketch instead?."},
+          ]}
+          renderItem={
+            (option) =>
+              <TextImageRow
+                label={option.name}
+                sublabel={option.subname}
+              />
+          }
+        />
       </Section>
       <Section
         title={<Text bold align="center">Application settings</Text>}>
