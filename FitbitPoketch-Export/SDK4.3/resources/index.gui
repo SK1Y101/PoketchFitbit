@@ -70,7 +70,7 @@
           <rect x="-50%"      y="-50%"       width="100%" height="90%"/>
           <rect x="-50% + 4%" y="-50% + 4%"  width="92%"  height="82%" class="screen_colour"/>
           // Text
-          <text id="button_text" x="-20%" y="-32%" font-size="20" text-length="8" font-weight="bold">--</text>
+          <text id="button_text" y="0%" font-size="20" text-length="8" text-anchor="middle" font-weight="bold">--</text>
         </use>
         <rect id="count_but" pointer-events="visible" x="-50%" y="-50%" width="100%" height="100%" opacity="0"/>
       </svg>
@@ -345,12 +345,12 @@
       // Sixth view (Type calc)
       <svg id="view5" display="none">
         // move type
-        <use class="move_type_button" href="#screen_button_text" x="50% - 20%" y="50% + 35%" width="40%" height="30%">
+        <use class="move_type_button" href="#screen_button_text" x="50% - 20%" y="50% + 35%" width="40%" height="15%">
           <set href="button_text" attributeName="id" to="move_type_text"/>
           <set href="count_but" attributeName="id" to="move_type_but"/>
         </use>
         // opponent first type
-        <use class="type_one_button" href="#screen_button_text" x="50% + 20%" y="50% - 35%" width="40%" height="30%">
+        <use class="type_one_button" href="#screen_button_text" x="50% + 20%" y="50% - 35%" width="40%" height="15%">
           <set href="button_text" attributeName="id" to="type_one_text"/>
           <set href="count_but" attributeName="id" to="type_one_but"/>
         </use>
