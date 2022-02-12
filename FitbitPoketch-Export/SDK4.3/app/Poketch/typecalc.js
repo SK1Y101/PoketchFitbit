@@ -26,6 +26,25 @@ export let TypeCalc = function(doc, settings) {
   // the type as a number
   const numToType = ["Normal", "Fire", "Water", "Grass", "Electric", "Ice", "Fighting", "Poison", "Ground", "Flying", "Psychic", "Bug", "Rock", "Ghost", "Dark", "Dragon", "Steel", "Fairy"];
   const numTypes = numToType.length;
+  // store the weakness table. Row defines attacker, column defines defender
+  const weakness = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,.5, 0, 1, 1,.5, 1],
+                    [1,.5,.5, 1, 2, 2, 1, 1, 1, 1, 1, 2,.5, 1,.5, 1, 2, 1],
+                    [1, 2,.5, 1,.5, 1, 1, 1, 2, 1, 1, 1, 2, 1,.5, 1, 1, 1],
+                    [1, 1, 2,.5,.5, 1, 1, 1, 0, 2, 1, 1, 1, 1,.5, 1, 1, 1],
+                    [1,.5, 2, 1,.5, 1, 1,.5, 2,.5, 1,.5, 2, 1,.5, 1,.5, 1],
+                    [1,.5,.5, 1, 2,.5, 1, 1, 2, 2, 1, 1, 1, 1, 2, 1,.5, 1],
+                    [2, 1, 1, 1, 1, 2, 1,.5, 1,.5,.5,.5, 2, 0, 1, 2, 2,.5],
+                    [1, 1, 1, 1, 2, 1, 1,.5,.5, 1, 1, 1,.5,.5, 1, 1, 0, 2],
+                    [1, 2, 1, 2,.5, 1, 1, 2, 1, 0, 1,.5, 2, 1, 1, 1, 2, 1],
+                    [1, 1, 1,.5, 2, 1, 2, 1, 1, 1, 1, 2,.5, 1, 1, 1,.5, 1],
+                    [1, 1, 1, 1, 1, 1, 2, 2, 1, 1,.5, 1, 1, 1, 1, 0,.5, 1],
+                    [1,.5, 1, 1, 2, 1,.5,.5, 1,.5, 2, 1, 1,.5, 1, 2,.5,.5],
+                    [1, 2, 1, 1, 1, 2,.5, 1,.5, 2, 1, 2, 1, 1, 1, 1,.5, 1],
+                    [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1,.5, 1, 1],
+                    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1,.5, 0],
+                    [1, 1, 1, 1, 1, 1,.5, 1, 1, 1, 2, 1, 1, 2, 1,.5, 1,.5],
+                    [1,.5,.5,.5, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1,.5, 2],
+                    [1,.5, 1, 1, 1, 1, 2,.5, 1, 1, 1, 1, 1, 1, 2, 2,.5, 1],];
 
   // Fetch the selected move type
   var moveTypeDisplay = settings.getOrElse("MoveTypeValue", 0);
@@ -33,16 +52,31 @@ export let TypeCalc = function(doc, settings) {
   var typeTwoDisplay = settings.getOrElse("TypeTwoValue", 0);
   var held = 0;
 
+  // compute effectiveness given typings
+  let fetchEffect = function() {
+    // fetch the weaknesses
+    //effectiveness = weakness[moveTypeDisplay][typeOneDisplay];
+    // if they are the same type, stop here
+    //if (typeOneDisplay == typeTwoDisplay) { return effectiveness; };
+    // otherwise, compute the second too
+    //return effectiveness * weakness[moveTypeDisplay][typeTwoDisplay];
+    return 1;
+  };
+
   // update the buttons So they show the correct type values
   let updateTyping = function() {
     // update text saved
-    settings.replaceSettings({"MoveTypeValue":moveTypeDisplay})
-    settings.replaceSettings({"TypeOneValue":typeOneDisplay})
-    settings.replaceSettings({"TypeTwoValue":typeTwoDisplay})
-    // and update the display after 150 ms
-    moveTypeText.text = numToType[moveTypeDisplay];
-    typeOneText.text = numToType[typeOneDisplay];
-    typeTwoText.text = numToType[typeTwoDisplay];
+    settings.replaceSettings({"MoveTypeValue":moveTypeDisplay});
+    settings.replaceSettings({"TypeOneValue":typeOneDisplay});
+    settings.replaceSettings({"TypeTwoValue":typeTwoDisplay});
+    setTimeout(function() {
+      // and update the display after 150 ms
+      moveTypeText.text = numToType[moveTypeDisplay];
+      typeOneText.text = numToType[typeOneDisplay];
+      typeTwoText.text = numToType[typeTwoDisplay];
+      // compute the effectiveness
+      console.log(fetchEffect());
+    }, 150);
   };
   updateTyping();
 
