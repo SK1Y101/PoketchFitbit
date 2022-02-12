@@ -359,6 +359,8 @@
           <set href="button_text" attributeName="id" to="type_two_text"/>
           <set href="count_but" attributeName="id" to="type_two_but"/>
         </use>
+        // and the effectiveness display
+        <image id="effectiveness_display" href="icons/effectiveness_0.png" x=" 3%" y="50% - 45%" width="47%" height="35%" opacity=".4"/>
       </svg>
 
       // Seventh view (Calendar)

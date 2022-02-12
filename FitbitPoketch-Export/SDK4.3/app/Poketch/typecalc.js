@@ -15,6 +15,10 @@ export let TypeCalc = function(doc, settings) {
   const typeOneText = doc.getElementById("type_one_text");
   const typeTwoText = doc.getElementById("type_two_text");
 
+  // Fetch the effectiveness display
+  const effectiveDisplay = doc.getElementById("effectiveness_display");
+  effectiveDisplay.href = "icons/effectiveness_3.png";
+
   // And the actual trigger
   const mtb = doc.getElementById("move_type_but");
   const otb = doc.getElementById("type_one_but");
@@ -55,12 +59,23 @@ export let TypeCalc = function(doc, settings) {
   // compute effectiveness given typings
   let fetchEffect = function() {
     // fetch the weaknesses
-    //effectiveness = weakness[moveTypeDisplay][typeOneDisplay];
-    // if they are the same type, stop here
-    //if (typeOneDisplay == typeTwoDisplay) { return effectiveness; };
-    // otherwise, compute the second too
-    //return effectiveness * weakness[moveTypeDisplay][typeTwoDisplay];
-    return 1;
+    effectiveness = weakness[moveTypeDisplay][typeOneDisplay];
+    // if the opponent has two different types, multiply the effectiveness
+    if (typeOneDisplay != typeTwoDisplay) {
+      effectiveness = effectiveness * weakness[moveTypeDisplay][typeTwoDisplay];
+    };
+    // change the effectiveness to an integer
+    effectiveness = Math.round(4*fetchEffect());
+    // set href based on effectiveness
+    if (effectiveness == 16) {
+      effectiveDisplay.href = "icons/effectiveness_5.png";
+    } else if (effectiveness == 8 ) {
+      effectiveDisplay.href = "icons/effectiveness_4.png";
+    } else if (effectiveness == 4 ) {
+      effectiveDisplay.href = "icons/effectiveness_3.png";
+    } else {
+      effectiveDisplay.href = "icons/effectiveness_"+effectiveness+".png";
+    };
   };
 
   // update the buttons So they show the correct type values
@@ -75,7 +90,7 @@ export let TypeCalc = function(doc, settings) {
       typeOneText.text = numToType[typeOneDisplay];
       typeTwoText.text = numToType[typeTwoDisplay];
       // compute the effectiveness
-      console.log(fetchEffect());
+      updateEffectivenessIcon();
     }, 150);
   };
   updateTyping();
