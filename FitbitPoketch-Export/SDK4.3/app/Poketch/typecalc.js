@@ -28,27 +28,27 @@ export let TypeCalc = function(doc, settings) {
   utils.changeLayer(ttb, 110);
 
   // the type as a number
-  const numToType = ["Normal", "Fire", "Water", "Grass", "Electric", "Ice", "Fighting", "Poison", "Ground", "Flying", "Psychic", "Bug", "Rock", "Ghost", "Dark", "Dragon", "Steel", "Fairy"];
+  const numToType = ["Normal", "Fire", "Water", "Electric", "Grass", "Ice", "Fighting", "Poison", "Ground", "Flying", "Psychic", "Bug", "Rock", "Ghost", "Dragon", "Dark", "Steel", "Fairy"];
   const numTypes = numToType.length;
   // store the weakness table. Row defines attacker, column defines defender
-  const weakness = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,.5, 0, 1, 1,.5, 1],
-                    [1,.5,.5, 1, 2, 2, 1, 1, 1, 1, 1, 2,.5, 1,.5, 1, 2, 1],
-                    [1, 2,.5, 1,.5, 1, 1, 1, 2, 1, 1, 1, 2, 1,.5, 1, 1, 1],
-                    [1, 1, 2,.5,.5, 1, 1, 1, 0, 2, 1, 1, 1, 1,.5, 1, 1, 1],
-                    [1,.5, 2, 1,.5, 1, 1,.5, 2,.5, 1,.5, 2, 1,.5, 1,.5, 1],
-                    [1,.5,.5, 1, 2,.5, 1, 1, 2, 2, 1, 1, 1, 1, 2, 1,.5, 1],
-                    [2, 1, 1, 1, 1, 2, 1,.5, 1,.5,.5,.5, 2, 0, 1, 2, 2,.5],
-                    [1, 1, 1, 1, 2, 1, 1,.5,.5, 1, 1, 1,.5,.5, 1, 1, 0, 2],
-                    [1, 2, 1, 2,.5, 1, 1, 2, 1, 0, 1,.5, 2, 1, 1, 1, 2, 1],
-                    [1, 1, 1,.5, 2, 1, 2, 1, 1, 1, 1, 2,.5, 1, 1, 1,.5, 1],
-                    [1, 1, 1, 1, 1, 1, 2, 2, 1, 1,.5, 1, 1, 1, 1, 0,.5, 1],
-                    [1,.5, 1, 1, 2, 1,.5,.5, 1,.5, 2, 1, 1,.5, 1, 2,.5,.5],
-                    [1, 2, 1, 1, 1, 2,.5, 1,.5, 2, 1, 2, 1, 1, 1, 1,.5, 1],
-                    [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1,.5, 1, 1],
-                    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1,.5, 0],
-                    [1, 1, 1, 1, 1, 1,.5, 1, 1, 1, 2, 1, 1, 2, 1,.5, 1,.5],
-                    [1,.5,.5,.5, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1,.5, 2],
-                    [1,.5, 1, 1, 1, 1, 2,.5, 1, 1, 1, 1, 1, 1, 2, 2,.5, 1],];
+  const weakness = [[2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 2, 2, 1, 2],
+                    [2, 1, 1, 2, 4, 4, 2, 2, 2, 2, 2, 4, 1, 2, 1, 2, 4, 2],
+                    [2, 4, 1, 2, 1, 2, 2, 2, 4, 2, 2, 2, 4, 2, 1, 2, 2, 2],
+                    [2, 2, 4, 1, 1, 2, 2, 2, 0, 4, 2, 2, 2, 2, 1, 2, 2, 2],
+                    [2, 1, 4, 2, 1, 2, 2, 1, 4, 1, 2, 1, 4, 2, 1, 2, 1, 2],
+                    [2, 1, 1, 2, 4, 1, 2, 2, 4, 4, 2, 2, 2, 2, 4, 2, 1, 2],
+                    [4, 2, 2, 2, 2, 4, 2, 1, 2, 1, 1, 1, 4, 0, 2, 4, 4, 1],
+                    [2, 2, 2, 2, 4, 2, 2, 1, 1, 2, 2, 2, 1, 1, 2, 2, 0, 4],
+                    [2, 4, 2, 4, 1, 2, 2, 4, 2, 0, 2, 1, 4, 2, 2, 2, 4, 2],
+                    [2, 2, 2, 1, 4, 2, 4, 2, 2, 2, 2, 4, 1, 2, 2, 2, 1, 2],
+                    [2, 2, 2, 2, 2, 2, 4, 4, 2, 2, 1, 2, 2, 2, 2, 0, 1, 2],
+                    [2, 1, 2, 2, 4, 2, 1, 1, 2, 1, 4, 2, 2, 1, 2, 4, 1, 1],
+                    [2, 4, 2, 2, 2, 4, 1, 2, 1, 4, 2, 4, 2, 2, 2, 2, 1, 2],
+                    [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 2, 2, 4, 2, 1, 2, 2],
+                    [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 2, 1, 0],
+                    [2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 4, 2, 2, 4, 2, 1, 2, 1],
+                    [2, 1, 1, 1, 2, 4, 2, 2, 2, 2, 2, 2, 4, 2, 2, 2, 1, 4],
+                    [2, 1, 2, 2, 2, 2, 4, 1, 2, 2, 2, 2, 2, 2, 4, 4, 1, 2],];
 
   // Fetch the selected move type
   var moveTypeDisplay = settings.getOrElse("MoveTypeValue", 0);
@@ -56,16 +56,16 @@ export let TypeCalc = function(doc, settings) {
   var typeTwoDisplay = settings.getOrElse("TypeTwoValue", 0);
   var held = 0;
 
-  // compute effectiveness given typings
-  let fetchEffect = function() {
-    // fetch the weaknesses
-    effectiveness = weakness[moveTypeDisplay][typeOneDisplay];
-    // if the opponent has two different types, multiply the effectiveness
-    if (typeOneDisplay != typeTwoDisplay) {
-      effectiveness = effectiveness * weakness[moveTypeDisplay][typeTwoDisplay];
-    };
-    // change the effectiveness to an integer
-    effectiveness = Math.round(4*fetchEffect());
+  // compute effectiveness
+  let compEffect = function(move_type, type_one, type_two) {
+    var eff_row = weakness[move_type];
+    return eff_row[type_one] * ((type_one == type_two) ? 1 : eff_row[type_two]);
+  };
+
+  // change effectiveness given typings
+  let changeEffect = function() {
+    // fetch the weaknesses and convert to unique int
+    var effectiveness = compEffect(moveTypeDisplay, typeOneDisplay, typeTwoDisplay);
     // set href based on effectiveness
     if (effectiveness == 16) {
       effectiveDisplay.href = "icons/effectiveness_5.png";
@@ -73,8 +73,12 @@ export let TypeCalc = function(doc, settings) {
       effectiveDisplay.href = "icons/effectiveness_4.png";
     } else if (effectiveness == 4 ) {
       effectiveDisplay.href = "icons/effectiveness_3.png";
+    } else if (effectiveness == 2) {
+      effectiveDisplay.href = "icons/effectiveness_2.png";
+    } else if (effectiveness == 1) {
+      effectiveDisplay.href = "icons/effectiveness_1.png";
     } else {
-      effectiveDisplay.href = "icons/effectiveness_"+effectiveness+".png";
+      effectiveDisplay.href = "icons/effectiveness_0.png";
     };
   };
 
@@ -84,14 +88,12 @@ export let TypeCalc = function(doc, settings) {
     settings.replaceSettings({"MoveTypeValue":moveTypeDisplay});
     settings.replaceSettings({"TypeOneValue":typeOneDisplay});
     settings.replaceSettings({"TypeTwoValue":typeTwoDisplay});
-    setTimeout(function() {
-      // and update the display after 150 ms
-      moveTypeText.text = numToType[moveTypeDisplay];
-      typeOneText.text = numToType[typeOneDisplay];
-      typeTwoText.text = numToType[typeTwoDisplay];
-      // compute the effectiveness
-      updateEffectivenessIcon();
-    }, 150);
+    // and update the display after 150 ms
+    moveTypeText.text = numToType[moveTypeDisplay];
+    typeOneText.text = numToType[typeOneDisplay];
+    typeTwoText.text = numToType[typeTwoDisplay];
+    // compute the effectiveness
+    changeEffect();
   };
   updateTyping();
 
