@@ -5,7 +5,7 @@ let debug = false;
 import * as utils from "../../common/utils";
 
 // Define this module
-export let TimeIndicator = function(doc) {
+export let TimeIndicator = function(doc, settings) {
   // Simple radians to degrees
   const deg2rad = (Math.PI / 180);
 
@@ -18,8 +18,8 @@ export let TimeIndicator = function(doc) {
   const hourHand = doc.getElementsByClassName("hour_hand");
 
   // Fetch the pikachu and eevee sprite layers
-  const pikasprite = doc.getElementById("pikachu_sprite");
-  const eeveesprite = doc.getElementById("eevee_sprite");
+  const pikaSprite = doc.getElementById("pikachu_sprite");
+  const eeveeSprite = doc.getElementById("eevee_sprite");
   // and fetch their three layers
   //const backSprite = doc.getElementsByClassName("back_sprite");
   const daySprite = doc.getElementsByClassName("day_sprite");
@@ -57,4 +57,12 @@ export let TimeIndicator = function(doc) {
     utils.showElement(daySprite, daytime);
     utils.showElement(nightSprite, !daytime);
   };
+
+  //Function to choose which pokemon to display
+  this.switchMascot = function(mascot) {
+    mascot = mascot ?? 0;
+    // update the sprite
+    utils.showElement(pikaSprite, mascot==0);
+    utils.showElement(eeveeSprite, mascot==1);
+  }
 };
