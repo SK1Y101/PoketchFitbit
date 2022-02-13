@@ -344,6 +344,10 @@
 
       // Sixth view (Type calc)
       <svg id="view5" display="none">
+        // background image
+        <image href="icons/effectiveness_background.png" x="0%" y="0%" width="100%" height="100%" opacity=".4"/>
+        // the effectiveness display
+        <image id="effectiveness_display" href="icons/effectiveness_0.png" x=" 3%" y="50% - 45%" width="47%" height="35%" opacity=".6"/>
         // move type
         <use class="move_type_button" href="#screen_button_text" x="50% - 25%" y="50% + 38%" width="45%" height="20%">
           <set href="button_text" attributeName="id" to="move_type_text"/>
@@ -359,8 +363,6 @@
           <set href="button_text" attributeName="id" to="type_two_text"/>
           <set href="count_but" attributeName="id" to="type_two_but"/>
         </use>
-        // and the effectiveness display
-        <image id="effectiveness_display" href="icons/effectiveness_0.png" x=" 3%" y="50% - 45%" width="47%" height="35%" opacity=".4"/>
       </svg>
 
       // Seventh view (Calendar)
