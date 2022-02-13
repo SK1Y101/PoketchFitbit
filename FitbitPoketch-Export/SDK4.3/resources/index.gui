@@ -345,10 +345,10 @@
       // Sixth view (Type calc)
       <svg id="view5" display="none">
         // background image
-        <image href="icons/effectiveness_background.png" x="0%" y="0%" width="100%" height="100%" opacity=".4"/>
+        <image href="icons/effectiveness_background.png" x="0%" y="0%" width="100%" height="100%" opacity=".7"/>
         // the effectiveness display
-        <image id="effectiveness_display" href="icons/effectiveness_0.png" x=" 3%" y="50% - 45%" width="47%" height="35%" opacity=".3"/>
-        <textarea id="effectiveness_display_text" x="75% - 18%" y="84%" width="40%" height="20%" font-size="20" text-length="20" font-weight="bold">--</textarea>
+        <image id="effectiveness_display" href="icons/effectiveness_0.png" x=" 3%" y="50% - 45%" width="47%" height="35%" opacity=".5"/>
+        <textarea id="effectiveness_display_text" x="75% - 15%" y="84%" width="40%" height="20%" font-size="20" text-length="20" font-weight="bold">--</textarea>
         // move type
         <use class="move_type_button" href="#screen_button_text" x="50% - 25%" y="50% + 38%" width="45%" height="20%">
           <set href="button_text" attributeName="id" to="move_type_text"/>
