@@ -17,8 +17,8 @@ import { StepCounter } from "./Poketch/steps";
 import { KitchenTimer } from "./Poketch/timer";
 import { TimeIndicator } from "./Poketch/clock";
 import { CountCounter } from "./Poketch/counter";
+import { StatsIndicator } from "./Poketch/stats";
 import { CalendarView } from "./Poketch/calendar";
-import { StatsIndicator} from "./Poketch/stats";
 
 // Log the memory usage once the entire program is loaded
 console.log("Device JS memory at import: " + memory.js.used + "/" + memory.js.total);
