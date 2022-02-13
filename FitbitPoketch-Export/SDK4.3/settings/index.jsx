@@ -102,7 +102,7 @@ function mySettings(props) {
             {name:"Pedometer",       value:1},
             {name:"Stats View",      value:2},
             {name:"Counter",         value:3},
-            {name:"Analog Watch",    value:4},
+            {name:"Analogue Watch",  value:4},
             {name:"Move Calculator", value:5},
             {name:"Calendar",        value:6},
             {name:"Timer",           value:7},

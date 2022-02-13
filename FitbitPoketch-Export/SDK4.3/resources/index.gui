@@ -286,7 +286,8 @@
         // Draw the ticks
         // Hour ticks
         <svg opacity=".624" x="50%" y="50%">
-          <rect x="-3%"       y="-3% - 40%" width="6%" height="6%"/>
+          <image x="-3%"      y="-3% -40%"  width="6%" height="6%" href="icons/icon_pokeball.png"/>
+          //<rect x="-3%"       y="-3% - 40%" width="6%" height="6%"/>
           <rect x="-3% + 40%" y="-3%"       width="6%" height="6%"/>
           <rect x="-3%"       y="-3% + 40%" width="6%" height="6%"/>
           <rect x="-3% - 40%" y="-3%"       width="6%" height="6%"/>
