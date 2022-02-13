@@ -17,7 +17,9 @@ export let TypeCalc = function(doc, settings) {
 
   // Fetch the effectiveness display
   const effectiveDisplay = doc.getElementById("effectiveness_display");
+  const effectiveText = doc.getElementById("effectiveness_display_text");
   effectiveDisplay.href = "icons/effectiveness_3.png";
+  effectiveText.text = "Regularaly effective";
 
   // And the actual trigger
   const mtb = doc.getElementById("move_type_but");
@@ -29,6 +31,7 @@ export let TypeCalc = function(doc, settings) {
 
   // the type as a number
   const numToType = ["Normal", "Fire", "Water", "Electric", "Grass", "Ice", "Fighting", "Poison", "Ground", "Flying", "Psychic", "Bug", "Rock", "Ghost", "Dragon", "Dark", "Steel", "Fairy"];
+  const effToText = ["Not effective", "Not very effective", "Regularaly effective", "Super effective"];
   const numTypes = numToType.length;
   // store the weakness table. Row defines attacker, column defines defender
   const weakness = [[2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 2, 2, 1, 2],
@@ -69,16 +72,22 @@ export let TypeCalc = function(doc, settings) {
     // set href based on effectiveness
     if (effectiveness == 16) {
       effectiveDisplay.href = "icons/effectiveness_5.png";
+      effectiveText.text = effToText[3];
     } else if (effectiveness == 8 ) {
       effectiveDisplay.href = "icons/effectiveness_4.png";
+      effectiveText.text = effToText[3];
     } else if (effectiveness == 4 ) {
       effectiveDisplay.href = "icons/effectiveness_3.png";
+      effectiveText.text = effToText[2];
     } else if (effectiveness == 2) {
       effectiveDisplay.href = "icons/effectiveness_2.png";
+      effectiveText.text = effToText[1];
     } else if (effectiveness == 1) {
       effectiveDisplay.href = "icons/effectiveness_1.png";
+      effectiveText.text = effToText[1];
     } else {
       effectiveDisplay.href = "icons/effectiveness_0.png";
+      effectiveText.text = effToText[0];
     };
   };
 
