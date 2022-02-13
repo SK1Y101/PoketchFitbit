@@ -103,6 +103,21 @@
       <circle cx="84%" cy="98%" r="1%"/>
     </svg>
   </svg>
+  // bdsp
+  <svg class="bdsp_skin" width="102%" display="none">
+    // face
+    <image href="ui/Poketch_Border_top_bdsp.png" fill="#FFFFFF" width="104%" opacity=".15"/>
+    <image href="ui/Poketch_Border_bdsp.png" class="face_colour" id="brilliant_diamond" fill="#303030"/>
+    // screen back
+    <svg fill="#1D181E">
+      <rect x="1%" y="2%" width="82% + 2%" height="96%"/>
+      <rect x="2%" y="1%" width="82%" height="98%"/>
+      <circle cx="2%"  cy="2%" r="1%"/>
+      <circle cx="84%" cy="2%" r="1%"/>
+      <circle cx="2%"  cy="98%" r="1%"/>
+      <circle cx="84%" cy="98%" r="1%"/>
+    </svg>
+  </svg>
 
   // side buttons
   <svg class="pt_skin" display="inline">
@@ -136,6 +151,17 @@
         <image href="buttons/Poketch_Button_dp.png"                     width="100%" height="100%" fill="#FA413F" opacity=".5"/>
         <image href="buttons/Poketch_Button_dp.png"       x="5%" y="2%" width="94%"  height="96%"  fill="#FA413F"/>
         <image href="buttons/Poketch_Button_dp_shine.png" x="5%" y="2%" width="94%"  height="15%"  fill="#FFFFFF" opacity=".25"/>
+      </use>
+    </use>
+  </svg>
+  // bdsp button
+  <svg class="bdsp_skin" x="90% - 1%" y="48%" width="10%" height="45%" display="none">
+    <image href="buttons/Poketch_Button_bdsp.png" x="-10%" y="-3%" width="120%" height="105%" fill="#1D181E"/>
+    <use class="button_bottom" href="#button_anim_shrink">
+      <use class="button_bottom" href="#button_anim">
+        <image href="buttons/Poketch_Button_bdsp.png"                     width="100%" height="100%" fill="#FA413F" opacity=".5"/>
+        <image href="buttons/Poketch_Button_bdsp.png"       x="5%" y="2%" width="94%"  height="96%"  fill="#FA413F"/>
+        <image href="buttons/Poketch_Button_bdsp_shine.png" x="5%" y="2%" width="94%"  height="15%"  fill="#FFFFFF" opacity=".25"/>
       </use>
     </use>
   </svg>
