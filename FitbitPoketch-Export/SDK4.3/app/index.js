@@ -11,13 +11,14 @@ import { peerSocket } from "messaging";
 // Import the modules I have written
 import * as utils from "../common/utils";
 import { Settings } from "../common/settings";
+import { TypeCalc } from "./Poketch/typecalc";
 import { SwitchView } from "./Poketch/switch";
 import { StepCounter } from "./Poketch/steps";
 import { KitchenTimer } from "./Poketch/timer";
 import { TimeIndicator } from "./Poketch/clock";
 import { CountCounter } from "./Poketch/counter";
+import { StatsIndicator } from "./Poketch/stats";
 import { CalendarView } from "./Poketch/calendar";
-import { StatsIndicator} from "./Poketch/stats";
 
 // Log the memory usage once the entire program is loaded
 console.log("Device JS memory at import: " + memory.js.used + "/" + memory.js.total);
@@ -52,8 +53,9 @@ String.prototype.splice = function(start, end, replacement) {
 let settings = new Settings("settings.cbor", DefSet);
 let timeInd = new TimeIndicator(document, settings);
 let statsInd = new StatsIndicator(document);
-let kitchenTimer = new KitchenTimer(document);
+let moveCalc = new TypeCalc(document, settings);
 let stepCounter = new StepCounter(document, settings);
+let kitchenTimer = new KitchenTimer(document);
 let calendarView = new CalendarView(document, settings);
 let countCounter = new CountCounter(document, settings);
 
