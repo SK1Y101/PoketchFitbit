@@ -57,6 +57,24 @@
         <rect id="count_but" pointer-events="visible" x="-50%" y="-50%" width="100%" height="100%" opacity="0"/>
       </svg>
     </symbol>
+    // Text version of the above
+    <symbol id="screen_button_text">
+      <svg fill="#303030" opacity="1">
+        // Background
+        <rect x="-50%"      y="-40%"       width="100%" height="90%"/>
+        <rect x="-50% + 4%" y="-40% + 4%"  width="92%"  height="82%" class="screen_colour"/>
+        <rect x="-50% + 4%" y="-40% + 4%"  width="92%"  height="82%"opacity=".4"/>
+        // Button
+        <use href="#button_anim">
+          // Face
+          <rect x="-50%"      y="-50%"       width="100%" height="90%"/>
+          <rect x="-50% + 4%" y="-50% + 4%"  width="92%"  height="82%" class="screen_colour"/>
+          // Text
+          <text id="button_text" y="0%" font-size="20" text-length="8" text-anchor="middle" font-weight="bold">--</text>
+        </use>
+        <rect id="count_but" pointer-events="visible" x="-50%" y="-50%" width="100%" height="100%" opacity="0"/>
+      </svg>
+    </symbol>
   </defs>
 
   // watch face
@@ -324,8 +342,32 @@
         </section>
       </svg>
 
-      // Sixth view (Calendar)
+      // Sixth view (Type calc)
       <svg id="view5" display="none">
+        // background image
+        <image href="icons/effectiveness_background.png" x="0%" y="0%" width="100%" height="100%" opacity=".7"/>
+        // the effectiveness display
+        <image id="effectiveness_display" href="icons/effectiveness_0.png" x=" 3%" y="50% - 45%" width="47%" height="35%" opacity=".5"/>
+        <textarea id="effectiveness_display_text" x="75% - 15%" y="84%" width="40%" height="20%" font-size="20" text-length="20" font-weight="bold">--</textarea>
+        // move type
+        <use class="move_type_button" href="#screen_button_text" x="50% - 25%" y="50% + 38%" width="45%" height="20%">
+          <set href="button_text" attributeName="id" to="move_type_text"/>
+          <set href="count_but" attributeName="id" to="move_type_but"/>
+        </use>
+        // opponent first type
+        <use class="type_one_button" href="#screen_button_text" x="50% + 25%" y="50% - 38%" width="45%" height="20%">
+          <set href="button_text" attributeName="id" to="type_one_text"/>
+          <set href="count_but" attributeName="id" to="type_one_but"/>
+        </use>
+        // opponent second type
+        <use class="type_two_button" href="#screen_button_text" x="50% + 25%" y="50% - 38% + 22%" width="45%" height="20%">
+          <set href="button_text" attributeName="id" to="type_two_text"/>
+          <set href="count_but" attributeName="id" to="type_two_but"/>
+        </use>
+      </svg>
+
+      // Seventh view (Calendar)
+      <svg id="view6" display="none">
         // Top border
         <image href="icons/icon_date_top.png" height="10%" opacity=".4"/>
         // Month digits
@@ -348,8 +390,8 @@
         </section>
       </svg>
 
-      // Seventh view (timer)
-      <svg id="view6" display="none">
+      // Eighth view (timer)
+      <svg id="view7" display="none">
         // Snorlax image
         <image id="timer_snorlax" href="icons/snorlax_up.png" x="-4%" y="7%" width="108%" height="80%"/>
         // Timer interface
