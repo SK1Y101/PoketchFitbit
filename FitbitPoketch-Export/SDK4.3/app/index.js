@@ -80,6 +80,7 @@ const fc = document.getElementsByClassName("face_colour");
 const sc = document.getElementsByClassName("screen_colour");
 const dpskin = document.getElementsByClassName("dp_skin");
 const ptskin = document.getElementsByClassName("pt_skin");
+const bdspskin = document.getElementsByClassName("bdsp_skin");
 const face = document.getElementById("screen");
 
 // Update elements once a minute
@@ -130,13 +131,14 @@ let updateColour = function(colour, ele) {
 // Change the skin
 let updateSkin = function(skinType) {
   // Hide all the skins
+  utils.showElement(bdspskin, skinType==2);
   utils.showElement(ptskin, skinType==1);
   utils.showElement(dpskin, skinType==0);
   // Update the size of the screen
-  face.groupTransform.translate.x = -Math.ceil((skinType==2 ? 0.035 * device.screen.width: 0));
-  face.groupTransform.translate.y = -Math.ceil((skinType==2 ? 0.03 * device.screen.height: 0));
-  face.groupTransform.scale.x = (skinType==2 ? 100 / 81.5: 1);
-  face.groupTransform.scale.y = (skinType==2 ? 100 / 93.5: 1);
+  face.groupTransform.translate.x = -Math.ceil((skinType==3 ? 0.035 * device.screen.width: 0));
+  face.groupTransform.translate.y = -Math.ceil((skinType==3 ? 0.03 * device.screen.height: 0));
+  face.groupTransform.scale.x = (skinType==3 ? 100 / 81.5: 1);
+  face.groupTransform.scale.y = (skinType==3 ? 100 / 93.5: 1);
 }
 
 // Define a function to apply our settings
