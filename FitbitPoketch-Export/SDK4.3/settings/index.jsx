@@ -9,7 +9,8 @@ function mySettings(props) {
           options={[
             {name:"Diamond/Pearl", value:0, subname:"The Pokétch given to the protagonist in Diamond and Pearl."},
             {name:"Platinum", value:1, subname:"The Pokétch given to the protagonist in Platinum."},
-            {name:"Watch face only", value:2, subname:"Only show the watch face, without the decorative elements."},
+            {name:"Brilliant Diamond / Shining Pearl", value:2, subname:"The Pokétch given to the protagonist in Brilliant Diamond and Shining Pearl."},
+            {name:"Watch face only", value:3, subname:"Only show the watch face, without the decorative elements."},
           ]}
           renderItem={
             (option) =>
@@ -28,6 +29,9 @@ function mySettings(props) {
             {name: "D/P Orange", icon:"https://www.colorhexa.com/E28B55.png", value: "#E28B55", subname:"The Rivals Pokétch colour in Diamond and Pearl."},
             {name: "Pt Blue", icon:"https://www.colorhexa.com/4C8CB9.png", value: "#4C8CB9", subname:"The Male Pokétch colour in Platinum."},
             {name: "Pt Pink", icon:"https://www.colorhexa.com/EC5E6A.png", value: "#EC5E6A", subname:"The Female Pokétch colour in Platinum."},
+            {name: "BdSp Blue", icon:"https://www.colorhexa.com/164CF6.png", value: "#164CF6", subname:"The Male Pokétch colour in Brilliant Diamond and Shining Pearl"},
+            {name: "BdSp Red", icon:"https://www.colorhexa.com/CC1031.png", value: "#CC1031", subname:"The Femal Pokétch colour in Brilliant Diamond and Shining Pearl"},
+            {name: "BdSp Orange", icon:"https://www.colorhexa.com/FF874A.png", value: "#FF874A", subname:"The Rivals Pokétch colour in Brilliant Diamond and Shining Pearl"},
           ]}
           renderItem={
             (option) =>
@@ -44,6 +48,7 @@ function mySettings(props) {
           options={[
             {name: "D/P Grey", icon:"https://www.colorhexa.com/303030.png", value: "#303030", subname:"The Pokétch face colour in Diamond and Pearl."},
             {name: "Pt White", icon:"https://www.colorhexa.com/E0E0E0.png", value: "#E0E0E0", subname:"The Pokétch face colour in Platinum."},
+            {name: "BdSp Grey", icon:"https://www.colorhexa.com/272727.png", value: "#272727", subname:"The Pokétch face colour in Brilliant Diamond and Shining Pearl."},
           ]}
           renderItem={
             (option) =>
