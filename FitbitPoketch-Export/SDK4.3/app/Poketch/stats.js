@@ -38,7 +38,7 @@ export let StatsIndicator = function(doc, settings) {
   if (me.permissions.granted("access_user_profile")) { maxHr = Math.round(211 - user.age * .64); };
 
   // fetch a reference to the heartRateSensor
-  let hrm = new HeartRateSensor();
+  let hrm = new HeartRateSensor(); 
 
   // Function to set the properties correctly
   let setStat = function(bar, txt, value, maxval=100, unit="%", icon=null) {
@@ -61,6 +61,9 @@ export let StatsIndicator = function(doc, settings) {
       setStat(eleBar,  eleTxt,  today.adjusted.elevationGain, goals.elevationGain, "floors", eleIcon);
       setStat(azmBar,  azmTxt,  today.adjusted.activeZoneMinutes.total, goals.activeZoneMinutes.total, "mins",  azmIcon);
     };
+    if (me.permissions.granted("access_heart_rate")) {
+      setStat(heartBar, heartTxt, hrm.heartRate ?? "--", maxHr, "bpm");
+    };
   };
 
   // function to start the heartrate monitor
@@ -78,7 +81,7 @@ export let StatsIndicator = function(doc, settings) {
   // function to fetch a heartrate reading
   hrm.addEventListener("reading", () => {
     // update the display
-    setStat(heartBar, heartTxt, hrm.heartRate, maxHr, "bpm");
+    setStat(heartBar, heartTxt, hrm.heartRate ?? "--", maxHr, "bpm");
   });
 };
 

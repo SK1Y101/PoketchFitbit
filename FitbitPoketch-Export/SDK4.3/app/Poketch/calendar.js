@@ -39,6 +39,7 @@ export let CalendarView = function(doc, settings) {
 
   // Function to update the time
   this.drawTime = function(now) {
+    now = Date.now();
     // Fetch the time elements
     var year = now.getFullYear();
     var mon = now.getMonth() + 1;
