@@ -6,17 +6,19 @@ import { display } from "display";
 import { me as device } from "device";
 import { me as appbit } from "appbit";
 import { peerSocket } from "messaging";
+//import { HeartRateSensor } from "heart-rate";
 
 // Import the modules I have written
 import * as utils from "../common/utils";
 import { Settings } from "../common/settings";
+import { TypeCalc } from "./Poketch/typecalc";
 import { SwitchView } from "./Poketch/switch";
 import { StepCounter } from "./Poketch/steps";
 import { KitchenTimer } from "./Poketch/timer";
 import { TimeIndicator } from "./Poketch/clock";
 import { CountCounter } from "./Poketch/counter";
+import { StatsIndicator } from "./Poketch/stats";
 import { CalendarView } from "./Poketch/calendar";
-import { StatsIndicator} from "./Poketch/stats";
 
 // Log the memory usage once the entire program is loaded
 console.log("Device JS memory at import: " + memory.js.used + "/" + memory.js.total);
@@ -29,6 +31,7 @@ let DefSet = function() {
     edgeColour: "#3050F8",
     faceColour: "#303030",
     screenColour: "#70B070",
+    mascotSprite: 0,
     // switch view
     viewnum: 0,
     activeApps: [1],
@@ -48,10 +51,11 @@ String.prototype.splice = function(start, end, replacement) {
 
 // And fetch a reference to the modules
 let settings = new Settings("settings.cbor", DefSet);
-let timeInd = new TimeIndicator(document);
+let timeInd = new TimeIndicator(document, settings);
 let statsInd = new StatsIndicator(document);
-let kitchenTimer = new KitchenTimer(document);
+let moveCalc = new TypeCalc(document, settings);
 let stepCounter = new StepCounter(document, settings);
+let kitchenTimer = new KitchenTimer(document);
 let calendarView = new CalendarView(document, settings);
 let countCounter = new CountCounter(document, settings);
 
@@ -71,11 +75,12 @@ let switchView = new SwitchView(document, settings, viewUpdate);
 clock.granularity = "minutes"; // seconds, minutes, hours
 
 // fetch elementss
-const bg = document.getElementsByClassName("background");
+const bg = document.getElementById("background");
 const fc = document.getElementsByClassName("face_colour");
 const sc = document.getElementsByClassName("screen_colour");
 const dpskin = document.getElementsByClassName("dp_skin");
 const ptskin = document.getElementsByClassName("pt_skin");
+const bdspskin = document.getElementsByClassName("bdsp_skin");
 const face = document.getElementById("screen");
 
 // Update elements once a minute
@@ -126,13 +131,14 @@ let updateColour = function(colour, ele) {
 // Change the skin
 let updateSkin = function(skinType) {
   // Hide all the skins
+  utils.showElement(bdspskin, skinType==2);
   utils.showElement(ptskin, skinType==1);
   utils.showElement(dpskin, skinType==0);
   // Update the size of the screen
-  face.groupTransform.translate.x = -Math.ceil((skinType==2 ? 0.035 * device.screen.width: 0));
-  face.groupTransform.translate.y = -Math.ceil((skinType==2 ? 0.03 * device.screen.height: 0));
-  face.groupTransform.scale.x = (skinType==2 ? 100 / 81.5: 1);
-  face.groupTransform.scale.y = (skinType==2 ? 100 / 93.5: 1);
+  face.groupTransform.translate.x = -Math.ceil((skinType==3 ? 0.035 * device.screen.width: 0));
+  face.groupTransform.translate.y = -Math.ceil((skinType==3 ? 0.03 * device.screen.height: 0));
+  face.groupTransform.scale.x = (skinType==3 ? 100 / 81.5: 1);
+  face.groupTransform.scale.y = (skinType==3 ? 100 / 93.5: 1);
 }
 
 // Define a function to apply our settings
@@ -147,6 +153,8 @@ let applySettings = function() {
     settings.isPresent("faceColour", updateColour, fc);
     settings.isPresent("screenColour", updateColour, sc);
     settings.isPresent("activeApps", switchView.appSettings);
+    // Choose the mascot
+    settings.isPresent("mascotSprite", timeInd.switchMascot);
     // Show that settings have been loaded
     console.log("Settings applied");
   } catch (err) {
