@@ -56,6 +56,8 @@ Counter               - Manually count something with the press of a button
 
 Analogue Watch  - Shows the time again!
 
+Move Calc  - Shows how effective an attack will be
+
 Calendar              - Want to know the current date?
 
 Timer                   - Count down from up to 99 minutes. (Accuracy may vary)
@@ -69,13 +71,15 @@ To enable/disable certain applications, use the dropdown available in the settin
 
 ### Customisation
 
-Button             - Diamond/Pearl single button, or the Platinum double button.
+Button             - Diamond/Pearl single button, or the Platinum double button
 
-Face colour     - Dark watch face, or the Light watch face.
+Face colour     - Dark watch face, or the Light watch face
 
-Edge colour     - Diamond blue, Pearl pink, Barry's orange, Platnium blue, or Platinum pink.
+Edge colour     - Diamond blue, Pearl pink, Barry's orange, Platnium blue, or Platinum pink
 
-Screen colour  - Default Green, Yellow, Orange, Red, Violet, Indigo, Blue, and Grey.
+Screen colour  - Default Green, Yellow, Orange, Red, Violet, Indigo, Blue, and Grey
+
+Mascot         - Want an Eevee, or a Pikachu on your digital clock?
 
 Wherever possible, I have tried to keep the watch feature and aesthetics as close to the original Pokétch from the games, with minimal changes.
 
