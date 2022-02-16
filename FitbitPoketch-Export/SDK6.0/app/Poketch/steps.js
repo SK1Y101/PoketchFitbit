@@ -6,7 +6,7 @@ import { today } from "user-activity";
 import * as utils from "../../common/utils";
 
 // Define this module
-export let StepCounter = function(doc, settings) {
+export let StepCounter = function(doc, settings, debug=false) {
 
   // Fetch the digit handler
   let digitHandler = new utils.DigitDisplay(doc, "step_", "00000", "digit_shadow");
@@ -44,7 +44,7 @@ export let StepCounter = function(doc, settings) {
     // Check we have permissions
     if (me.permissions.granted("access_activity")) {
       // Fetch the number of steps
-      var steps = today.adjusted.steps;
+      var steps = debug ? 12963 : today.adjusted.steps;
       // update the offset on long press
       if ((offset == -1) || (offset > steps))   { newOffset(steps); };
       // And show the desired step counter
