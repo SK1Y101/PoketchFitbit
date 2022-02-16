@@ -52,6 +52,7 @@ export let TimeIndicator = function(doc, settings) {
     // Analogue time
     updateHand(hourHand, (hour%12)*30 + mins*.5);
     updateHand(minsHand, mins * 6);
+    console.log(daytime);
 
     // And update the sprite
     utils.showElement(daySprite, daytime);
