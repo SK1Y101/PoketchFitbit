@@ -35,10 +35,10 @@ export let StatsIndicator = function(doc, settings) {
 
   // Maximum heart rate, from the formula (211 - age*.64), else just 220
   let maxHr = 220;
-  if (me.permissions.granted("access_user_profile")) { maxHr = user.maxHeartRate; };
+  if (me.permissions.granted("access_user_profile")) { maxHr = Math.round(211 - user.age * .64); };
 
   // fetch a reference to the heartRateSensor
-  let hrm = new HeartRateSensor(); 
+  let hrm = new HeartRateSensor();
 
   // Function to set the properties correctly
   let setStat = function(bar, txt, value, maxval=100, unit="%", icon=null) {
