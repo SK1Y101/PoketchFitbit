@@ -48,7 +48,7 @@ let DefSet = function() {
 String.prototype.splice = function(start, end, replacement) {
   return this.substr(0, start) + replacement + this.substr(end);
 }
-const debug = true;
+const debug = false;
 
 // And fetch a reference to the modules
 let settings = new Settings("settings.cbor", DefSet);
