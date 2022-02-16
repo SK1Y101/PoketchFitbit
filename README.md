@@ -66,8 +66,8 @@ Tap the bottom half of the screen to cycle through the applications, or tap the 
 
 To enable/disable certain applications, use the dropdown available in the settings for the watch face. By default, only the digital watch face is visible.
 
-![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/SDK4.3/screenshots/applicationExample.png)
-![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/SDK5.2/screenshots/applicationExample.png)
+![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/SDK4.3/screenshots/App_Views/App_View_Animated.png)
+![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/SDK6.0/screenshots/App_View/App_View_Animated.png)
 
 ### Customisation
 
@@ -85,11 +85,11 @@ Wherever possible, I have tried to keep the watch feature and aesthetics as clos
 
 For further description of watch features, see the wiki pages in the github repo [here](https://github.com/SK1Y101/PoketchFitbit/wiki)
 
-![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/SDK4.3/screenshots/screenColourExample.png)
-![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/SDK5.2/screenshots/screenColourExample.png)
+![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/SDK4.3/screenshots/screen_colours/Screen_Colour_Animated.png)
+![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/SDK6.0/screenshots/Screen_Colour/Screen_Colour_Animated.png)
 
-![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/SDK4.3/screenshots/WatchColourExample.png)
-![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/SDK5.2/screenshots/watchColourExample.png)
+![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/SDK4.3/screenshots/edge_colours/Edge_View_Animated.png)
+![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/SDK6.0/screenshots/Edge_Colour/Edge_Colour_Animated.png)
 
 ## Tools
 

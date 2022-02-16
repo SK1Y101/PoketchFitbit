@@ -9,7 +9,7 @@ import { HeartRateSensor } from "heart-rate";
 import * as utils from "../../common/utils";
 
 // Define this module
-export let StatsIndicator = function(doc, settings) {
+export let StatsIndicator = function(doc, settings, debug=false) {
   // Fetch ui Elements
   // percentage bars
   const chargeBar = doc.getElementById("charge_bar");
@@ -26,6 +26,7 @@ export let StatsIndicator = function(doc, settings) {
   const calsTxt = doc.getElementById("cals_txt");
   const eleTxt = doc.getElementById("ele_txt");
   const azmTxt = doc.getElementById("azm_txt");
+  if (debug) { heartTxt.text = 83; }
 
   // Icons
   const distIcon = doc.getElementById("dist_icon");
@@ -38,7 +39,7 @@ export let StatsIndicator = function(doc, settings) {
   if (me.permissions.granted("access_user_profile")) { maxHr = Math.round(211 - user.age * .64); };
 
   // fetch a reference to the heartRateSensor
-  let hrm = new HeartRateSensor(); 
+  let hrm = new HeartRateSensor();
 
   // Function to set the properties correctly
   let setStat = function(bar, txt, value, maxval=100, unit="%", icon=null) {
@@ -56,13 +57,13 @@ export let StatsIndicator = function(doc, settings) {
     setStat(chargeBar, chargeTxt, battery.chargeLevel);
     // Check we have permissions
     if (me.permissions.granted("access_activity")) {
-      setStat(distBar, distTxt, today.adjusted.distance, goals.distance, "m", distIcon);
-      setStat(calsBar, calsTxt, today.adjusted.calories, goals.calories, "kcal", calsIcon);
-      setStat(eleBar,  eleTxt,  today.adjusted.elevationGain, goals.elevationGain, "floors", eleIcon);
-      setStat(azmBar,  azmTxt,  today.adjusted.activeZoneMinutes.total, goals.activeZoneMinutes.total, "mins",  azmIcon);
+      setStat(distBar, distTxt, debug ? 7341 : today.adjusted.distance, goals.distance, "m", distIcon);
+      setStat(calsBar, calsTxt, debug ? 2073 : today.adjusted.calories, goals.calories, "kcal", calsIcon);
+      setStat(eleBar,  eleTxt,  debug ? 24   : today.adjusted.elevationGain, goals.elevationGain, "floors", eleIcon);
+      setStat(azmBar,  azmTxt,  debug ? 14   : today.adjusted.activeZoneMinutes.total, goals.activeZoneMinutes.total, "mins",  azmIcon);
     };
     if (me.permissions.granted("access_heart_rate")) {
-      setStat(heartBar, heartTxt, hrm.heartRate ?? "--", maxHr, "bpm");
+      setStat(heartBar, heartTxt, debug ? 83 : (hrm.heartRate ?? "--"), maxHr, "bpm");
     };
   };
 
