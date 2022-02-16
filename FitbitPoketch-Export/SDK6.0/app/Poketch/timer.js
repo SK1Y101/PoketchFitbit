@@ -5,7 +5,7 @@ import { vibration } from "haptics";
 import * as utils from "../../common/utils";
 
 // Define this module
-export let KitchenTimer = function(doc) {
+export let KitchenTimer = function(doc, debug=false) {
   // Fetch the digit handler
   let digitHandler = new utils.DigitDisplay(doc, "timer_", "0000", "digit_shadow");
 

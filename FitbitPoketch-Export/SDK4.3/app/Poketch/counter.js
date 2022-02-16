@@ -6,7 +6,7 @@ import * as activity from "user-activity";
 import * as utils from "../../common/utils";
 
 // Define this module
-export let CountCounter = function(doc, settings) {
+export let CountCounter = function(doc, settings, debug=false) {
 
   // Fetch the digit handler
   let digitHandler = new utils.DigitDisplay(doc, "count_", "00000", "digit_shadow");
@@ -19,7 +19,7 @@ export let CountCounter = function(doc, settings) {
   utils.changeLayer(cct, 110);
 
   // Fetch the counter amount
-  var count = settings.getOrElse("counterValue", 0);
+  var count =  debug ? 31415 : settings.getOrElse("counterValue", 0);
   // A blank timer
   var held = 0;
 
