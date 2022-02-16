@@ -49,15 +49,17 @@ String.prototype.splice = function(start, end, replacement) {
   return this.substr(0, start) + replacement + this.substr(end);
 }
 
+const debug = true;
+
 // And fetch a reference to the modules
 let settings = new Settings("settings.cbor", DefSet);
-let timeInd = new TimeIndicator(document, settings);
-let statsInd = new StatsIndicator(document);
-let moveCalc = new TypeCalc(document, settings);
-let stepCounter = new StepCounter(document, settings);
-let kitchenTimer = new KitchenTimer(document);
-let calendarView = new CalendarView(document, settings);
-let countCounter = new CountCounter(document, settings);
+let timeInd = new TimeIndicator(document, settings, debug);
+let statsInd = new StatsIndicator(document, debug);
+let moveCalc = new TypeCalc(document, settings, debug);
+let stepCounter = new StepCounter(document, settings, debug);
+let kitchenTimer = new KitchenTimer(document, debug);
+let calendarView = new CalendarView(document, settings, debug);
+let countCounter = new CountCounter(document, settings, debug);
 
 // Log the memory usage once the entire program is loaded
 console.log("Device JS memory at modules: " + memory.js.used + "/" + memory.js.total);
@@ -69,7 +71,7 @@ var viewUpdate = {
 };
 
 // define the switch viewer, passing any updates needed
-let switchView = new SwitchView(document, settings, viewUpdate);
+let switchView = new SwitchView(document, settings, viewUpdate, debug);
 
 // Define the clock tick rate
 clock.granularity = "minutes"; // seconds, minutes, hours

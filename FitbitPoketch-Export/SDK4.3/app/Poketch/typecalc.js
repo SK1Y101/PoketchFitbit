@@ -3,7 +3,7 @@
 import * as utils from "../../common/utils";
 
 // Define this module
-export let TypeCalc = function(doc, settings) {
+export let TypeCalc = function(doc, settings, debug=false) {
 
   // fetch the button container
   const moveTypeBut = doc.getElementsByClassName("move_type_button");
