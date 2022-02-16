@@ -119,21 +119,12 @@
       <rect x="43% - 30%" y="-20%" width="2%" height="100%" fill="#303030" />
       <rect x="43% + 30%" y="-20%" width="2%" height="100%" fill="#303030" />
       <circle cx="43%" cy="100%" r="43%" fill="#303030"/>
-<<<<<<< HEAD
-      <circle cx="43%" cy="100%" r="40%" class="background" fill="#FFFFFF"/>
-      <circle cx="43%" cy="100%" r="28%" fill="#303030"/>
-      <circle cx="43%" cy="100%" r="25%" fill="#AB002C"/>
-      // face
-      <image href="ui/Poketch_Border_top_bdsp.png" fill="#FFFFFF" width="104%" opacity=".15"/>
-      <image href="ui/Poketch_Border_bdsp.png" class="brilliant_diamond" id="diamond" fill="#303030"/>
-=======
       <circle cx="43%" cy="100%" r="40%" class="background" fill="#AB002C"/>
       <circle cx="43%" cy="100%" r="28%" fill="#303030"/>
       <circle cx="43%" cy="100%" r="25%" fill="#FA413F"/>
       // face
       <image href="ui/Poketch_Border_top_bdsp.png" fill="#FFFFFF" width="104%" opacity=".15"/>
       <image href="ui/Poketch_Border_bdsp.png" class="face_colour" id="diamond" fill="#303030"/>
->>>>>>> 5b4bec6e602400892a7cb2b8579dae9c1f6ed4a1
       // screen back
       <svg fill="#1D181E">
         <rect x="1%" y="2%" width="82% + 2%" height="96%"/>
@@ -180,11 +171,7 @@
         </use>
       </use>
     </svg>
-<<<<<<< HEAD
     // bdsp button
-=======
-    // bdsp
->>>>>>> 5b4bec6e602400892a7cb2b8579dae9c1f6ed4a1
     <svg class="bdsp_skin" x="90% - 1%" y="48%" width="10%" height="45%" display="none">
       <image href="buttons/Poketch_Button_bdsp.png" x="-10%" y="-3%" width="120%" height="105%" fill="#1D181E"/>
       <use class="button_bottom" href="#button_anim_shrink">
