@@ -54,8 +54,8 @@ export let TimeIndicator = function(doc, settings) {
     updateHand(minsHand, mins * 6);
 
     // And update the sprite
-    utils.showElement(daySprite, daytime);
-    utils.showElement(nightSprite, !daytime);
+    //utils.showElement(daySprite, daytime);
+    //utils.showElement(nightSprite, !daytime);
   };
 
   //Function to choose which pokemon to display
