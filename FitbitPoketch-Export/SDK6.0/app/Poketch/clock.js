@@ -5,7 +5,7 @@ let debug = false;
 import * as utils from "../../common/utils";
 
 // Define this module
-export let TimeIndicator = function(doc) {
+export let TimeIndicator = function(doc, settings) {
   // Simple radians to degrees
   const deg2rad = (Math.PI / 180);
 
@@ -17,10 +17,13 @@ export let TimeIndicator = function(doc) {
   const minsHand = doc.getElementById("minute_hand");
   const hourHand = doc.getElementsByClassName("hour_hand");
 
-  // Fetch the pikachu sprite
-  const backSprite = doc.getElementById("back_sprite");
-  const daySprite = doc.getElementById("day_sprite");
-  const nightSprite = doc.getElementById("night_sprite");
+  // Fetch the pikachu and eevee sprite layers
+  const pikaSprite = doc.getElementById("pikachu_sprite");
+  const eeveeSprite = doc.getElementById("eevee_sprite");
+  // and fetch their three layers
+  //const backSprite = doc.getElementsByClassName("back_sprite");
+  const daySprite = doc.getElementsByClassName("day_sprite");
+  const nightSprite = doc.getElementsByClassName("night_sprite");
 
   // Update the position of an analogue clock hand
   let updateHand = function(ele, angle=0) {
@@ -51,7 +54,15 @@ export let TimeIndicator = function(doc) {
     updateHand(minsHand, mins * 6);
 
     // And update the sprite
-    //utils.showElement(daySprite, daytime);
-    //utils.showElement(nightSprite, !daytime);
+    utils.showElement(daySprite, daytime);
+    utils.showElement(nightSprite, !daytime);
   };
+
+  //Function to choose which pokemon to display
+  this.switchMascot = function(mascot) {
+    mascot = mascot ?? 0;
+    // update the sprite
+    utils.showElement(pikaSprite, mascot==0);
+    utils.showElement(eeveeSprite, mascot==1);
+  }
 };
