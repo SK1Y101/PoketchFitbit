@@ -482,6 +482,36 @@
         </section>
       </svg>
 
+      // Ninth view (Weather)
+      <svg id="view8" display="none">
+        // current weather
+        <image id="weather_icon" x=" 0%" y=" 0%" width="34%" height="30%" href="weather/01d.png" opacity=".3"/>
+        <text  id="weather_loc"  x="34%" y=" 8%" font-size="18" text-length="20" font-weight="bold">--</text>
+        <text  id="weather_temp" x="34%" y="20%" font-size="18">--</text>
+        <textarea id="weather_desc" x="5%" y="5% + 30%" width="90%" height="25%" font-size="18" text-length="32" font-weight="bold">--</textarea>
+
+        // Moon phase
+        <image id="moon_icon" x="100% - 16%" y=" 0%" width="16%" height="14%" href="weather/phase_0.png" opacity=".3"/>
+
+        // +1 hour forecast
+        <text  id="forecast_1_time" x=" 5% + 4% + 11%" y="100% - 40% +  3%" font-size="18" font-weight="bold" text-anchor="middle">--</text>
+        <image id="forecast_1_icon" x=" 5% + 4%"       y="100% - 40% +  5%" width="22%" height="20%" href="weather/01d.png" opacity=".3"/>
+        <text  id="forecast_1_temp" x=" 5% + 4% + 11%" y="100% - 40% + 30%" font-size="16" text-anchor="middle">--</text>
+        <text  id="forecast_1_feel" x=" 5% + 4% + 11%" y="100% - 40% + 38%" font-size="16" text-anchor="middle">--</text>
+
+        // +2 hour forecast
+        <text  id="forecast_2_time" x="35% + 4% + 11%" y="100% - 40% +  3%" font-size="18" font-weight="bold" text-anchor="middle">--</text>
+        <image id="forecast_2_icon" x="35% + 4%"       y="100% - 40% +  5%" width="22%" height="20%" href="weather/01d.png" opacity=".3"/>
+        <text  id="forecast_2_temp" x="35% + 4% + 11%" y="100% - 40% + 30%" font-size="16" text-anchor="middle">--</text>
+        <text  id="forecast_2_feel" x="35% + 4% + 11%" y="100% - 40% + 38%" font-size="16" text-anchor="middle">--</text>
+
+        // +3 hour forecast
+        <text  id="forecast_3_time" x="65% + 4% + 11%" y="100% - 40% +  3%" font-size="18" font-weight="bold" text-anchor="middle">--</text>
+        <image id="forecast_3_icon" x="65% + 4%"       y="100% - 40% +  5%" width="22%" height="20%" href="weather/01d.png" opacity=".3"/>
+        <text  id="forecast_3_temp" x="65% + 4% + 11%" y="100% - 40% + 30%" font-size="16" text-anchor="middle">--</text>
+        <text  id="forecast_3_feel" x="65% + 4% + 11%" y="100% - 40% + 38%" font-size="16" text-anchor="middle">--</text>
+      </svg>
+
       // View change rectangles
       <rect class="view_change" width="100%" height="50%" fill="#303030">
         <animate attributeName="height" begin="enable"          from="0%"  to="50%" dur=".25"/>

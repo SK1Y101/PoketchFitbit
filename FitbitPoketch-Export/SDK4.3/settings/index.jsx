@@ -111,6 +111,7 @@ function mySettings(props) {
             {name:"Move Calculator", value:5},
             {name:"Calendar",        value:6},
             {name:"Timer",           value:7},
+            {name:"Weather",         value:8},
           ]}
         />
         <Text>The Pokétch applications that will be accessible to the user.</Text>
