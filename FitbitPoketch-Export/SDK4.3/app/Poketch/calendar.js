@@ -5,7 +5,7 @@ import { preferences } from "user-settings";
 import * as utils from "../../common/utils";
 
 // Define this module
-export let CalendarView = function(doc, settings) {
+export let CalendarView = function(doc, settings, debug=false) {
   // Fetch the gui elements for the calendar
   // Month number
   const digitHandler = new utils.DigitDisplay(doc, "calendar_", "___");
@@ -42,8 +42,8 @@ export let CalendarView = function(doc, settings) {
     //now = Date.now();
     // Fetch the time elements
     var year = now.getFullYear();
-    var mon = now.getMonth() + 1;
-    var date = now.getDate();
+    var mon =  debug ? 10 : now.getMonth() + 1;
+    var date =  debug ? 26 : now.getDate();
     // fetch the first day of the week (user preference)
     var fwd = settings.getOrElse("fwd", 0);
     // fetch the first day of the month

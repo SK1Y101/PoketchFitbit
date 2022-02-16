@@ -4,7 +4,7 @@
 import * as utils from "../../common/utils";
 
 // Define this module
-export let SwitchView = function(doc, settings, viewUpdate) {
+export let SwitchView = function(doc, settings, viewUpdate, debug=false) {
   // Fetch the elements that detect a click
   const foreBut = doc.getElementById("fore_button");
   const backBut = doc.getElementById("back_button");
