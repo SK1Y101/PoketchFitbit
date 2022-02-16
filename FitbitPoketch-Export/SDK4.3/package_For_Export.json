@@ -5,7 +5,7 @@
   },
   "fitbit": {
     "appType": "clockface",
-    "appDisplayName": "Poketch",
+    "appDisplayName": "Poketch for Versa 1/2/Lite",
     "iconFile": "resources/icon.png",
     "wipeColor": "#607d8b",
     "requestedPermissions": [

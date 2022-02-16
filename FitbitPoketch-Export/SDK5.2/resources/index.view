@@ -77,10 +77,7 @@
     </symbol>
   </defs>
 
-  <section x="5%" y="5%" width="100% - 10%" height="100% - 10%">
-
-    // watch face
-    // platinum
+  <section x="5%" y="5%" width="100% - 10%" height="100% - 10%"> // watch face, platinum
     <svg class="pt_skin" y="1%" width="102%" height="98%" display="inline">
       // face
       <image href="ui/Poketch_Border_pt.png" width="102%" class="face_colour" id="platinum" fill="#303030"/>
@@ -118,12 +115,12 @@
       <rect x="43% - 30%" y="-20%" width="2%" height="100%" fill="#303030" />
       <rect x="43% + 30%" y="-20%" width="2%" height="100%" fill="#303030" />
       <circle cx="43%" cy="100%" r="43%" fill="#303030"/>
-      <circle cx="43%" cy="100%" r="40%" class="background" fill="#AB002C"/>
+      <circle cx="43%" cy="100%" r="40%" class="background" fill="#FFFFFF"/>
       <circle cx="43%" cy="100%" r="28%" fill="#303030"/>
-      <circle cx="43%" cy="100%" r="25%" fill="#FA413F"/>
+      <circle cx="43%" cy="100%" r="25%" fill="#AB002C"/>
       // face
       <image href="ui/Poketch_Border_top_bdsp.png" fill="#FFFFFF" width="104%" opacity=".15"/>
-      <image href="ui/Poketch_Border_bdsp.png" class="face_colour" id="diamond" fill="#303030"/>
+      <image href="ui/Poketch_Border_bdsp.png" class="face_colour" id="brilliant_diamond" fill="#303030"/>
       // screen back
       <svg fill="#1D181E">
         <rect x="1%" y="2%" width="82% + 2%" height="96%"/>
@@ -170,10 +167,10 @@
         </use>
       </use>
     </svg>
-    // bdsp
+    // bdsp button
     <svg class="bdsp_skin" x="90% - 1%" y="48%" width="10%" height="45%" display="none">
       <image href="buttons/Poketch_Button_bdsp.png" x="-10%" y="-3%" width="120%" height="105%" fill="#1D181E"/>
-      <use class="button_bottom" href="#button_anim_shrink">
+      <use class="button_bottom" href="#button_anim_shrink">0
         <use class="button_bottom" href="#button_anim">
           <image href="buttons/Poketch_Button_bdsp.png"                     width="100%" height="100%" fill="#AB002C" opacity=".5"/>
           <image href="buttons/Poketch_Button_bdsp.png"       x="5%" y="2%" width="94%"  height="96%"  fill="#AB002C"/>
@@ -210,7 +207,7 @@
           </svg>
 
           // Pikachu sprite
-          <svg x="3%" y="100% - 28%" width="40%" height="28%" id="pikachu_sprite" display="inline">
+          <section x="3%" y="100% - 28%" width="40%" height="28%" id="pikachu_sprite" display="inline">
             // Block out the lines
             <image id="back_sprite" class="screen_colour clock_sprite" href="icons/pikachu_night.png" fill="#70B070"/>
             // And draw the sprite
@@ -218,18 +215,18 @@
               <image id="day_sprite"   href="icons/pikachu_day.png"          display="none"   opacity="1"/>
               <image id="night_sprite" href="icons/pikachu_night.png"        display="inline" opacity=".4"/>
             </section>
-          </svg>
+          </section>
 
           // Eevee sprite
-          <svg x="3%" y="100% - 30%" width="45%" height="35%" id="eevee_sprite" display="none">
+          <section x="3%" y="100% - 28%" width="40%" height="28%" id="eevee_sprite" display="none">
             // Block out the lines
-            <image class="back_sprite screen_colour clock_sprite" href="icons/eevee_night.png" fill="#70B070"/>
+            <image id="back_sprite" class="screen_colour clock_sprite" href="icons/eevee_night.png" fill="#70B070"/>
             // And draw the sprite
             <section>
-              <image class="day_sprite"   href="icons/eevee_day.png"   display="none"   opacity="1"/>
-              <image class="night_sprite" href="icons/eevee_night.png" display="inline" opacity=".4"/>
+              <image id="day_sprite"   href="icons/eevee_day.png"          display="none"   opacity="1"/>
+              <image id="night_sprite" href="icons/eevee_night.png"        display="inline" opacity=".4"/>
             </section>
-          </svg>
+          </section>
         </svg>
 
         // Second view (Pedometer)
@@ -262,13 +259,13 @@
               <set href="stat_txt" attributeName="id" to="charge_txt"/>
               <set href="stat_img_front" attributeName="id" to="charge_icon"/>
             </use>
-            // Heart rate stats
+            // Steps taken stats
             <use href="#statbar" y="30%" x="60%">
-              <set href="stat_bar" attributeName="id" to="heart_bar"/>
-              <set href="stat_txt" attributeName="id" to="heart_txt"/>
-              <set href="stat_img_back" attributeName="href" to="icons/icon_heart_back.png"/>
-              <set href="stat_img_front" attributeName="href" to="icons/icon_heart_front.png"/>
-              <set href="stat_img_front" attributeName="id" to="heart_icon"/>
+              <set href="stat_bar" attributeName="id" to="step_bar"/>
+              <set href="stat_txt" attributeName="id" to="step_txt"/>
+              <set href="stat_img_back" attributeName="href" to="icons/icon_steps_back.png"/>
+              <set href="stat_img_front" attributeName="href" to="icons/icon_steps_front.png"/>
+              <set href="stat_img_front" attributeName="id" to="step_icon"/>
             </use>
             // Distance traveled stats
             <use href="#statbar" y="60%">
@@ -518,4 +515,14 @@
     // view changing buttons
     <rect id="back_button" pointer-events="visible"         width="100%" height="50%" fill="fb-red"  opacity="0"/>
     <rect id="fore_button" pointer-events="visible" y="50%" width="100%" height="50%" fill="fb-blue" opacity="0"/>
-  </svg>
+  </section>
+</svg>
+
+
+background of screen 303030
+border of screen 1D181E
+
+button static F75968
+button dark FA413F
+button shadow C83048
+button pressed F87088
