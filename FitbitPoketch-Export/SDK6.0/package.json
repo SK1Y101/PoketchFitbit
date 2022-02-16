@@ -1,17 +1,14 @@
 {
-  "name": "Poketch Clockface",
-  "version": "1.1.0",
-  "private": true,
-  "license": "UNLICENSED",
   "devDependencies": {
-    "@fitbit/sdk-cli": "^1.7.3"
+    "@fitbit/sdk": "~6.0.2",
+    "@fitbit/sdk-cli": "^1.7.2"
   },
   "fitbit": {
     "appUUID": "5f740578-6ec4-4bf3-a98b-561e2d94fd0c",
     "appType": "clockface",
     "appDisplayName": "Poketch Clockface",
     "iconFile": "resources/icon.png",
-    "wipeColor": "#ffffff",
+    "wipeColor": "#607d8b",
     "requestedPermissions": [
       "access_activity",
       "access_heart_rate",
@@ -21,14 +18,14 @@
       "atlas",
       "vulcan"
     ],
-    "i18n": {},
+    "i18n": {
+      "en-US": {
+        "name": "Poketch"
+      }
+    },
     "defaultLanguage": "en-US"
   },
   "scripts": {
-    "build": "fitbit-build",
-    "debug": "fitbit"
-  },
-  "dependencies": {
-    "@fitbit/sdk": "^6.0.2"
+    "build": "fitbit-build"
   }
 }

@@ -1,6 +1,6 @@
 <svg>
   // The background colour
-  <rect id="background" fill="#303030" width="200%" height="100%"/>
+  <rect class="background" fill="#303030" width="200%" height="100%"/>
   // Define template symbols for use
   <defs>
     // Screen mask
@@ -80,7 +80,6 @@
   <section x="5%" y="5%" width="100% - 10%" height="100% - 10%">
 
     // watch face
-    // watch face
     // platinum
     <svg class="pt_skin" y="1%" width="102%" height="98%" display="inline">
       // face
@@ -124,7 +123,7 @@
       <circle cx="43%" cy="100%" r="25%" fill="#AB002C"/>
       // face
       <image href="ui/Poketch_Border_top_bdsp.png" fill="#FFFFFF" width="104%" opacity=".15"/>
-      <image href="ui/Poketch_Border_bdsp.png" class="brilliant_diamond" id="diamond" fill="#303030"/>
+      <image href="ui/Poketch_Border_bdsp.png" class="face_colour" id="diamond" fill="#303030"/>
       // screen back
       <svg fill="#1D181E">
         <rect x="1%" y="2%" width="82% + 2%" height="96%"/>
