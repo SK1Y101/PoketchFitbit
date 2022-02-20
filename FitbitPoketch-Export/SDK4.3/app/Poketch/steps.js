@@ -30,8 +30,6 @@ export let StepCounter = function(doc, settings, debug=false) {
   sce.style.opacity = stepView ? 1 : .4;
   // Fetch the step offset
   var offset = settings.getOrElse("stepOffset", 0);
-  // A blank timer
-  var held = 0;
 
   // try the secondary button
   var secondInteract = parseInt(settings.getOrElse("counterValue", "0"));
@@ -40,11 +38,7 @@ export let StepCounter = function(doc, settings, debug=false) {
 
   // update the secondary setting
   this.updateSecondary = function(sec) { secondInteract = sec; };
-
-  // update the long press time
   this.updateLongPress = function(timeselect) { longPressTime = timeselect; };
-
-  // update the long press time
   this.updateMultiTap = function(timeselect) { multiTapTime = timeselect; };
 
   // change the offset and save it
