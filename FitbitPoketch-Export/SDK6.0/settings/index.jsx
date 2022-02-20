@@ -116,6 +116,61 @@ function mySettings(props) {
         <Text>The Pokétch applications that will be accessible to the user.</Text>
       </Section>
       <Section
+        title={<Text bold align="center">Application settings</Text>}>
+        <Select
+          label={"Visible apps"}
+          multiple
+          settingsKey="activeApps"
+          options={[
+            {name:"Pedometer",       value:1},
+            {name:"Stats View",      value:2},
+            {name:"Counter",         value:3},
+            {name:"Analogue Watch",  value:4},
+            {name:"Move Calculator", value:5},
+            {name:"Calendar",        value:6},
+            {name:"Timer",           value:7},
+          ]}
+        />
+        <Text>The Pokétch applications that will be accessible to the user.</Text>
+      </Section>
+      <Section
+        title={<Text bold align="center">Interface settings</Text>}>
+        <Select
+          label={"Secondary interaction"}
+          settingsKey="secondInteract"
+          options={[
+            {name:"Long Press", value:0, subname:"Press and hold a button to use it's secondary feature."},
+            {name:"Multi Tap",  value:1, subname:"Tap a button in quick succession to use it's secondary feature."},
+          ]}
+          renderItem={
+            (option) =>
+              <TextImageRow
+                label={option.name}
+                sublabel={option.subname}
+              />
+          }
+        />
+        <Text>How the user will interact with the secondary functionality of a button</Text>
+        <Slider
+          label={"Long Press Time"}
+          settingsKey="longPressTime"
+          min="100"
+          max="2000"
+          step="100"
+        />
+        <Text align="center">{props.settings.longPressTime + " ms"}</Text>
+        <Text>The minimum time a button should be held for to activate its secondary feature, provided the secondary interaction is set to Long Press.</Text>
+        <Slider
+          label={"Multi Tap Time"}
+          settingsKey="multiTapTime"
+          min="100"
+          max="1000"
+          step="100"
+        />
+        <Text align="center">{props.settings.multiTapTime + " ms"}</Text>
+        <Text>The maximum time between button presses to count as consecutive, and thus activate its secondary feature, provided the secondary interaction is set to Multi Tap.</Text>
+      </Section>
+      <Section
         title={<Text bold align="center">Additional links</Text>}>
         <Link source="https://github.com/SK1Y101/PoketchFitbit">The development page for this project.</Link>
         <Link source="https://github.com/SK1Y101/PoketchFitbit/wiki">Wiki for this watch face.</Link>
