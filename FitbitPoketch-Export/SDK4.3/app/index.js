@@ -147,9 +147,19 @@ let updateSkin = function(skinType) {
 }
 
 // change how secondary buttons are handeled
-let updateSecondaryButtons = function(sec) { };//countCounter.updateSecondary(sec); };
-//let updateLongPressTime = function(timeselect) { countCounter.updateLongPress(timeselect); };
-//let updateMultiTapTime = function(timeselect) {  countCounter.updateMultiTap(timeselect); };
+let updateSecondaryButtons = function(sec) {
+  var secVal = parseInt(sec);
+  countCounter.updateSecondary(secVal); };
+// long press time
+
+let updateLongPressTime = function(timeselect) {
+  var timeval = parseInt(timeselect);
+  countCounter.updateLongPress(timeval); };
+
+// multi tap time
+let updateMultiTapTime = function(timeselect) {
+  var timeval = parseInt(timeselect);
+  countCounter.updateMultiTap(timeval); };
 
 // Define a function to apply our settings
 let applySettings = function() {
@@ -167,8 +177,8 @@ let applySettings = function() {
     settings.isPresent("mascotSprite", timeInd.switchMascot);
     // set secondary buttons
     settings.isPresent("secondInteract", updateSecondaryButtons);
-    //settings.isPresent("longPressTime", updateLongPressTime);
-    //settings.isPresent("multiTapTime", updateMultiTapTime);
+    settings.isPresent("longPressTime", updateLongPressTime);
+    settings.isPresent("multiTapTime", updateMultiTapTime);
     // Show that settings have been loaded
     console.log("Settings applied");
   } catch (err) {

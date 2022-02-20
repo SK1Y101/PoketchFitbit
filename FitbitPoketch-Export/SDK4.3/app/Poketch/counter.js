@@ -25,9 +25,9 @@ export let CountCounter = function(doc, settings, debug=false) {
   // Fetch the counter amount
   var count =  debug ? 31415 : settings.getOrElse("counterValue", 0);
   // try the secondary button
-  var secondInteract = 0;
-  var multiTapTime = 500;
-  var longPressTime = 1000;
+  var secondInteract = parseInt(settings.getOrElse("counterValue", "0"));
+  var longPressTime = parseInt(settings.getOrElse("counterValue", "1000"));
+  var multiTapTime = parseInt(settings.getOrElse("counterValue", "500"));
 
   // function to draw the display
   this.draw = function() {
@@ -35,6 +35,21 @@ export let CountCounter = function(doc, settings, debug=false) {
     digitHandler.update(count);
     // and save the value
     settings.replaceSettings({"counterValue":count})
+  };
+
+  // update the secondary setting
+  this.updateSecondary = function(sec) {
+    secondInteract = sec;
+  };
+
+  // update the long press time
+  this.updateLongPress = function(timeselect) {
+    longPressTime = timeselect
+  };
+
+  // update the long press time
+  this.updateMultiTap = function(timeselect) {
+    multiTapTime = timeselect
   };
 
   // Function to trigger if the button is set
