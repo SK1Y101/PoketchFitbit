@@ -41,8 +41,8 @@ let DefSet = function() {
     counterValue: 0,
     // secondInteract
     secondInteract: 0,
-    longPressTime: 1000,
-    multiTapTime: 500,
+    longPressTime: "1000",
+    multiTapTime: "500",
   };
   return defaults;
 };
@@ -147,7 +147,7 @@ let updateSkin = function(skinType) {
 }
 
 // change how secondary buttons are handeled
-//let updateSecondaryButtons = function(sec) { countCounter.updateSecondary(sec); };
+let updateSecondaryButtons = function(sec) { };//countCounter.updateSecondary(sec); };
 //let updateLongPressTime = function(timeselect) { countCounter.updateLongPress(timeselect); };
 //let updateMultiTapTime = function(timeselect) {  countCounter.updateMultiTap(timeselect); };
 
@@ -166,7 +166,7 @@ let applySettings = function() {
     // Choose the mascot
     settings.isPresent("mascotSprite", timeInd.switchMascot);
     // set secondary buttons
-    //settings.isPresent("secondInteract", updateSecondaryButtons);
+    settings.isPresent("secondInteract", updateSecondaryButtons);
     //settings.isPresent("longPressTime", updateLongPressTime);
     //settings.isPresent("multiTapTime", updateMultiTapTime);
     // Show that settings have been loaded
