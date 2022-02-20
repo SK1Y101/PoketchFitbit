@@ -4,6 +4,10 @@ import * as activity from "user-activity";
 
 // Define any helper functions
 import * as utils from "../../common/utils";
+import { SecondaryButton } from "./secondFunctionButton";
+
+// get the secondary button reference
+let counterButton = new SecondaryButton();
 
 // Define this module
 export let CountCounter = function(doc, settings, debug=false) {
@@ -20,8 +24,15 @@ export let CountCounter = function(doc, settings, debug=false) {
 
   // Fetch the counter amount
   var count =  debug ? 31415 : settings.getOrElse("counterValue", 0);
-  // A blank timer
-  var held = 0;
+  // the secondary button settings
+  var secondInteract = parseInt(settings.getOrElse("counterValue", "0"));
+  var longPressTime = parseInt(settings.getOrElse("counterValue", "1000"));
+  var multiTapTime = parseInt(settings.getOrElse("counterValue", "500"));
+
+  // update the secondary setting
+  this.updateSecondary = function(sec) { secondInteract = sec; };
+  this.updateLongPress = function(timeselect) { longPressTime = timeselect; };
+  this.updateMultiTap = function(timeselect) { multiTapTime = timeselect; };
 
   // function to draw the display
   this.draw = function() {
@@ -33,18 +44,24 @@ export let CountCounter = function(doc, settings, debug=false) {
 
   // Function to trigger if the button is set
   cct.addEventListener("mousedown", (evt) => {
-    // cite the held time
-    held = Date.now();
+    // press the button
+    counterButton.press(secondInteract, multiTapTime);
     // activate the buttons
     utils.animateElement(ccb, "select");
   });
 
   // Function to trigger if the button is unset
   cct.addEventListener("mouseup", (evt) => {
-    // increase the counter
-    count++;
-    // Check if we are reseting the counter
-    if ((Date.now() - held) > 1000) { count = 0; };
+    // unpress the button
+    var func = counterButton.unpress(secondInteract, longPressTime);
+    // primary function
+    if (func) {
+      // increase the counter
+      count++;
+    } else {
+      // reset the counter
+      count = 0;
+    };
     // activate the button
     utils.animateElement(ccb, "unselect");
     // and update the step display
