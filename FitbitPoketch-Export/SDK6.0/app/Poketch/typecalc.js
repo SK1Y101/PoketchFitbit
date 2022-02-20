@@ -1,6 +1,12 @@
 
 // Define any helper functions
 import * as utils from "../../common/utils";
+import { SecondaryButton } from "./secondFunctionButton";
+
+// get the secondary button reference
+let moveButton = new SecondaryButton();
+let typeOneButton = new SecondaryButton();
+let typeTwoButton = new SecondaryButton();
 
 // Define this module
 export let TypeCalc = function(doc, settings, debug=false) {
@@ -57,7 +63,15 @@ export let TypeCalc = function(doc, settings, debug=false) {
   var moveTypeDisplay = settings.getOrElse("MoveTypeValue", 0);
   var typeOneDisplay = settings.getOrElse("TypeOneValue", 0);
   var typeTwoDisplay = settings.getOrElse("TypeTwoValue", 0);
-  var held = 0;
+  // the secondary button settings
+  var secondInteract = parseInt(settings.getOrElse("counterValue", "0"));
+  var longPressTime = parseInt(settings.getOrElse("counterValue", "1000"));
+  var multiTapTime = parseInt(settings.getOrElse("counterValue", "500"));
+
+  // update the secondary setting
+  this.updateSecondary = function(sec) { secondInteract = sec; };
+  this.updateLongPress = function(timeselect) { longPressTime = timeselect; };
+  this.updateMultiTap = function(timeselect) { multiTapTime = timeselect; };
 
   // compute effectiveness
   let compEffect = function(move_type, type_one, type_two) {
@@ -108,51 +122,69 @@ export let TypeCalc = function(doc, settings, debug=false) {
 
   // -----< Move Typing >-----
   mtb.addEventListener("mousedown", (evt) => {
-    // start a timer
-    held = Date.now();
+    // press the button
+    moveButton.press(secondInteract, multiTapTime);
     // animate
     utils.animateElement(moveTypeBut, "select");
   });
 
   mtb.addEventListener("mouseup", (evt) => {
-    // increment
-    moveTypeDisplay = (moveTypeDisplay + 1 + numTypes) % numTypes;
-    // reset if held
-    if ((Date.now() - held) > 1000) { moveTypeDisplay = 0; };
+    // unpress the button
+    var func = moveButton.unpress(secondInteract, longPressTime);
+    // primary function
+    if (func) {
+      // increment
+      moveTypeDisplay = (moveTypeDisplay + 1 + numTypes) % numTypes;
+    } else {
+      // reset the counter
+      moveTypeDisplay = 0;
+    };
     // update the display
     utils.animateElement(moveTypeBut, "unselect"); updateTyping();
   });
 
   // -----< First Typing >-----
   otb.addEventListener("mousedown", (evt) => {
-    // start a timer
-    held = Date.now();
+    // press the button
+    typeOneButton.press(secondInteract, multiTapTime);
     // animate
     utils.animateElement(typeOneBut, "select");
   });
 
   otb.addEventListener("mouseup", (evt) => {
-    // increment
-    typeOneDisplay = (typeOneDisplay + 1 + numTypes) % numTypes;
-    // reset if held
-    if ((Date.now() - held) > 1000) { typeOneDisplay = 0; };
+    // unpress the button
+    var func = typeOneButton.unpress(secondInteract, longPressTime);
+    // primary function
+    if (func) {
+      // increment
+      typeOneDisplay = (typeOneDisplay + 1 + numTypes) % numTypes;
+    } else {
+      // reset the counter
+      typeOneDisplay = 0;
+    };
     // update the display
     utils.animateElement(typeOneBut, "unselect"); updateTyping();
   });
 
   // -----< Second Typing >-----
   ttb.addEventListener("mousedown", (evt) => {
-    // start a timer
-    held = Date.now();
+    // press the button
+    typeTwoButton.press(secondInteract, multiTapTime);
     // animate
     utils.animateElement(typeTwoBut, "select");
   });
 
   ttb.addEventListener("mouseup", (evt) => {
-    // increment
-    typeTwoDisplay = (typeTwoDisplay + 1 + numTypes) % numTypes;
-    // reset if held
-    if ((Date.now() - held) > 1000) { typeTwoDisplay = 0; };
+    // unpress the button
+    var func = typeTwoButton.unpress(secondInteract, longPressTime);
+    // primary function
+    if (func) {
+      // increment
+      typeTwoDisplay = (typeTwoDisplay + 1 + numTypes) % numTypes;
+    } else {
+      // reset the counter
+      typeTwoDisplay = 0;
+    };
     // update the display
     utils.animateElement(typeTwoBut, "unselect"); updateTyping();
   });
