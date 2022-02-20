@@ -116,42 +116,6 @@ function mySettings(props) {
         <Text>The Pokétch applications that will be accessible to the user.</Text>
       </Section>
       <Section
-        title={<Text bold align="center">Interaction settings</Text>}>
-        <
-        <Select
-          label={"Secondary Interaction"}
-          settingsKey="secondInteract"
-          options={[
-            {name:"Long Press", value:0, subname:"Press and hold buttons to activate their secondary features."},
-            {name:"Multi-Tap",  value:1, subname:"Tap buttons twice in quick succession to activate their secondary features."},
-          ]}
-          renderItem={
-            (option) =>
-              <TextImageRow
-                label={option.name}
-                sublabel={option.subname}
-              />
-          }
-        />
-        <Text>How to interact with the secondary functionality of buttons.</Text>
-        <Slider
-          label="Long press time"
-          settingsKey="longPressTime"
-          min="100"
-          max="2000"
-          step="100"
-        />
-        <Text>The minimum time in milliseconds that a button should be held to activate the buttons secondary feature, provided the Secondary feature above is set to Long Press</Text>
-        <Slider
-          label="Multi-tap time"
-          settingsKey="multiTapTime"
-          min="100"
-          max="1000"
-          step="100"
-        />
-        <Text>The maximum time in milliseconds between consecutive button presses to activate the buttons secondary feature, provided the Secondary feature above is set to Multi-Tap</Text>
-      </Section>
-      <Section
         title={<Text bold align="center">Additional links</Text>}>
         <Link source="https://github.com/SK1Y101/PoketchFitbit">The development page for this project.</Link>
         <Link source="https://github.com/SK1Y101/PoketchFitbit/wiki">Wiki for this watch face.</Link>
