@@ -4,6 +4,10 @@ import { today } from "user-activity";
 
 // Define any helper functions
 import * as utils from "../../common/utils";
+import { SecondaryButton } from "./secondFunctionButton";
+
+// get the secondary button reference
+let stepButton = new SecondaryButton();
 
 // Define this module
 export let StepCounter = function(doc, settings, debug=false) {
@@ -26,8 +30,16 @@ export let StepCounter = function(doc, settings, debug=false) {
   sce.style.opacity = stepView ? 1 : .4;
   // Fetch the step offset
   var offset = settings.getOrElse("stepOffset", 0);
-  // A blank timer
-  var held = 0;
+
+  // try the secondary button
+  var secondInteract = parseInt(settings.getOrElse("counterValue", "0"));
+  var longPressTime = parseInt(settings.getOrElse("counterValue", "1000"));
+  var multiTapTime = parseInt(settings.getOrElse("counterValue", "500"));
+
+  // update the secondary setting
+  this.updateSecondary = function(sec) { secondInteract = sec; };
+  this.updateLongPress = function(timeselect) { longPressTime = timeselect; };
+  this.updateMultiTap = function(timeselect) { multiTapTime = timeselect; };
 
   // change the offset and save it
   let newOffset = function(ost = 0) {
@@ -61,16 +73,18 @@ export let StepCounter = function(doc, settings, debug=false) {
 
   // Function to trigger if the button is set
   cst.addEventListener("mousedown", (evt) => {
-    // cite the held time
-    held = Date.now();
+    // press the button
+    stepButton.press(secondInteract, multiTapTime);
     // activate the buttons
     utils.animateElement(csb, "select");
   });
 
   // Function to trigger if the button is unset
   cst.addEventListener("mouseup", (evt) => {
-    // Check if we had a long click
-    if ((Date.now() - held) > 1000) {
+    // unpress the button
+    var func = stepButton.unpress(secondInteract, longPressTime);
+    // primary function
+    if (func) {
       // update the offset to the current steps
         offset = -1;
     } else {
