@@ -37,9 +37,12 @@ let DefSet = function() {
     activeApps: [1],
     // Pedometer
     stepView: 0,
-    stepView: 0,
     // counter
     counterValue: 0,
+    // secondInteract
+    secondInteract: 0,
+    longPressTime: 1000,
+    multiTapTime: 500,
   };
   return defaults;
 };
@@ -143,6 +146,18 @@ let updateSkin = function(skinType) {
   face.groupTransform.scale.y = (skinType==3 ? 100 / 93.5: 1);
 }
 
+// change how secondary buttons are handeled
+let updateSecondaryButtons = function(sec) {
+  // update the counter
+  countCounter.updateSecondary(sec);
+}
+let updateLongPressTime = function(timeselect) {
+  countCounter.updateLongPress(timeselect);
+}
+let updateMultiTapTime = function(timeselect) {
+  countCounter.updateMultiTap(timeselect);
+}
+
 // Define a function to apply our settings
 let applySettings = function() {
   if (! settings) {
@@ -157,6 +172,10 @@ let applySettings = function() {
     settings.isPresent("activeApps", switchView.appSettings);
     // Choose the mascot
     settings.isPresent("mascotSprite", timeInd.switchMascot);
+    // set secondary buttons
+    settings.isPresent("secondInteract", updateSecondaryButtons);
+    settings.isPresent("longPressTime", updateLongPressTime);
+    settings.isPresent("multiTapTime", updateMultiTapTime);
     // Show that settings have been loaded
     console.log("Settings applied");
   } catch (err) {
