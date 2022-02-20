@@ -10,9 +10,6 @@ function fetchdefs() {
     mascotSprite:   {name:"Pikachu", value:0, subname:"The Original Poketch Mascot."},
     activeApps:     {name:"Pedometer", value:1, selected:[0]},
     mascotSprite:   {name:"Pikachu", value:0, subname:"The Original Poketch Mascot."},
-    secondInteract: {name:"Long Press", value:0, subname:"Press and hold buttons to activate their secondary features."},
-    longPressTime:  1000,
-    multiTapTime:   500,
   };
 
   let Defaults = {};

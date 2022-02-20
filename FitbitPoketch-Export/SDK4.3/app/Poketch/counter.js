@@ -4,6 +4,10 @@ import * as activity from "user-activity";
 
 // Define any helper functions
 import * as utils from "../../common/utils";
+import { SecondaryButton } from "./secondFunctionButton";
+
+// get the secondary button reference
+let counterButton = new SecondaryButton();
 
 // Define this module
 export let CountCounter = function(doc, settings, debug=false) {
@@ -20,11 +24,10 @@ export let CountCounter = function(doc, settings, debug=false) {
 
   // Fetch the counter amount
   var count =  debug ? 31415 : settings.getOrElse("counterValue", 0);
-
-  // secondary interaction
-  var secondInteract = settings.getOrElse("secondInteract", 0);
-  var longPressTime = 0.001 * settings.getOrElse("longPressTime", 1000);
-  var multiTapTime = 0.001 * settings.getOrElse("multiTapTime", 500);
+  // try the secondary button
+  var secondInteract = 0;
+  var multiTapTime = 500;
+  var longPressTime = 1000;
 
   // function to draw the display
   this.draw = function() {
@@ -34,65 +37,28 @@ export let CountCounter = function(doc, settings, debug=false) {
     settings.replaceSettings({"counterValue":count})
   };
 
-  // update the settings
-  this.updateSecondary = function(sec) { secondaryInteract = sec; };
-  this.updateLongPress = function(longtime) { longPressTime = longtime; };
-  this.updateMultiTap = function(multitime) { multiTapTime = multitime; };
-
-  // secondary button object
-  function secondaryButton(elem, primaryFunc, secondaryFunc) {
-    this.elem = elem;
-    this.pressed = Date.now();
-    this.secondary = False;
-    this.primaryFunc = primaryFunc;
-    this.secondaryFunc = secondaryFunc;
-    // 0 = long press, 1 = multiTap
-    this.secondaryInteract = 0;
-  };
-
-  // if the button is clicked
-  secondaryButton.prototype.press = function() {
-    // if we are using multitap
-    if (secondInteract == 1) {
-      // the secondary function will be enabled if the button is pressed before multitap is exceeded
-      this.secondary = ((Date.now() - this.pressed) < multiTapTime);
-    };
-    // log the press time
-    this.pressed = Date.now();
-    // animate
-    utils.animateElement(this.elem, "select");
-  };
-
-  // if the button is unclicked
-  secondaryButton.prototype.unpress = function() {
-    // if we are using long press
-    if (secondInteract == 0) {
-      // then the secondary function will be enabled if the button is held for long enough
-      this.secondary = ((Date.now() - this.pressed) > longPressTime))
-    // chose which function to do
-    if (this.secondary) {
-      this.secondaryFunc();
-      this.secondary = False;
-    } else {
-      this.primaryFunc();
-    };
-    // and animate
-    utils.animateElement(this.elem, "unselect");
-  };
-
-  // set the counter to a secondary button
-  var counterBut = new secondaryButton(ccb, function() { count++; }, function() { count = 1; });
-
   // Function to trigger if the button is set
   cct.addEventListener("mousedown", (evt) => {
     // press the button
-    counterBut.press();
+    counterButton.press(secondInteract, multiTapTime);
+    // activate the buttons
+    utils.animateElement(ccb, "select");
   });
 
   // Function to trigger if the button is unset
   cct.addEventListener("mouseup", (evt) => {
-    // press the button
-    counterBut.unpress();
+    // unpress the button
+    var func = counterButton.unpress(secondInteract, longPressTime);
+    // primary function
+    if (func) {
+      // increase the counter
+      count++;
+    } else {
+      // reset the counter
+      count = 0;
+    };
+    // activate the button
+    utils.animateElement(ccb, "unselect");
     // and update the step display
     this.draw();
   });
