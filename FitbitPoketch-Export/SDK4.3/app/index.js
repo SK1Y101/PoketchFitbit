@@ -149,17 +149,26 @@ let updateSkin = function(skinType) {
 // change how secondary buttons are handeled
 let updateSecondaryButtons = function(sec) {
   var secVal = parseInt(sec);
-  countCounter.updateSecondary(secVal); };
-// long press time
+  countCounter.updateSecondary(secVal);
+  stepCounter.updateSecondary(secVal);
+  moveCalc.updateSecondary(secVal);
+};
 
+// long press time
 let updateLongPressTime = function(timeselect) {
   var timeval = parseInt(timeselect);
-  countCounter.updateLongPress(timeval); };
+  countCounter.updateLongPress(timeval);
+  stepCounter.updateLongPress(timeval);
+  moveCalc.updateLongPress(timeval);
+};
 
 // multi tap time
 let updateMultiTapTime = function(timeselect) {
   var timeval = parseInt(timeselect);
-  countCounter.updateMultiTap(timeval); };
+  countCounter.updateMultiTap(timeval);
+  stepCounter.updateMultiTap(timeval);
+  moveCalc.updateMultiTap(timeval);
+};
 
 // Define a function to apply our settings
 let applySettings = function() {
