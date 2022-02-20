@@ -24,18 +24,14 @@ export let CountCounter = function(doc, settings, debug=false) {
 
   // Fetch the counter amount
   var count =  debug ? 31415 : settings.getOrElse("counterValue", 0);
-  // try the secondary button
+  // the secondary button settings
   var secondInteract = parseInt(settings.getOrElse("counterValue", "0"));
   var longPressTime = parseInt(settings.getOrElse("counterValue", "1000"));
   var multiTapTime = parseInt(settings.getOrElse("counterValue", "500"));
 
   // update the secondary setting
   this.updateSecondary = function(sec) { secondInteract = sec; };
-
-  // update the long press time
   this.updateLongPress = function(timeselect) { longPressTime = timeselect; };
-
-  // update the long press time
   this.updateMultiTap = function(timeselect) { multiTapTime = timeselect; };
 
   // function to draw the display
