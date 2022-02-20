@@ -29,27 +29,21 @@ export let CountCounter = function(doc, settings, debug=false) {
   var longPressTime = parseInt(settings.getOrElse("counterValue", "1000"));
   var multiTapTime = parseInt(settings.getOrElse("counterValue", "500"));
 
+  // update the secondary setting
+  this.updateSecondary = function(sec) { secondInteract = sec; };
+
+  // update the long press time
+  this.updateLongPress = function(timeselect) { longPressTime = timeselect; };
+
+  // update the long press time
+  this.updateMultiTap = function(timeselect) { multiTapTime = timeselect; };
+
   // function to draw the display
   this.draw = function() {
     // update the counter
     digitHandler.update(count);
     // and save the value
     settings.replaceSettings({"counterValue":count})
-  };
-
-  // update the secondary setting
-  this.updateSecondary = function(sec) {
-    secondInteract = sec;
-  };
-
-  // update the long press time
-  this.updateLongPress = function(timeselect) {
-    longPressTime = timeselect
-  };
-
-  // update the long press time
-  this.updateMultiTap = function(timeselect) {
-    multiTapTime = timeselect
   };
 
   // Function to trigger if the button is set
