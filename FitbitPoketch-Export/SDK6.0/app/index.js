@@ -37,7 +37,6 @@ let DefSet = function() {
     activeApps: [1],
     // Pedometer
     stepView: 0,
-    stepView: 0,
     // counter
     counterValue: 0,
     // secondInteract
@@ -52,6 +51,7 @@ let DefSet = function() {
 String.prototype.splice = function(start, end, replacement) {
   return this.substr(0, start) + replacement + this.substr(end);
 }
+
 const debug = false;
 
 // And fetch a reference to the modules
@@ -74,13 +74,13 @@ var viewUpdate = {
 };
 
 // define the switch viewer, passing any updates needed
-let switchView = new SwitchView(document, settings, viewUpdate);
+let switchView = new SwitchView(document, settings, viewUpdate, debug);
 
 // Define the clock tick rate
 clock.granularity = "minutes"; // seconds, minutes, hours
 
 // fetch elementss
-const bg = document.getElementsByClassName("background");
+const bg = document.getElementById("background");
 const fc = document.getElementsByClassName("face_colour");
 const sc = document.getElementsByClassName("screen_colour");
 const dpskin = document.getElementsByClassName("dp_skin");
