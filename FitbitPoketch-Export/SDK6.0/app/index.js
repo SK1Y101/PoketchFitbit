@@ -40,6 +40,10 @@ let DefSet = function() {
     stepView: 0,
     // counter
     counterValue: 0,
+    // secondInteract
+    secondInteract: 0,
+    longPressTime: "1000",
+    multiTapTime: "500",
   };
   return defaults;
 };
@@ -142,6 +146,30 @@ let updateSkin = function(skinType) {
   face.groupTransform.scale.y = (skinType==3 ? 100 / 93.5: 1);
 }
 
+// change how secondary buttons are handeled
+let updateSecondaryButtons = function(sec) {
+  var secVal = parseInt(sec);
+  countCounter.updateSecondary(secVal);
+  stepCounter.updateSecondary(secVal);
+  moveCalc.updateSecondary(secVal);
+};
+
+// long press time
+let updateLongPressTime = function(timeselect) {
+  var timeval = parseInt(timeselect);
+  countCounter.updateLongPress(timeval);
+  stepCounter.updateLongPress(timeval);
+  moveCalc.updateLongPress(timeval);
+};
+
+// multi tap time
+let updateMultiTapTime = function(timeselect) {
+  var timeval = parseInt(timeselect);
+  countCounter.updateMultiTap(timeval);
+  stepCounter.updateMultiTap(timeval);
+  moveCalc.updateMultiTap(timeval);
+};
+
 // Define a function to apply our settings
 let applySettings = function() {
   if (! settings) {
@@ -156,6 +184,10 @@ let applySettings = function() {
     settings.isPresent("activeApps", switchView.appSettings);
     // Choose the mascot
     settings.isPresent("mascotSprite", timeInd.switchMascot);
+    // set secondary buttons
+    settings.isPresent("secondInteract", updateSecondaryButtons);
+    settings.isPresent("longPressTime", updateLongPressTime);
+    settings.isPresent("multiTapTime", updateMultiTapTime);
     // Show that settings have been loaded
     console.log("Settings applied");
   } catch (err) {
