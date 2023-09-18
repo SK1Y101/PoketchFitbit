@@ -1,6 +1,13 @@
 # Fitbit Pokétch
 A Fitbit clock-face in the style of the Pokémon Generation IV Pokétch.
 
+# Note: I am not regularly developing this project.
+If there are bugs or feature requests, leave an issue. It's possible I'll come back here in the future and clean up. I make no guarantees about this, however.
+
+If you're familiar with FitBit clockface development, please feel free to fork and fix. If I get a PR through, I'll happilly update the official watch source with a new build & creditation. (You may need to ping me though).
+
+Thank you to everyone for the kind support and downloads over the life of this project, it has been absolutely amazing!
+
 ![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/SDK4.3/screenshots/App_Views/App_View_Animated.png)
 ![Pokétch view](https://github.com/SK1Y101/PoketchFitbit/blob/main/FitbitPoketch-Export/SDK6.0/screenshots/App_View/App_View_Animated.png)
 

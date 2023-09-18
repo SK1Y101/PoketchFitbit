@@ -151,6 +151,22 @@ function mySettings(props) {
         />
         <Text align="center">{props.settings.multiTapTime + " ms"}</Text>
         <Text>The maximum time between button presses to count as consecutive, and thus activate its secondary feature, provided the secondary interaction is set to Multi Tap.</Text>
+        <Select
+          label={"Scroll behaviour"}
+          settingsKey="scrollBehaviour"
+          options={[
+            {name:"Whole Screen", value:0, subname:"Tapping anywhere on the top/bottom half of the screen will scroll forward/back"},
+            {name:"Buttons only", value:1, subname:"Tapping only on the scroll buttons will scroll forward/back"},
+          ]}
+          renderItem={
+            (option) =>
+              <TextImageRow
+                label={option.name}
+                sublabel={option.subname}
+              />
+          }
+        />
+        <Text>Where on the screen is a press considered for activating the scroll functionality. By default, this is the entirety of the screen, but a user can choose for this to only be valid on the visual scrolling buttons. Minimises accidental scrolling when swiping down for notifications.</Text>
       </Section>
       <Section
         title={<Text bold align="center">Additional links</Text>}>

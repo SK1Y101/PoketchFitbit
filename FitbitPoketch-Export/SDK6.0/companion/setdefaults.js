@@ -13,6 +13,7 @@ function fetchdefs() {
     secondInteract: {name:"Long press", value:0, subname:"Press and hold a button to use it's secondary feature."},
     longPressTime:  "1000",
     multiTapTime:   "500",
+    scrollBehaviour: {name:"Whole Screen", value:0, subname:"Tapping anywhere on the top/bottom half of the screen will scroll forward/back"}
   };
 
   let Defaults = {};
