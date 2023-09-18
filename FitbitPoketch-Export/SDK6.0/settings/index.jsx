@@ -30,7 +30,7 @@ function mySettings(props) {
             {name: "Pt Blue", icon:"https://www.colorhexa.com/4C8CB9.png", value: "#4C8CB9", subname:"The Male Pokétch colour in Platinum."},
             {name: "Pt Pink", icon:"https://www.colorhexa.com/EC5E6A.png", value: "#EC5E6A", subname:"The Female Pokétch colour in Platinum."},
             {name: "BdSp Blue", icon:"https://www.colorhexa.com/164CF6.png", value: "#164CF6", subname:"The Male Pokétch colour in Brilliant Diamond and Shining Pearl"},
-            {name: "BdSp Red", icon:"https://www.colorhexa.com/CC1031.png", value: "#CC1031", subname:"The Femal Pokétch colour in Brilliant Diamond and Shining Pearl"},
+            {name: "BdSp Red", icon:"https://www.colorhexa.com/CC1031.png", value: "#CC1031", subname:"The femalePokétch colour in Brilliant Diamond and Shining Pearl"},
             {name: "BdSp Orange", icon:"https://www.colorhexa.com/FF874A.png", value: "#FF874A", subname:"The Rivals Pokétch colour in Brilliant Diamond and Shining Pearl"},
           ]}
           renderItem={
