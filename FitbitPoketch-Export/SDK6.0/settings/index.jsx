@@ -132,6 +132,21 @@ function mySettings(props) {
           ]}
         />
         <Text>The Pokétch applications that will be accessible to the user.</Text>
+        <Select
+          label={"Clock face stat"}
+          settingsKey="miniStat"
+          options={[
+            {name:"None",           value:1},
+            {name:"Heart rate",     value:2},
+            {name:"Battery Charge", value:3},
+            {name:"Steps",          value:4},
+            {name:"Calories",       value:5},
+            {name:"Distance",       value:6},
+            {name:"Elevation",      value:7},
+            {name:"Active Minutes", value:8},
+          ]}
+        />
+        <Text>An optional stat to include on the main digital clock face.</Text>
       </Section>
       <Section
         title={<Text bold align="center">Interface settings</Text>}>
