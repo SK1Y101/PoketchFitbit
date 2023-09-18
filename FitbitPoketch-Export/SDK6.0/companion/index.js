@@ -35,32 +35,15 @@ settingsStorage.addEventListener("change", evt => {
   };
 });
 
-//If we receive a message from the device
-peerSocket.onmessage = function(evt) {
-  if ((evt.data) && (evt.data.type == "weather")) {
-    weatherCompanion.onMessage(evt.data.fetchtype);
-  };
-};
-
 //log any errors we have
 peerSocket.onerror = function(err) {
   console.log("Connection error: " + err.code + " - " + err.message);
 };
-
-function doThis(position) {
-  console.log("Significant location change! ${JSON.stringify(position)}");
-}
-
-me.monitorSignificantLocationChanges = true;
-me.addEventListener("significantlocationchange", doThis);
 
 //log if the companion was awoken
 let lr = me.launchReasons;
 if (me.launchReasons) {
   if (lr.wokenUp) {
     console.log("Started due to wake interval!");
-  };
-  if (lr.locationChanged) {
-    weatherCompanion.onMessage(lr.locationChanged.position);
   };
 }
