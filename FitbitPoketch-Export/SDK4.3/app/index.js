@@ -43,6 +43,8 @@ let DefSet = function() {
     secondInteract: 0,
     longPressTime: "1000",
     multiTapTime: "500",
+    // scrolling
+    scrollBehaviour: 0,
   };
   return defaults;
 };
@@ -87,6 +89,8 @@ const dpskin = document.getElementsByClassName("dp_skin");
 const ptskin = document.getElementsByClassName("pt_skin");
 const bdspskin = document.getElementsByClassName("bdsp_skin");
 const face = document.getElementById("screen");
+const foreBut = document.getElementById("fore_button");
+const backBut = document.getElementById("back_button");
 
 // Update elements once a minute
 clock.addEventListener("tick", (evt) => {
@@ -170,6 +174,13 @@ let updateMultiTapTime = function(timeselect) {
   moveCalc.updateMultiTap(timeval);
 };
 
+// scroll behaviour
+let updateScrollBehaviour = function(behaviourMode) {
+  var butx = (behaviourMode * device.screen.width * 0.82);
+  foreBut.x = butx;
+  backBut.x = butx;
+};
+
 // Define a function to apply our settings
 let applySettings = function() {
   if (! settings) {
@@ -188,6 +199,8 @@ let applySettings = function() {
     settings.isPresent("secondInteract", updateSecondaryButtons);
     settings.isPresent("longPressTime", updateLongPressTime);
     settings.isPresent("multiTapTime", updateMultiTapTime);
+    // set scroll behaviour
+    settings.isPresent("scrollBehaviour", updateScrollBehaviour);
     // Show that settings have been loaded
     console.log("Settings applied");
   } catch (err) {
