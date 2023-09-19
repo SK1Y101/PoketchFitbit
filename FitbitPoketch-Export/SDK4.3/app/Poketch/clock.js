@@ -1,4 +1,6 @@
 // Import the fitbit builtins
+import { preferences } from "user-settings";
+console.log(preferences.clockDisplay);
 
 // Define any helper functions
 import * as utils from "../../common/utils";
@@ -41,7 +43,7 @@ export let TimeIndicator = function(doc, settings, debug=false) {
     // Fetch the time elements
     var hour = debug ? 10 : now.getHours();
     var mins = debug ? 10 : now.getMinutes();
-    var time = utils.pad(hour)+utils.pad(mins);
+    var time = utils.pad(preferences.clockDisplay == "12h" ? hour%12 : hour)+utils.pad(mins);
     var daytime = (hour >= 10) && (hour < 20);
 
     // update the time elements
@@ -64,5 +66,5 @@ export let TimeIndicator = function(doc, settings, debug=false) {
     // update the sprite
     utils.showElement(pikaSprite, mascot==0);
     utils.showElement(eeveeSprite, mascot==1);
-  }
+  };
 };
