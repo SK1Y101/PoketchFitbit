@@ -379,7 +379,7 @@
                   <set href="hand/handrect" attributeName="height"  to="20%"/>
                   <set href="hand/handrect" attributeName="width"   to="4%"/>
                   <set href="hand/handrect" attributeName="x"       to="-2%"/>
-                  <set href="hand"          attributeName="class"   to="hour_hand"/>
+                  <set href="hand"          attributeName="class"   to="hour_hand screen_colour"/>
                 </use>
               </g>
               <g id="hours" transform="rotate(0)">
