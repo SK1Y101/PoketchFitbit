@@ -203,8 +203,7 @@ let applySettings = function() {
   if (! settings) {
     return;
   };
-  // try {
-    // Set element colours
+  // Set element colours
   settings.isPresent("skin", updateSkin);
   settings.isPresent("edgeColour", updateColour, bg);
   settings.isPresent("faceColour", updateColour, fc);
@@ -221,9 +220,6 @@ let applySettings = function() {
   settings.isPresent("scrollBehaviour", updateScrollBehaviour);
   // Show that settings have been loaded
   console.log("Settings applied");
-  // } catch (err) {
-  //   console.log("Couldn't apply settings");
-  // };
 }
 applySettings();
 
