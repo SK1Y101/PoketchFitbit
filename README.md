@@ -1,3 +1,5 @@
+<NOTE> Development on this project has stopped, I will not be releasing fixes </NOTE>
+
 # Fitbit Pokétch
 A Fitbit clock-face in the style of the Pokémon Generation IV Pokétch.
 
