@@ -7,7 +7,7 @@
   "contributors": [
     {
       "login": "SK1Y101",
-      "name": "Jack Lloyd-Walters",
+      "name": "Skye Owen-Lloyd-Walters",
       "avatar_url": "https://avatars.githubusercontent.com/u/8695579?v=4",
       "profile": "https://github.com/SK1Y101",
       "contributions": [
@@ -15,15 +15,6 @@
         "review"
       ]
     },
-    {
-      "login": "SK2Y202",
-      "name": "Jack Lloyd-Walters",
-      "avatar_url": "https://avatars.githubusercontent.com/u/81203841?v=4",
-      "profile": "https://github.com/SK2Y202",
-      "contributions": [
-        "review"
-      ]
-    }
   ],
   "contributorsPerLine": 7,
   "projectName": "PySkiylia",
