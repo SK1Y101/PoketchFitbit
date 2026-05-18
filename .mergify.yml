@@ -64,12 +64,3 @@ pull_request_rules:
       - base=master
     actions:
       dismiss_reviews: {}
-
-  - name: delete head branch after merge
-    conditions:
-      - merged
-      - head!=main
-      - head!=develop
-      #don't delete if we're merging from develop or main
-    actions:
-      delete_head_branch: {}
