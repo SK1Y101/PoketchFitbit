@@ -4,12 +4,15 @@
     "@fitbit/sdk-cli": "^1.7.3"
   },
   "fitbit": {
+    "appUUID": "6bfe843c-0d8f-4985-b92c-db4feb28afa4",
     "appType": "clockface",
     "appDisplayName": "Poketch",
     "iconFile": "resources/icon.png",
     "wipeColor": "#607d8b",
     "requestedPermissions": [
-      "access_activity"
+      "access_activity",
+      "access_heart_rate",
+      "access_user_profile"
     ],
     "buildTargets": [
       "meson",
@@ -21,8 +24,7 @@
         "name": "Poketch"
       }
     },
-    "defaultLanguage": "en-US",
-    "appUUID": "c69cadcb-a312-4be3-a51f-681b259364c4"
+    "defaultLanguage": "en-US"
   },
   "scripts": {
     "build": "fitbit-build"

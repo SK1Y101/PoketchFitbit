@@ -8,6 +8,7 @@ export let Settings = function(settingsFile, defSet) {
   let self = this;
 
   let loadSettings = function(settingsFile, defSet) {
+    console.log("loading settings")
     try {
       return readFileSync(settingsFile,"cbor");
     } catch(err) {

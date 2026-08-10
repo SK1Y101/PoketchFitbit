@@ -172,9 +172,11 @@ export let KitchenTimer = function(doc, debug=false) {
     buttonPress(false);
     // set the timerVariable.
     updateDisplay(0);
-    // make the selection arrows visible on a timer
-    showArrow = true;
-    toggleArrows();
+    // make the selection arrows visible on a timer, if not already visible
+    if (!showArrow) {
+      showArrow = true;
+      toggleArrows();
+    };
   });
 
   // Increment minute button

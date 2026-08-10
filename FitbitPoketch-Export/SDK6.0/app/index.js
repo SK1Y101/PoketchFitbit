@@ -19,6 +19,7 @@ import { TimeIndicator } from "./Poketch/clock";
 import { CountCounter } from "./Poketch/counter";
 import { StatsIndicator } from "./Poketch/stats";
 import { CalendarView } from "./Poketch/calendar";
+import { MiniStatsIndicator } from "./Poketch/clock_stat";
 
 // Log the memory usage once the entire program is loaded
 console.log("Device JS memory at import: " + memory.js.used + "/" + memory.js.total);
@@ -35,6 +36,7 @@ let DefSet = function() {
     // switch view
     viewnum: 0,
     activeApps: [1],
+    miniStat: 1,
     // Pedometer
     stepView: 0,
     // counter
@@ -43,6 +45,8 @@ let DefSet = function() {
     secondInteract: 0,
     longPressTime: "1000",
     multiTapTime: "500",
+    // scrolling
+    scrollBehaviour: 0,
   };
   return defaults;
 };
@@ -63,6 +67,7 @@ let stepCounter = new StepCounter(document, settings, debug);
 let kitchenTimer = new KitchenTimer(document, debug);
 let calendarView = new CalendarView(document, settings, debug);
 let countCounter = new CountCounter(document, settings, debug);
+let miniStat = new MiniStatsIndicator(document, settings, debug);
 
 // Log the memory usage once the entire program is loaded
 console.log("Device JS memory at modules: " + memory.js.used + "/" + memory.js.total);
@@ -87,6 +92,8 @@ const dpskin = document.getElementsByClassName("dp_skin");
 const ptskin = document.getElementsByClassName("pt_skin");
 const bdspskin = document.getElementsByClassName("bdsp_skin");
 const face = document.getElementById("screen");
+const foreBut = document.getElementById("fore_button");
+const backBut = document.getElementById("back_button");
 
 // Update elements once a minute
 clock.addEventListener("tick", (evt) => {
@@ -94,6 +101,7 @@ clock.addEventListener("tick", (evt) => {
   let now = evt.date;
   // Update the watch
   timeInd.drawTime(now);
+  miniStat.draw();
   // And ensure we initialise the calendar
   if (!calendarView.init) {
     calendarView.drawTime(now);
@@ -117,8 +125,11 @@ display.addEventListener("change", () => {
     // start sensors
     switchView.draw();
     statsInd.start();
+    miniStat.start();
+    miniStat.draw();
   } else {
     statsInd.stop();
+    miniStat.stop();
   };
 });
 
@@ -144,7 +155,17 @@ let updateSkin = function(skinType) {
   face.groupTransform.translate.y = -Math.ceil((skinType==3 ? 0.03 * device.screen.height: 0));
   face.groupTransform.scale.x = (skinType==3 ? 100 / 81.5: 1);
   face.groupTransform.scale.y = (skinType==3 ? 100 / 93.5: 1);
-}
+};
+
+let updateStat = function(stat) {
+  miniStat.switchStat(stat);
+  if (stat == 2) {
+    miniStat.start();
+  } else {
+    miniStat.stop();
+  }
+  miniStat.draw();
+};
 
 // change how secondary buttons are handeled
 let updateSecondaryButtons = function(sec) {
@@ -170,29 +191,39 @@ let updateMultiTapTime = function(timeselect) {
   moveCalc.updateMultiTap(timeval);
 };
 
+// scroll behaviour
+let updateScrollBehaviour = function(behaviourMode) {
+  var butx = (behaviourMode * device.screen.width * 0.82);
+  foreBut.x = butx;
+  backBut.x = butx;
+};
+
 // Define a function to apply our settings
 let applySettings = function() {
   if (! settings) {
     return;
   };
-  try {
+  // try {
     // Set element colours
-    settings.isPresent("skin", updateSkin);
-    settings.isPresent("edgeColour", updateColour, bg);
-    settings.isPresent("faceColour", updateColour, fc);
-    settings.isPresent("screenColour", updateColour, sc);
-    settings.isPresent("activeApps", switchView.appSettings);
-    // Choose the mascot
-    settings.isPresent("mascotSprite", timeInd.switchMascot);
-    // set secondary buttons
-    settings.isPresent("secondInteract", updateSecondaryButtons);
-    settings.isPresent("longPressTime", updateLongPressTime);
-    settings.isPresent("multiTapTime", updateMultiTapTime);
-    // Show that settings have been loaded
-    console.log("Settings applied");
-  } catch (err) {
-    console.log("Couldn't apply settings");
-  };
+  settings.isPresent("skin", updateSkin);
+  settings.isPresent("edgeColour", updateColour, bg);
+  settings.isPresent("faceColour", updateColour, fc);
+  settings.isPresent("screenColour", updateColour, sc);
+  settings.isPresent("activeApps", switchView.appSettings);
+  settings.isPresent("miniStat", updateStat);
+  // Choose the mascot
+  settings.isPresent("mascotSprite", timeInd.switchMascot);
+  // set secondary buttons
+  settings.isPresent("secondInteract", updateSecondaryButtons);
+  settings.isPresent("longPressTime", updateLongPressTime);
+  settings.isPresent("multiTapTime", updateMultiTapTime);
+  // set scroll behaviour
+  settings.isPresent("scrollBehaviour", updateScrollBehaviour);
+  // Show that settings have been loaded
+  console.log("Settings applied");
+  // } catch (err) {
+  //   console.log("Couldn't apply settings");
+  // };
 }
 applySettings();
 

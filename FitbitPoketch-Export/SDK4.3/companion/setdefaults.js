@@ -9,10 +9,11 @@ function fetchdefs() {
     screenColour:   {name: "Green", icon:"https://www.colorhexa.com/70B070.png", value: "#70B070", subname:"The default Pokétch screen colour."},
     mascotSprite:   {name:"Pikachu", value:0, subname:"The Original Poketch Mascot."},
     activeApps:     {name:"Pedometer", value:1, selected:[0]},
-    mascotSprite:   {name:"Pikachu", value:0, subname:"The Original Poketch Mascot."},
+    miniStat:       {name:"None", value:1},
     secondInteract: {name:"Long press", value:0, subname:"Press and hold a button to use it's secondary feature."},
     longPressTime:  "1000",
     multiTapTime:   "500",
+    scrollBehaviour: {name:"Whole Screen", value:0, subname:"Tapping anywhere on the top/bottom half of the screen will scroll forward/back"},
   };
 
   let Defaults = {};

@@ -30,7 +30,7 @@ function mySettings(props) {
             {name: "Pt Blue", icon:"https://www.colorhexa.com/4C8CB9.png", value: "#4C8CB9", subname:"The Male Pokétch colour in Platinum."},
             {name: "Pt Pink", icon:"https://www.colorhexa.com/EC5E6A.png", value: "#EC5E6A", subname:"The Female Pokétch colour in Platinum."},
             {name: "BdSp Blue", icon:"https://www.colorhexa.com/164CF6.png", value: "#164CF6", subname:"The Male Pokétch colour in Brilliant Diamond and Shining Pearl"},
-            {name: "BdSp Red", icon:"https://www.colorhexa.com/CC1031.png", value: "#CC1031", subname:"The Femal Pokétch colour in Brilliant Diamond and Shining Pearl"},
+            {name: "BdSp Red", icon:"https://www.colorhexa.com/CC1031.png", value: "#CC1031", subname:"The femalePokétch colour in Brilliant Diamond and Shining Pearl"},
             {name: "BdSp Orange", icon:"https://www.colorhexa.com/FF874A.png", value: "#FF874A", subname:"The Rivals Pokétch colour in Brilliant Diamond and Shining Pearl"},
           ]}
           renderItem={
@@ -114,6 +114,21 @@ function mySettings(props) {
           ]}
         />
         <Text>The Pokétch applications that will be accessible to the user.</Text>
+        <Select
+          label={"Clock face stat"}
+          settingsKey="miniStat"
+          options={[
+            {name:"None",           value:1},
+            {name:"Heart rate",     value:2},
+            {name:"Battery Charge", value:3},
+            {name:"Steps",          value:4},
+            {name:"Calories",       value:5},
+            {name:"Distance",       value:6},
+            {name:"Elevation",      value:7},
+            {name:"Active Minutes", value:8},
+          ]}
+        />
+        <Text>An optional stat to include on the main digital clock face.</Text>
       </Section>
       <Section
         title={<Text bold align="center">Interface settings</Text>}>
@@ -151,6 +166,22 @@ function mySettings(props) {
         />
         <Text align="center">{props.settings.multiTapTime + " ms"}</Text>
         <Text>The maximum time between button presses to count as consecutive, and thus activate its secondary feature, provided the secondary interaction is set to Multi Tap.</Text>
+        <Select
+          label={"Scroll behaviour"}
+          settingsKey="scrollBehaviour"
+          options={[
+            {name:"Whole Screen", value:0, subname:"Tapping anywhere on the top/bottom half of the screen will scroll forward/back"},
+            {name:"Buttons only", value:1, subname:"Tapping only on the scroll buttons will scroll forward/back"},
+          ]}
+          renderItem={
+            (option) =>
+              <TextImageRow
+                label={option.name}
+                sublabel={option.subname}
+              />
+          }
+        />
+        <Text>Where on the screen is a press considered for activating the scroll functionality. By default, this is the entirety of the screen, but a user can choose for this to only be valid on the visual scrolling buttons. Minimises accidental scrolling when swiping down for notifications.</Text>
       </Section>
       <Section
         title={<Text bold align="center">Additional links</Text>}>
